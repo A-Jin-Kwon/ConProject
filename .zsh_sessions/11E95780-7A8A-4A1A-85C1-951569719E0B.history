@@ -1,0 +1,147 @@
+/Volumes/EFI/·É§É¨·É•©·É§Ä·É•ß·É¶º·É§É´·É•≥·É¶´/·É§Ä·É•µ·É§É∞·É•ÉÅ/movie/Me\ Before\ You\ 2016\ 1080p\ BluRay\ x264\ DTS-JYK/test ; exit;
+/Users/jke/cpp/001.cpp
+ls
+'/Users/jke/cpp/001.cpp'
+lldb --version
+clang --version
+cd "/Users/jke/cpp/" && clang++ -std=c++17 001.cpp -o 001 && "/Users/jke/cpp/"001
+hello test
+/Applications/nProtect/nProtect\ Online\ Security\ V1/yessign/ysdmn.dylib ; exit;
+ /usr/bin/env /usr/bin/python3 /Users/jke/.vscode/extensions/ms-python.python-2022.2.1924087327/pythonFiles/lib/python/debugpy/launcher 49403 -- /Users/jke/Documents/JKE/·É§Ä·É•ÉÇ·É§É´·É•µ·É¶´·É§É¨·É••·É¶º·É§Éß·É•©/2021-2·É§É≤·É•ÉÅ·É¶®·É§Ä·É•µ_·É§É©·É••·É¶º·É§É¨·É••·É¶®·É§É¨·É•≥·É¶º·É§É¶·É•ß·É¶º·É§É©·É••_·É§É¨·É•©·É§Ä·É•ß·É¶º·É§É´·É•≥·É¶´.asp 
+Jupyter notebook
+conda search python
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+pip intall tensorflow
+pip install tensorflow
+install tensorflow_hub
+pip install tensorflow_hub
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+tensorflow_hub
+pip install tensorflow_bug
+pip install tensorflow_hub
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+pip instal selenium
+install selenium
+pip install selenium
+xattr -d com.apple.quarantine /usr/local/bin/chromedriver
+/Applications/chromedriver ; exit;
+pip install beautifulsoup4
+python -m pip install --upgrade pip
+pip install beautifulsoup4
+from bs4 import BeautifulSoup
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+git clon https://github.com/maxistephan/ARWorldTracking.git
+git clone https://github.com/maxistephan/ARWorldTracking.git
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+pip3 install webdriver_manager
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+pip install selenium
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/python -m pip install --upgrade pip
+pip install NRCLexicon
+pip install NRCLex
+python -m textblob.download_corpora\
+
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+ython3 -m pip install myp
+ython3 -m pip install mypy
+python2 -m pip install mypy
+python3 -m pip install mypy
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+/Users/jke/opt/anaconda3/bin/jupyter_mac.command ; exit;
+$ sudo port install git\
+\
+
+git status
+git status on branch master
+changes to be committed
+git commit -m "Ïª§Î∞É´ÎÉÅÉºÍ∑∏"
+git remote add origin "https://kyoungeun-creator.github.io/all_about_ZEV/"
+git init remote add arigin "https://kyoungeun-creator.github.io/all_about_ZEV/"
+git init pull origin main
+git init remote add origin https://kyoungeun-creator.github.io/all_about_ZEV/
+git remote add origin https://kyoungeun-creator.github.io/all_about_ZEV/
+git init 
+git remote add origin https://kyoungeun-creator.github.io/all_about_ZEV/
+git pull origin main
+git init
+git pull origin main
+git clone https://mcnz:githubpass@github.com/cameronmcnz/private-github-repo.git\
+
+git pull origin main
+git branch -m <main>
+git init
+git remote add origin https://kyoungeun-creator.github.io/all_about_ZEV/
+git pull origin main
+git remote add origin https://kyoungeun-creator.github.io/all_about_ZEV/
+git pull origin main
+git remote remove origin
+git remote add origin URL
+GIT_SSH_COMMAND="ssh -v" git pull
+GIT_SSH_COMMAND="ssh -https://kyoungeun-creator.github.io/all_about_ZEV/"
+ GIT_SSH_COMMAND="ssh -https://kyoungeun-creator.github.io/all_about_ZEV/" git pull
+git clone https://kyoungeun-creator@github.io/all_about_ZEV/.git
+git clone http://kyoungeun-creator@github.io/all_about_ZEV/
+git clone http://kyoungeun-creator@github.io/all_about_ZEV.git
+git remote add origin http://kyoungeun-creator.github.io/all_about_ZEV/
+git remote remove origin
+git remote add origin https://kyoungeun-creator.github.io/all_about_ZEV/
+git remote -v
+git push origin master
+git push origin main
+git pull origin main
+git clone https://kyoungeun-creator.github.io/all_about_ZEV/
+git config --global user.name kyoungeun
+git config --globla user.email kavvy99@naver.com
+git clone https://github.com/kyoungeun/please.git
+git config --global user.name kyoungeun\
+
+git config --globla user.email kavvy99@naver.com\
+
+brew install git
+brew intall git
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew intall git
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+brew help
+eval $(/opt/homebrew/bin/brew shellenv)
+brew help
+brew intall git
+eval $(/opt/homebrew/bin/brew shellenv)\
+
+brew help
+brew install git\
+
+git --version
+git config --global user.name "Kyoungeun Jo"
+git config --global user.email "kavvy99@naver.com"
+git config --list
+git init
+git add .
+git init
+git add .

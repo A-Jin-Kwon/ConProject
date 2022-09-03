@@ -1,0 +1,18 @@
+﻿2022-04-20 15:37:33,798 jke DEBUG RestApi - No user defined URIs in '/Users/jke/.plastic4/webapi.conf'. Will use default URIs.
+2022-04-20 15:37:33,831 jke DEBUG RestApi - No user defined URIs in '/Users/jke/.plastic4/webapi.conf'. Will use default URIs.
+2022-04-20 15:37:33,842 jke DEBUG EventTracking - Event tracking disabled.
+2022-04-20 16:26:43,012 jke DEBUG RestApi - No user defined URIs in '/Users/jke/.plastic4/webapi.conf'. Will use default URIs.
+2022-04-20 16:26:43,019 jke DEBUG RestApi - No user defined URIs in '/Users/jke/.plastic4/webapi.conf'. Will use default URIs.
+2022-04-20 16:26:43,020 jke DEBUG EventTracking - Event tracking disabled.
+2022-04-20 16:28:21,862 jke DEBUG RestApi - No user defined URIs in '/Users/jke/.plastic4/webapi.conf'. Will use default URIs.
+2022-04-20 16:28:21,897 jke DEBUG RestApi - No user defined URIs in '/Users/jke/.plastic4/webapi.conf'. Will use default URIs.
+2022-04-20 16:28:21,907 jke DEBUG EventTracking - Event tracking disabled.
+2022-04-20 16:32:34,753 jke DEBUG RestApi - No user defined URIs in '/Users/jke/.plastic4/webapi.conf'. Will use default URIs.
+2022-04-20 16:32:34,799 jke DEBUG RestApi - No user defined URIs in '/Users/jke/.plastic4/webapi.conf'. Will use default URIs.
+2022-04-20 16:32:34,812 jke DEBUG EventTracking - Event tracking disabled.
+2022-04-20 16:50:22,233 jke DEBUG RestApi - No user defined URIs in '/Users/jke/.plastic4/webapi.conf'. Will use default URIs.
+2022-04-20 16:50:22,239 jke DEBUG RestApi - No user defined URIs in '/Users/jke/.plastic4/webapi.conf'. Will use default URIs.
+2022-04-20 16:50:22,240 jke DEBUG EventTracking - Event tracking disabled.
+2022-04-21 18:39:41,351 jke DEBUG RestApi - No user defined URIs in '/Users/jke/.plastic4/webapi.conf'. Will use default URIs.
+2022-04-21 18:39:41,357 jke DEBUG RestApi - No user defined URIs in '/Users/jke/.plastic4/webapi.conf'. Will use default URIs.
+2022-04-21 18:39:41,359 jke DEBUG EventTracking - Event tracking disabled.

@@ -1,0 +1,18 @@
+{
+    "mac64_chromedriver_100.0.4896.60_for_100.0.4896": {
+        "timestamp": "03/05/2022",
+        "binary_path": "/Users/jke/.wdm/drivers/chromedriver/mac64/100.0.4896.60/chromedriver"
+    },
+    "mac64_chromedriver_101.0.4951.41_for_101.0.4951": {
+        "timestamp": "29/05/2022",
+        "binary_path": "/Users/jke/.wdm/drivers/chromedriver/mac64/101.0.4951.41/chromedriver"
+    },
+    "mac64_chromedriver_102.0.5005.61_for_102.0.5005": {
+        "timestamp": "27/06/2022",
+        "binary_path": "/Users/jke/.wdm/drivers/chromedriver/mac64/102.0.5005.61/chromedriver"
+    },
+    "mac64_chromedriver_103.0.5060.53_for_103.0.5060": {
+        "timestamp": "30/06/2022",
+        "binary_path": "/Users/jke/.wdm/drivers/chromedriver/mac64/103.0.5060.53/chromedriver"
+    }
+}

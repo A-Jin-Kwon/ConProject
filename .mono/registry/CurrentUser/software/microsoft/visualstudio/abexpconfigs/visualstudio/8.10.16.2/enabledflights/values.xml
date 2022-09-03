@@ -1,0 +1,12 @@
+<values>
+<value name="_Ids"
+type="string-array">
+<string>VisualStudio</string>
+</value>
+<value name="VisualStudio_Ids"
+type="string-array">
+<string>Roslyn.ToggleBlockComment.NoUsed</string>
+<string>vsformacaa</string>
+<string>LongerAnimation</string>
+</value>
+</values>
