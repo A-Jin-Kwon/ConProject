@@ -6,6 +6,8 @@ import Setting from "./Pages/SettingPage/Setting";
 import Login from "./Pages/LoginPage/Login";
 import Join from "./Pages/JoinPage/Join";
 import MainLayout from "./Components/MainLayout/MainLayout";
+import MyInformation from './Pages/SettingPage/MyInformation'
+import ProfileSetting from "./Pages/SettingPage/ProfileSetting";
 
 function App() {
   return (
@@ -23,6 +25,8 @@ function App() {
           {/* 헤더가 필요 없다면 이 안에 추가해주세요! */}
           <Route path="/login" element={<Login />} />
           <Route path="/join" element={<Join />} />
+          <Route path="/myInformation" element={<MyInformation/>}/>
+          <Route path="/profileSetting" element={<ProfileSetting/>}/>
         </Routes>
       </div>
     </BrowserRouter>
