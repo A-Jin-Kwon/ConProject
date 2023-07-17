@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
 
-const Login = () => {
+const Join = () => {
   // 이메일 값이 유효한지 아닌지 저장하는 state입니다.
   const [isEmailValid, setIsEmailValid] = useState(true);
 
@@ -29,7 +29,16 @@ const Login = () => {
         console.log("형식에 맞지 않는 이메일!");
       }
     }
-  }
+  };
+
+  const [isNameFocused, setIsNameFocused] = useState(false);
+  const NamefocusHandler = () => {
+    setIsNameFocused(true);
+  };
+  const NameblurHandler = () => {
+    setIsNameFocused(false);
+  };
+
 
   // 이메일 입력값을 저장합니다.
   const [emailInput, setEmailInput] = useState('');
@@ -37,6 +46,13 @@ const Login = () => {
     setEmailInput(e.target.value);
     console.log(emailInput);
   };
+
+    // 이름 입력값을 저장합니다.
+    const [nameInput, setNameInput] = useState('');
+    const NameChangeHandler = (e) => {
+        setNameInput(e.target.value);
+    };
+  
 
   // 이메일 형식을 확인하는 함수
   const checkEmailValid = () => {
@@ -48,6 +64,9 @@ const Login = () => {
   const cancelHandler = () => {
     setEmailInput('');
   };
+  const nameCancelHandler = () => {
+    setNameInput('');
+  };
 
   // 비밀번호 보이기는 true, 숨기기는 false입니다.
   const [showPassword, setShowPassword] = useState(true);
@@ -55,18 +74,72 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+  // 확인 비밀번호 보이기는 true, 숨기기는 false입니다.
+  const [showCheckPassword, setShowCheckPassword] = useState(true);
+  const visibilityCheckHandler = () => {
+    setShowCheckPassword(!showCheckPassword);
+  };
+
   // 폼 submit 시, 발생하는 함수입니다.
   const submitHandler = (e) => {
     e.preventDefault();
+
+    if(pwdInput==='' || checkPwdInput===''){
+        console.log("비번 또는 확인 비번이 입력되지 않았습니다.");
+    }
+    else{
+        if(pwdInput === checkPwdInput){
+            console.log("비번과 확인 비번이 일치합니다.");
+        }
+        else{
+            console.log("비번과 확인 비번이 일치하지 않습니다.");
+        }
+    }
+  };
+
+//   비번, 확인 비번 저장
+  const [pwdInput, setPwdInput] = useState('');
+  const [checkPwdInput, setCheckPwdInput] = useState('');
+  const pwdChangeHandler = (e) => {
+    setPwdInput(e.target.value);
+  };
+  const checkPwdChangeHandler = (e) => {
+    setCheckPwdInput(e.target.value);
   };
 
   return (
     <div>
       <div>
-        <Header>이메일로 로그인하기</Header>
+        <Header>이메일로 회원가입하기</Header>
       </div>
-      {/* 이메일 비밀번호 폼 */}
+
       <Form onSubmit={submitHandler}>
+        {/* 이름 */}
+        <div>
+          <Label>
+            <LabelSpan>이름</LabelSpan>
+            <NameWrapper>
+                <NameInput
+                  placeholder="your name"
+                  onFocus={NamefocusHandler}
+                  onBlur={NameblurHandler}
+                  onChange={NameChangeHandler}
+                  value={nameInput}
+                />
+              {/* focus 상태라면 이미지를 보여주고, blur 되었다면 이미지를 숨깁니다. */}
+              {isNameFocused ?
+                <IconEmail src="cancel.png" 
+                  // onMouseDown으로, onClick 보다 blur 이벤트가 먼저 실행되는 것을 방지할 수 있습니다.
+                  onMouseDown={(e) => {
+                    e.preventDefault();
+                  }}
+                  onClick={nameCancelHandler}
+                />
+              : null}
+            </NameWrapper>
+          </Label>
+        </div>
+
         {/* 이메일 */}
         <div>
           <Label>
@@ -108,6 +181,7 @@ const Login = () => {
               <PasswordInput
                 placeholder="비밀번호 입력"
                 type={showPassword ? "text" : "password"}
+                onChange={pwdChangeHandler}
               />
               <IconPassword
                 src={showPassword ? "visibility.png" : "visibility_off.png"}
@@ -116,24 +190,34 @@ const Login = () => {
             </PasswordWrapper>
           </Label>
         </div>
-        {/* 로그인 */}
-        <LoginBtnWrapper>
-          <LoginBtn>로그인</LoginBtn>
-        </LoginBtnWrapper>
-      </Form>
-      {/* 로그인 밑 요소 */}
-      <BottomWrapper>
+        {/* 비밀번호 확인 */}
         <div>
-          <span>계정이 없으세요?</span>
-          <BottomJoin to='/join'>회원가입</BottomJoin>
+          <Label>
+            <LabelSpan>비밀번호 확인</LabelSpan>
+            <PasswordWrapper>
+              <PasswordInput
+                placeholder="비밀번호 입력"
+                type={showCheckPassword ? "text" : "password"}
+                onChange={checkPwdChangeHandler}
+              />
+              <IconPassword
+                src={showCheckPassword ? "visibility.png" : "visibility_off.png"}
+                onClick={visibilityCheckHandler}
+              />
+            </PasswordWrapper>
+          </Label>
         </div>
-        <BottomFindPassword>비밀번호 찾기</BottomFindPassword>
-      </BottomWrapper>
+
+        {/* 회원가입 */}
+        <JoinBtnWrapper>
+          <JoinBtn>가입하기</JoinBtn>
+        </JoinBtnWrapper>
+      </Form>
     </div>
   );
 };
 
-export default Login;
+export default Join;
 
 const IconError = styled.img`
   position: absolute;
@@ -141,6 +225,9 @@ const IconError = styled.img`
   left: 376px;
 `;
 const EmailWrapper = styled.div`
+  position: relative;
+`;
+const NameWrapper = styled.div`
   position: relative;
 `;
 const IconEmail = styled.img`
@@ -164,32 +251,16 @@ const IconPassword = styled.img`
   color: #b1b1b1;
   cursor: pointer;
 `;
-const BottomJoin = styled(Link)`
-  color: #464646;
-  margin-left: 0.45rem;
-`;
-const BottomFindPassword = styled(Link)`
-  text-decoration: none;
-  color: #464646;
-`;
-const BottomWrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 416px;
-  margin: 0.75rem auto 0;
-  font-size: 14px;
-  color: #242424;
-`;
 const Form = styled.form`
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 `;
-const LoginBtnWrapper = styled.div`
+const JoinBtnWrapper = styled.div`
   margin: 1.5rem 0;
 `;
-const LoginBtn = styled.button`
+const JoinBtn = styled.button`
   box-shadow: none;
   width: 416px;
   height: 48px;
@@ -223,6 +294,17 @@ const EmailInput = styled.input`
     border: 1px solid #ffc000;
   }
 `;
+const NameInput = styled.input`
+  border-radius: 4px;
+  padding: 16px 18px;
+  width: 380px;
+  border: 1px solid #d5d5d5;
+
+  &:focus {
+    outline: none;
+    border: 1px solid #ffc000;
+  }
+`;
 const PasswordInput = styled.input`
   border-radius: 4px;
   padding: 16px 18px;
@@ -234,6 +316,7 @@ const PasswordInput = styled.input`
     border: 1px solid #ffc000;
   }
 `;
+
 const Header = styled.p`
   display: flex;
   justify-content: center;
