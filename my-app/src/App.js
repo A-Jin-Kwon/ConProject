@@ -22,7 +22,7 @@ function App() {
 
           {/* 헤더가 필요 없다면 이 안에 추가해주세요! */}
           <Route path="/login" element={<Login />} />
-          <Route path="/join" element={<Join />} />
+          <Route path="/join" element={<Join />} />  
         </Routes>
       </div>
     </BrowserRouter>
