@@ -2,12 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import PageLayout from "../PageLayout";
 
-import {
-  FollowWrapper,
-  FollowBottom,
-  ContentRecommend,
-  ContentTitle,
-} from "../FollowerContainer/Follower";
+import { FollowWrapper, FollowBottom, ContentRecommend, ContentTitle } from "../FollowerContainer/Follower";
 
 const ProfileContent = () => {
   return (

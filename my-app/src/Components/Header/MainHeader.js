@@ -15,40 +15,16 @@ const Header = () => {
     <HeaderWrapper>
       <MenuBar>
         <div>
-          <LinkWrapper
-            className=""
-            to={"/"}
-            id="home"
-            onClick={clickHandler}
-            currentPage={currentPage}
-          >
+          <LinkWrapper className="" to={"/"} id="home" onClick={clickHandler} currentPage={currentPage}>
             홈
           </LinkWrapper>
-          <LinkWrapper
-            className=""
-            to={"/conrecord"}
-            id="conrecord"
-            onClick={clickHandler}
-            currentPage={currentPage}
-          >
+          <LinkWrapper className="" to={"/conrecord"} id="conrecord" onClick={clickHandler} currentPage={currentPage}>
             콘 기록
           </LinkWrapper>
-          <LinkWrapper
-            className=""
-            to={"/community"}
-            id="community"
-            onClick={clickHandler}
-            currentPage={currentPage}
-          >
+          <LinkWrapper className="" to={"/community"} id="community" onClick={clickHandler} currentPage={currentPage}>
             커뮤니티
           </LinkWrapper>
-          <LinkWrapper
-            className=""
-            to={"/setting"}
-            id="setting"
-            onClick={clickHandler}
-            currentPage={currentPage}
-          >
+          <LinkWrapper className="" to={"/setting"} id="setting" onClick={clickHandler} currentPage={currentPage}>
             설정
           </LinkWrapper>
         </div>
@@ -95,8 +71,7 @@ const LinkWrapper = HeaderStyled(Link)`
     text-decoration: none;
     
     // 현재 탭의 id와 state가 일치하면 노란색으로 색상을 바꾸어줍니다.
-    color: ${(props) =>
-      props.id === props.currentPage ? "#FFC000" : "#242424"};
+    color: ${(props) => (props.id === props.currentPage ? "#FFC000" : "#242424")};
     padding: 10px;
 `;
 const ProfileWrapper = HeaderStyled.div`

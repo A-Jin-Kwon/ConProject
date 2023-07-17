@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
-import Header from "../Header/MainHeader";
+import MainHeader from "../Header/MainHeader";
 
 const MainLayout = () => {
   return (
     <>
-      <Header />
+      <MainHeader />
       <Outlet />
     </>
   );

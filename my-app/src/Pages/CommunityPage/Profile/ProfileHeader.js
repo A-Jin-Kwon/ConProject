@@ -12,10 +12,7 @@ const ProfileHeader = () => {
         <BackBtn>chevron_left</BackBtn>
         <div>프로필</div>
         <ProfileFollowBtnWrapper>
-          <StyledFollowButton
-            onClick={() => setFollowed((state) => !state)}
-            isFollowed={followed === false}
-          >
+          <StyledFollowButton onClick={() => setFollowed((state) => !state)} isFollowed={followed === false}>
             {followed === false ? "팔로우" : "팔로잉"}
           </StyledFollowButton>
         </ProfileFollowBtnWrapper>

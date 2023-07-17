@@ -4,8 +4,7 @@ import { useSelector } from "react-redux";
 
 import Follower from "./Follower";
 // 예시로 포켓몬 사진을 사용했습니다.
-const baseURL =
-  "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
+const baseURL = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 
 const pokemon = [];
 
@@ -19,9 +18,7 @@ makePokemon();
 // 실제 프로젝트와 관련 xxx
 
 const FollowerContainers = () => {
-  const currentMenu = useSelector(
-    (state) => state.communityReducer.currentMenu
-  );
+  const currentMenu = useSelector((state) => state.communityReducer.currentMenu);
   useEffect(() => {
     console.log(currentMenu);
   }, [currentMenu]);

@@ -13,39 +13,19 @@ const Menu = () => {
   return (
     <>
       <ButtonContainer>
-        <StyledButton
-          name="total"
-          onClick={(e) => setCurrentMenu(e.target.name)}
-          isActive={currentMenu === "total"}
-        >
+        <StyledButton name="total" onClick={(e) => setCurrentMenu(e.target.name)} isActive={currentMenu === "total"}>
           전체
         </StyledButton>
-        <StyledButton
-          name="movie"
-          onClick={(e) => setCurrentMenu(e.target.name)}
-          isActive={currentMenu === "movie"}
-        >
+        <StyledButton name="movie" onClick={(e) => setCurrentMenu(e.target.name)} isActive={currentMenu === "movie"}>
           영화
         </StyledButton>
-        <StyledButton
-          name="drama"
-          onClick={(e) => setCurrentMenu(e.target.name)}
-          isActive={currentMenu === "drama"}
-        >
+        <StyledButton name="drama" onClick={(e) => setCurrentMenu(e.target.name)} isActive={currentMenu === "drama"}>
           드라마
         </StyledButton>
-        <StyledButton
-          name="entertainment"
-          onClick={(e) => setCurrentMenu(e.target.name)}
-          isActive={currentMenu === "entertainment"}
-        >
+        <StyledButton name="entertainment" onClick={(e) => setCurrentMenu(e.target.name)} isActive={currentMenu === "entertainment"}>
           예능
         </StyledButton>
-        <StyledButton
-          name="youtube"
-          onClick={(e) => setCurrentMenu(e.target.name)}
-          isActive={currentMenu === "youtube"}
-        >
+        <StyledButton name="youtube" onClick={(e) => setCurrentMenu(e.target.name)} isActive={currentMenu === "youtube"}>
           유튜브
         </StyledButton>
       </ButtonContainer>
