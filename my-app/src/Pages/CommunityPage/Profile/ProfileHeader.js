@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-import { StyledButton } from "../FollowerContainer/Follower";
+import { StyledFollowButton } from "../../../Components/StyledComponents/StyledComponents";
 
 const ProfileHeader = () => {
   const [followed, setFollowed] = useState(false);
@@ -12,12 +12,12 @@ const ProfileHeader = () => {
         <BackBtn>chevron_left</BackBtn>
         <div>프로필</div>
         <ProfileFollowBtnWrapper>
-          <StyledButton
+          <StyledFollowButton
             onClick={() => setFollowed((state) => !state)}
             isFollowed={followed === false}
           >
             {followed === false ? "팔로우" : "팔로잉"}
-          </StyledButton>
+          </StyledFollowButton>
         </ProfileFollowBtnWrapper>
       </HeaderWrapper>
     </ProfileHeaderContainer>

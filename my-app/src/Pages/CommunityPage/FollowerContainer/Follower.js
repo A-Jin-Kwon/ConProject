@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { Link as ReactRouterDomLink } from "react-router-dom";
 
-import { Button } from "../Menu";
+import { StyledFollowButton } from "../../../Components/StyledComponents/StyledComponents";
 
 const Follower = ({ src }) => {
   const [followed, setFollowed] = useState(false);
@@ -14,7 +14,7 @@ const Follower = ({ src }) => {
             <FollowImg src={src}></FollowImg>
             <FollowNickname>닉네임</FollowNickname>
             <FollowBtnWrapper>
-              <StyledButton
+              <StyledFollowButton
                 onClick={(e) => {
                   //Link의 우선 동작을 막기 위해
                   e.preventDefault();
@@ -23,7 +23,7 @@ const Follower = ({ src }) => {
                 isFollowed={followed === false}
               >
                 {followed === false ? "팔로우" : "팔로잉"}
-              </StyledButton>
+              </StyledFollowButton>
             </FollowBtnWrapper>
           </FollowTop>
           <FollowMid></FollowMid>
@@ -85,37 +85,6 @@ const FollowBtnWrapper = styled.div`
   margin: auto 10px auto auto;
 `;
 
-const StyledButton = styled(Button)`
-  width: 100%;
-  height: 100%;
-  border-radius: 4px;
-  border: none;
-  color: white;
-  cursor: pointer;
-
-  /* background-color: ${(props) =>
-    props.primary
-      ? "#ffc000"
-      : props.secondary
-      ? "#490171"
-      : props.delete
-      ? "#E61a1a"
-      : props.disabled
-      ? "#f8f8f8"
-      : "#2e2e2e"}; */
-
-  ${(props) =>
-    props.isFollowed
-      ? css`
-          background-color: black;
-          color: white;
-        `
-      : css`
-          background-color: "#b1b1b1";
-          color: black;
-        `}
-`;
-
 const FollowMid = styled.div`
   width: 100%;
   height: 160px;
@@ -146,11 +115,5 @@ const ContentRecommend = styled.div`
   color: #464646;
 `;
 
-export {
-  StyledButton,
-  FollowWrapper,
-  FollowBottom,
-  ContentTitle,
-  ContentRecommend,
-};
+export { FollowWrapper, FollowBottom, ContentTitle, ContentRecommend };
 export default Follower;

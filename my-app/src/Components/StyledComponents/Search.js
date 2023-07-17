@@ -1,12 +1,15 @@
 import React from "react";
 import styled from "styled-components";
 
-const Search = () => {
+// 아래와 같이 사용하시면 됩니다!
+// <Search placeholder="유저를 검색해보세요!"></Search>
+
+const Search = ({ placeholder }) => {
   return (
     <SearchBox>
       <Form>
         <SearchIcon>search</SearchIcon>
-        <Input placeholder="유저를 검색해보세요!"></Input>
+        <Input placeholder={placeholder}></Input>
       </Form>
     </SearchBox>
   );

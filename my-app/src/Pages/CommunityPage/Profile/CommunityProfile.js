@@ -4,7 +4,7 @@ import styled from "styled-components";
 import ProfileHeader from "./ProfileHeader";
 import ProfileContent from "./ProfileContent";
 
-const Profile = ({ src }) => {
+const CommunityProfile = ({ src }) => {
   return (
     <>
       <ProfileHeader></ProfileHeader>
@@ -13,4 +13,4 @@ const Profile = ({ src }) => {
   );
 };
 
-export default Profile;
+export default CommunityProfile;
