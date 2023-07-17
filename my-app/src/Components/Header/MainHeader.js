@@ -1,23 +1,45 @@
-import { Link as ReactRouterDomLink } from "react-router-dom";
+import { Link as ReactRouterDomLink, useLocation } from "react-router-dom";
 import HeaderStyled from "styled-components";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
+  const curLocation = useLocation();
+  useEffect(() => {
+    const curPath = curLocation.pathname;
+
+    if(curPath === '/'){
+      setCurrentPage('home');
+    }
+    else if(curPath === '/conrecord'){
+      setCurrentPage('conrecord');
+    }
+    else if(curPath === '/community'){
+      setCurrentPage('community');
+    }
+    else if(curPath === '/setting'){
+      setCurrentPage('setting');
+    }
+    else{
+      setCurrentPage('');
+    }
+  }, [curLocation]);
+
   // 현재 속해 있는 탭 id를 저장합니다.
   // 하단의 스타일에 있는 LinkWrapper의 color와 관련되어있습니다.
   const [currentPage, setCurrentPage] = useState("home");
-  const clickHandler = (e) => {
-    console.log(e.target.id);
-    setCurrentPage(e.target.id);
-  };
+  // const clickHandler = (e) => {
+  //   console.log(e.target.id);
+  //   setCurrentPage(e.target.id);
+  // };
+
   return (
     <HeaderWrapper>
       <MenuBar>
         <div>
-          <LinkWrapper className="" to={"/"} id="home" onClick={clickHandler} currentPage={currentPage}>홈</LinkWrapper>
-          <LinkWrapper className="" to={"/conrecord"} id="conrecord" onClick={clickHandler} currentPage={currentPage}>콘 기록</LinkWrapper>
-          <LinkWrapper className="" to={"/community"} id="community" onClick={clickHandler} currentPage={currentPage}>커뮤니티</LinkWrapper>
-          <LinkWrapper className="" to={"/setting"} id="setting" onClick={clickHandler} currentPage={currentPage}>설정</LinkWrapper>
+          <LinkWrapper className="" to={"/"} id="home" currentPage={currentPage}>홈</LinkWrapper>
+          <LinkWrapper className="" to={"/conrecord"} id="conrecord" currentPage={currentPage}>콘 기록</LinkWrapper>
+          <LinkWrapper className="" to={"/community"} id="community" currentPage={currentPage}>커뮤니티</LinkWrapper>
+          <LinkWrapper className="" to={"/setting"} id="setting" currentPage={currentPage}>설정</LinkWrapper>
         </div>
         <ProfileWrapper>
           <HeaderRightDiv>
