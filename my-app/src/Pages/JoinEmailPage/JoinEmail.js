@@ -131,7 +131,7 @@ const JoinEmail = () => {
                 />
               {/* focus 상태라면 이미지를 보여주고, blur 되었다면 이미지를 숨깁니다. */}
               {isNameFocused ?
-                <IconEmail src="cancel.png" 
+                <IconEmail src="imgs/cancel.png" 
                   // onMouseDown으로, onClick 보다 blur 이벤트가 먼저 실행되는 것을 방지할 수 있습니다.
                   onMouseDown={(e) => {
                     e.preventDefault();
@@ -158,14 +158,14 @@ const JoinEmail = () => {
                 />
               {/* focus 상태라면 이미지를 보여주고, blur 되었다면 이미지를 숨깁니다. */}
               {isEmailFocused ?
-                <IconEmail src="cancel.png" 
+                <IconEmail src="imgs/cancel.png" 
                   // onMouseDown으로, onClick 보다 blur 이벤트가 먼저 실행되는 것을 방지할 수 있습니다.
                   onMouseDown={(e) => {
                     e.preventDefault();
                   }}
                   onClick={cancelHandler}
                 />
-              : isEmailValid ? null : <IconError src="error.png"/>}
+              : isEmailValid ? null : <IconError src="imgs/error.png"/>}
             </EmailWrapper>
 
             {/* 이메일 형식이 바르지 않다면 에러 메세지를 띄웁니다. */}
@@ -187,7 +187,7 @@ const JoinEmail = () => {
                 onChange={pwdChangeHandler}
               />
               <IconPassword
-                src={showPassword ? "visibility.png" : "visibility_off.png"}
+                src={showPassword ? "imgs/visibility.png" : "imgs/visibility_off.png"}
                 onClick={visibilityHandler}
               />
             </PasswordWrapper>
@@ -204,7 +204,7 @@ const JoinEmail = () => {
                 onChange={checkPwdChangeHandler}
               />
               <IconPassword
-                src={showCheckPassword ? "visibility.png" : "visibility_off.png"}
+                src={showCheckPassword ? "imgs/visibility.png" : "imgs/visibility_off.png"}
                 onClick={visibilityCheckHandler}
               />
             </PasswordWrapper>

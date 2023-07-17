@@ -22,18 +22,18 @@ const Header = () => {
                 </div>
                 <ProfileWrapper>
                     <HeaderRightDiv>
-                        <img src="search.png"/>
+                        <img src="imgs/search.png"/>
                     </HeaderRightDiv>
                     <HeaderRightDiv>
                         {/* 임시 프로필입니다 */}
-                        <img src="Rectangle112.png"/>
+                        <img src="imgs/Rectangle112.png"/>
                     </HeaderRightDiv>
                     <HeaderRightDiv>
-                        <LineImg src="Line12.png"/>
+                        <LineImg src="imgs/Line12.png"/>
                     </HeaderRightDiv>
                     <HeaderRightDiv>
                         {/* 임시 로그인,로그아웃 버튼입니다 */}
-                        <img src="Frame36.png"/>
+                        <img src="imgs/Frame36.png"/>
                     </HeaderRightDiv>
                 </ProfileWrapper>
             </MenuBar>

@@ -30,10 +30,10 @@ const MyInformation = ()=>{
                         <div className="Info_Wrap_2_1_3"><h4>비밀번호 재설정</h4></div>
                         <div className="Info_Wrap_2_1_4">
                             <div><h4>콘텐츠 공개 설정</h4></div>
-                            <div class="contentsOnOff">
+                            <div className="contentsOnOff">
                                 <input type="checkbox" id="switch"></input>
-                                <label for="switch" class="switch_label">
-                                    <span class="onf_btn"></span>
+                                <label for="switch" className="switch_label">
+                                    <span className="onf_btn"></span>
                                 </label></div>
                         </div>
                     </div>
