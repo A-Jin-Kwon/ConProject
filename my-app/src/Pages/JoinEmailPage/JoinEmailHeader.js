@@ -12,7 +12,7 @@ const JoinEmailHeader = () => {
             <Wrapper>
                 <SpaceLeft/>
                 <SpaceLeft>
-                    <Image src="navigate_next.png" onClick={clickHandler}/>
+                    <Image src="imgs/navigate_next.png" onClick={clickHandler}/>
                 </SpaceLeft>
                 <HeaderText>
                     회원가입

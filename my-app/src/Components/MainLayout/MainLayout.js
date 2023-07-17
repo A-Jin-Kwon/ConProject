@@ -4,8 +4,8 @@ import MainHeader from "../Header/MainHeader";
 const MainLayout = () => {
   return (
     <>
-      <MainHeader />
-      <Outlet />
+        <MainHeader />
+        <Outlet />
     </>
   );
 };

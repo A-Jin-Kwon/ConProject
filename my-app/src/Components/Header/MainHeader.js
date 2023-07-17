@@ -10,38 +10,29 @@ const Header = () => {
     console.log(e.target.id);
     setCurrentPage(e.target.id);
   };
-
   return (
     <HeaderWrapper>
       <MenuBar>
         <div>
-          <LinkWrapper className="" to={"/"} id="home" onClick={clickHandler} currentPage={currentPage}>
-            홈
-          </LinkWrapper>
-          <LinkWrapper className="" to={"/conrecord"} id="conrecord" onClick={clickHandler} currentPage={currentPage}>
-            콘 기록
-          </LinkWrapper>
-          <LinkWrapper className="" to={"/community"} id="community" onClick={clickHandler} currentPage={currentPage}>
-            커뮤니티
-          </LinkWrapper>
-          <LinkWrapper className="" to={"/setting"} id="setting" onClick={clickHandler} currentPage={currentPage}>
-            설정
-          </LinkWrapper>
+          <LinkWrapper className="" to={"/"} id="home" onClick={clickHandler} currentPage={currentPage}>홈</LinkWrapper>
+          <LinkWrapper className="" to={"/conrecord"} id="conrecord" onClick={clickHandler} currentPage={currentPage}>콘 기록</LinkWrapper>
+          <LinkWrapper className="" to={"/community"} id="community" onClick={clickHandler} currentPage={currentPage}>커뮤니티</LinkWrapper>
+          <LinkWrapper className="" to={"/setting"} id="setting" onClick={clickHandler} currentPage={currentPage}>설정</LinkWrapper>
         </div>
         <ProfileWrapper>
           <HeaderRightDiv>
-            <img src="search.png" />
+            <img src="imgs/search.png" />
           </HeaderRightDiv>
           <HeaderRightDiv>
             {/* 임시 프로필입니다 */}
-            <img src="Rectangle112.png" />
+            <img src="imgs/Rectangle112.png" />
           </HeaderRightDiv>
           <HeaderRightDiv>
-            <LineImg src="Line12.png" />
+            <LineImg src="imgs/Line12.png" />
           </HeaderRightDiv>
           <HeaderRightDiv>
             {/* 임시 로그인,로그아웃 버튼입니다 */}
-            <img src="Frame36.png" />
+            <img src="imgs/Frame36.png" />
           </HeaderRightDiv>
         </ProfileWrapper>
       </MenuBar>
