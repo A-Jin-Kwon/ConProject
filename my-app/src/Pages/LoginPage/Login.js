@@ -61,7 +61,7 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <Container>
       <div>
         <Header>이메일로 로그인하기</Header>
       </div>
@@ -129,12 +129,19 @@ const Login = () => {
         </div>
         <BottomFindPassword>비밀번호 찾기</BottomFindPassword>
       </BottomWrapper>
-    </div>
+    </Container>
   );
 };
 
 export default Login;
 
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 const IconError = styled.img`
   position: absolute;
   top: 15px;

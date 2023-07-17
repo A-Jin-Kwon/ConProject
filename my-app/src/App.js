@@ -4,7 +4,7 @@ import ConRecord from "./Pages/ConRecordPage/ConRecord";
 import Community from "./Pages/CommunityPage/Community";
 import Setting from "./Pages/SettingPage/Setting";
 import Login from "./Pages/LoginPage/Login";
-import JoinEmail from "./Pages/JoinPage/JoinEmail";
+import JoinEmail from "./Pages/JoinEmailPage/JoinEmail";
 import MainLayout from "./Components/MainLayout/MainLayout";
 import MyInformation from './Pages/SettingPage/MyInformation'
 import ProfileSetting from "./Pages/SettingPage/ProfileSetting";
