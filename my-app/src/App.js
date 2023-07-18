@@ -5,7 +5,8 @@ import Home from "./Pages/HomePage/Home";
 import ConRecord from "./Pages/ConRecordPage/ConRecord";
 import Community from "./Pages/CommunityPage/Community";
 import Setting from "./Pages/SettingPage/Setting";
-import Login from "./Pages/LoginPage/Login";
+import LoginEmail from "./Pages/LoginPage/LoginEmail";
+import Join from "./Pages/JoinPage/Join";
 import JoinEmail from "./Pages/JoinEmailPage/JoinEmail";
 import MainLayout from "./Components/MainLayout/MainLayout";
 import MyInformation from "./Pages/SettingPage/MyInformation";
@@ -27,7 +28,8 @@ function App() {
           </Route>
 
           {/* 헤더가 필요 없다면 이 안에 추가해주세요! */}
-          <Route path="/login" element={<Login />} />
+          <Route path="/login-email" element={<LoginEmail />} />
+          <Route path="/join" element={<Join />} />
           <Route path="/join-email" element={<JoinEmail />} />
           <Route path="/myInformation" element={<MyInformation />} />
           <Route path="/profileSetting" element={<ProfileSetting />} />
