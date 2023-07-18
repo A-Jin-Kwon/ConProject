@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 
 import Home from "./Pages/HomePage/Home";
-import ConRecord from "./Pages/ConRecordPage/ConRecord";
+import RecordMain from "./Pages/ConRecordPage/RecordMain";
 import Community from "./Pages/CommunityPage/Community";
 import Setting from "./Pages/SettingPage/Setting";
 import LoginEmail from "./Pages/LoginPage/LoginEmail";
@@ -13,6 +13,7 @@ import MyInformation from "./Pages/SettingPage/MyInformation";
 import ProfileSetting from "./Pages/SettingPage/ProfileSetting";
 import CommunityProfile from "./Pages/CommunityPage/Profile/CommunityProfile";
 import Login from "./Pages/LoginPage/Login";
+import RecordCon from "./Pages/ConRecordPage/RecordCon";
 
 function App() {
   return (
@@ -23,7 +24,7 @@ function App() {
           {/* 헤더가 필요한 페이지면 이 안에 추가해주세요! */}
           <Route element={<MainLayout />}>
             <Route path="/" element={<Home />} />
-            <Route path="/conrecord" element={<ConRecord />} />
+            <Route path="/conrecord" element={<RecordMain />} />
             <Route path="/community" element={<Community />} />
             <Route path="/setting" element={<Setting />} />
           </Route>
@@ -36,6 +37,7 @@ function App() {
           <Route path="/profileSetting" element={<ProfileSetting />} />
           <Route path="/community/profile" element={<CommunityProfile />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/record-con" element={<RecordCon />} />
         </Routes>
       </div>
     </BrowserRouter>

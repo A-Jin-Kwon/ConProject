@@ -1,10 +1,11 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-const JoinEmailHeader = () => {
+// 헤더에 들어갈 텍스트와 화살표를 눌렀을 때 이동할 라우트를 보내주세요.
+const NavigateHeader = ({headerTitlte, path}) => {
     const navigate = useNavigate();
     const clickHandler = () => {
-        navigate("/join");
+        navigate(path);
     }
 
     return(
@@ -15,7 +16,7 @@ const JoinEmailHeader = () => {
                     <Image src="imgs/navigate_next.png" onClick={clickHandler}/>
                 </SpaceLeft>
                 <HeaderText>
-                    회원가입
+                    {headerTitlte}
                 </HeaderText>
                 <SpaceRight/>
             </Wrapper>
@@ -23,7 +24,7 @@ const JoinEmailHeader = () => {
     );
 };
 
-export default JoinEmailHeader;
+export default NavigateHeader;
 
 const Wrapper = styled.div`
     height: 70px;
