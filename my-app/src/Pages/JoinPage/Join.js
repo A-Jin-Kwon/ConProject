@@ -1,9 +1,13 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import JoinRule from "../../Components/Join/JoinRule";
 
-
 export default function Join() {
+  const navigate = useNavigate();
+  const emailJoinHandler = () => {
+    navigate('/join-email');
+  };
+
   return (
     <div>
       <div>
@@ -24,7 +28,7 @@ export default function Join() {
             </JoinBtn>
             {/* 이메일로 회원가입 */}
             <JoinBtn>
-                <BtnContent>
+                <BtnContent onClick={emailJoinHandler}>
                     <img style={{marginRight: "10px"}} alt="join with Email" src="./imgs/email_logo.png"/>
                     <div>이메일로 회원가입</div>
                 </BtnContent>

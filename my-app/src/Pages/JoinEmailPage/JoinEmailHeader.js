@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom';
 const JoinEmailHeader = () => {
     const navigate = useNavigate();
     const clickHandler = () => {
-        navigate("/login");
+        navigate("/join");
     }
 
     return(

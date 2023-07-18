@@ -12,6 +12,7 @@ import MainLayout from "./Components/MainLayout/MainLayout";
 import MyInformation from "./Pages/SettingPage/MyInformation";
 import ProfileSetting from "./Pages/SettingPage/ProfileSetting";
 import CommunityProfile from "./Pages/CommunityPage/Profile/CommunityProfile";
+import Login from "./Pages/LoginPage/Login";
 
 function App() {
   return (
@@ -34,6 +35,7 @@ function App() {
           <Route path="/myInformation" element={<MyInformation />} />
           <Route path="/profileSetting" element={<ProfileSetting />} />
           <Route path="/community/profile" element={<CommunityProfile />} />
+          <Route path="/login" element={<Login />} />
         </Routes>
       </div>
     </BrowserRouter>
