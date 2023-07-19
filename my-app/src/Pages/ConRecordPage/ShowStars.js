@@ -1,8 +1,5 @@
-import styled from 'styled-components';
-import { useState, useEffect } from 'react';
+import styled from "styled-components";
 
-const ShowStars = () => {
-    
-};
+const ShowStars = () => {};
 
 export default ShowStars;
