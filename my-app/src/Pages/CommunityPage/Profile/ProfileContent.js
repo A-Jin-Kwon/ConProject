@@ -53,12 +53,6 @@ const ProfileStatus = styled.div`
   color: #2e2e2e;
 `;
 
-const ProfileConWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-`;
-
 const ProfileConMid = styled.div`
   width: 100%;
   height: 234px;
