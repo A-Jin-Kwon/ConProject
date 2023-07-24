@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { useState } from "react";
-import JoinEmailHeader from "./JoinEmailHeader";
+import NavigateHeader from "../../Components/Header/NavigateHeader";
 
 const JoinEmail = () => {
   // 이메일 값이 유효한지 아닌지 저장하는 state입니다.
@@ -109,7 +109,7 @@ const JoinEmail = () => {
 
   return (
     <div>
-      <JoinEmailHeader/>
+      <NavigateHeader headerTitlte={'회원가입'} path={'/join'}/>
 
       <ContentsWrapper>
       <div>
