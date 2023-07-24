@@ -13,6 +13,7 @@ import MyInformation from "./Pages/SettingPage/MyInformation";
 import ProfileSetting from "./Pages/SettingPage/ProfileSetting";
 import CommunityProfile from "./Pages/CommunityPage/Profile/CommunityProfile";
 import Login from "./Pages/LoginPage/Login";
+import Search from "./Pages/SearchPage/Search";
 import RecordCon from "./Pages/ConRecordPage/RecordCon";
 
 function App() {
@@ -37,6 +38,7 @@ function App() {
           <Route path="/profileSetting" element={<ProfileSetting />} />
           <Route path="/community/profile" element={<CommunityProfile />} />
           <Route path="/login" element={<Login />} />
+          <Route path="/search" element={<Search></Search>} />
           <Route path="/record-con" element={<RecordCon />} />
         </Routes>
       </div>

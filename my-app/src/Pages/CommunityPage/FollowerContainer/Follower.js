@@ -1,11 +1,14 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
 import { Link as ReactRouterDomLink } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
 
 import { StyledFollowButton } from "../../../Components/StyledComponents/StyledComponents";
 
 const Follower = ({ src }) => {
+  const dispatch = useDispatch();
   const [followed, setFollowed] = useState(false);
+
   return (
     <div>
       <FollowWrapper>
@@ -26,7 +29,12 @@ const Follower = ({ src }) => {
               </StyledFollowButton>
             </FollowBtnWrapper>
           </FollowTop>
-          <FollowMid></FollowMid>
+          <FollowMid
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch({ type: "modalFlip" });
+            }}
+          ></FollowMid>
           <FollowBottom>
             <ContentTitle>뿅뿅 지구오락실 시즌2</ContentTitle>
             <ContentRecommend>추천 콘텐츠</ContentRecommend>
