@@ -3,6 +3,7 @@ import { useState, useRef } from "react";
 import styled from "styled-components";
 import ShowStars from "./ShowStars";
 import AddImage from "./AddImage";
+import TextArea from "./TextAreaHeight";
 
 const RecordCon = () => {
   const submitHandler = (e) => {
@@ -67,13 +68,9 @@ const RecordCon = () => {
                 <DeleteImg src="imgs/cancel.png" onClick={deleteImgHandler} />
               </ImgContainer>
             )}
-            <ReviewInput
-              placeholder="콘텐츠를 보고 난 후 후기를 작성해주세요!"
-              value={review}
-              onChange={reviewChangeHandler}
-              type="textarea"
-            />
+            <TextArea/>
           </TextAreaWrapper>
+          <button>저장하기</button>
         </Form>
       </FormWrapper>
     </div>
@@ -109,17 +106,6 @@ const TitleInput = styled.input`
 `;
 const TextAreaWrapper = styled.div`
   width: 100%;
-  height: 100%;
-`;
-const ReviewInput = styled.textarea`
-  border: none;
-  color: #242424;
-  font-size: 14px;
-  font-weight: 400;
-  outline: none;
-  width: 100%;
-  height: 100%;
-  resize: none;
 `;
 const Hr = styled.hr`
   border: 1px solid #e6e6e6;
