@@ -6,7 +6,7 @@ const AddImage = ({ changeAddImgHandler, imgRef }) => {
   };
 
   return (
-    <div>
+    <Container>
       <Input
         type="file"
         ref={imgRef}
@@ -14,12 +14,15 @@ const AddImage = ({ changeAddImgHandler, imgRef }) => {
         onChange={changeAddImgHandler}
       />
       <ImageIcon src="imgs/Frame50.png" onClick={clickHandler} />
-    </div>
+    </Container>
   );
 };
 
 export default AddImage;
 
+const Container = styled.div`
+  padding: 0.2rem 0;
+`;
 const Input = styled.input`
   display: none;
 `;

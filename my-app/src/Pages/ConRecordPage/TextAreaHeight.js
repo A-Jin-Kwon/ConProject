@@ -36,7 +36,7 @@ export default TextArea;
   color: #242424;
   font-size: 14px;
   font-weight: 400;
-  //outline: none;
+  outline: none;
   resize: none;
   width: 100%;
 `;
