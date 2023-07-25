@@ -4,6 +4,7 @@ import ShowStars from "../ShowStars";
 import AddImage from "../AddImage";
 import SelectTime from "../SelectTime";
 import MovieTextAreaContainer from "./MovieTextAreaContainer";
+import DramaTextAreaContainer from "./DramaTextAreaContainer";
 
 const ContentsInfo = () => {
   const submitHandler = (e) => {
@@ -59,6 +60,8 @@ const ContentsInfo = () => {
           </RatingContainer>
           <Hr />
           <MovieTextAreaContainer imgSrc={imgSrc} deleteImgHandler={deleteImgHandler}/>
+          {/* 영화인지 드라마인지 구분짓는 props를 받고 삼항 연산자로 나눠주면 될듯? */}
+          {/* <DramaTextAreaContainer imgSrc={imgSrc} deleteImgHandler={deleteImgHandler}/> */}
           <SaveBtn>저장하기</SaveBtn>
         </Form>
     </div>
