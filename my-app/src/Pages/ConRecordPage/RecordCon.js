@@ -60,7 +60,7 @@ const RecordCon = () => {
             </div>
           </div>
           <Hr />
-          <div>
+          <TextAreaWrapper>
             {imgSrc === "" ? null : (
               <ImgContainer>
                 <AddedImg src={imgSrc} alt="" />
@@ -73,7 +73,7 @@ const RecordCon = () => {
               onChange={reviewChangeHandler}
               type="textarea"
             />
-          </div>
+          </TextAreaWrapper>
         </Form>
       </FormWrapper>
     </div>
@@ -107,15 +107,19 @@ const TitleInput = styled.input`
   outline: none;
   width: 100%;
 `;
+const TextAreaWrapper = styled.div`
+  width: 100%;
+  height: 100%;
+`;
 const ReviewInput = styled.textarea`
   border: none;
   color: #242424;
+  font-size: 14px;
+  font-weight: 400;
   outline: none;
   width: 100%;
   height: 100%;
   resize: none;
-  font-size: 14px;
-  font-weight: 400;
 `;
 const Hr = styled.hr`
   border: 1px solid #e6e6e6;
