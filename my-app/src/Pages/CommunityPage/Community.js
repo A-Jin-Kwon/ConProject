@@ -4,7 +4,6 @@ import { useSelector } from "react-redux";
 
 import FollowerContainers from "./FollowerContainer/FollowerContainers";
 import PageLayout from "./PageLayout";
-import SearchUI from "../../Components/StyledComponents/SearchUI";
 import Modal from "./Modal/CommunityModal";
 import Menu from "../SearchPage/Menu";
 

@@ -9,13 +9,28 @@ const Menu = ({ menu1, menu2 }) => {
   const contentBtn = useRef();
   const userBtn = useRef();
 
-  useEffect(() => {
+  const locateUnderLine = () => {
     if (currentMenu === `${menu1.eng}`) {
       setXpos(contentBtn.current.offsetLeft);
       setYpos(contentBtn.current.offsetTop + contentBtn.current.offsetHeight);
     } else {
       setXpos(userBtn.current.offsetLeft);
     }
+  };
+
+  const handleResizeEvent = () => {
+    locateUnderLine();
+  };
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResizeEvent);
+    return () => {
+      window.removeEventListener("resize", handleResizeEvent);
+    };
+  }, []);
+
+  useEffect(() => {
+    locateUnderLine();
   }, [currentMenu]);
 
   return (
@@ -37,7 +52,7 @@ const MenuContainer = styled.div`
   width: 100%;
   box-sizing: border-box;
   border-bottom: 1px solid #e8e8e8;
-  margin-top: 1rem;
+  margin-top: 1em;
 `;
 
 const MenuWrapper = styled.div`
