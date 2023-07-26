@@ -20,7 +20,7 @@ const SearchUI = ({ placeholder }) => {
     const getTVShow = async (queryString) => {
       const res = await axios(`https://api.tvmaze.com/search/shows?q=${queryString}`);
       dispatch({ type: "loadTVShow", tvShow: res.data });
-      // console.log(res.data);
+      console.log(res.data);
       return res.data;
     };
     getTVShow(inputValue);
