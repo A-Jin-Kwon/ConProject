@@ -11,6 +11,8 @@ import MainLayout from "./Components/MainLayout/MainLayout";
 import MyInformation from "./Pages/SettingPage/MyInformation";
 import ProfileSetting from "./Pages/SettingPage/ProfileSetting";
 import CommunityProfile from "./Pages/CommunityPage/Profile/CommunityProfile";
+import SettingFollowing from "./Pages/SettingPage/SettingFollowing";
+import SettingFollower from "./Pages/SettingPage/SettingFollower";
 
 function App() {
   return (
@@ -31,7 +33,9 @@ function App() {
           <Route path="/join-email" element={<JoinEmail />} />
           <Route path="/myInformation" element={<MyInformation />} />
           <Route path="/profileSetting" element={<ProfileSetting />} />
-          <Route path="/community/profile" element={<CommunityProfile />} />
+          <Route path="/communtiy/profile" element={<CommunityProfile />} />
+          <Route path="/setting/following" element={<SettingFollowing />} />
+          <Route path="/setting/follower" element={<SettingFollower />} />
         </Routes>
       </div>
     </BrowserRouter>
