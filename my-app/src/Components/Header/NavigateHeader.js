@@ -1,21 +1,17 @@
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import PrevArrow from './PrevArrow';
 
-const JoinEmailHeader = () => {
-    const navigate = useNavigate();
-    const clickHandler = () => {
-        navigate("/login");
-    }
-
+// 헤더에 들어갈 텍스트와 화살표를 눌렀을 때 이동할 라우트를 보내주세요.
+const NavigateHeader = ({headerTitlte, path}) => {
     return(
         <header>
             <Wrapper>
                 <SpaceLeft/>
                 <SpaceLeft>
-                    <Image src="imgs/navigate_next.png" onClick={clickHandler}/>
+                    <PrevArrow path={path}/>
                 </SpaceLeft>
                 <HeaderText>
-                    회원가입
+                    {headerTitlte}
                 </HeaderText>
                 <SpaceRight/>
             </Wrapper>
@@ -23,7 +19,7 @@ const JoinEmailHeader = () => {
     );
 };
 
-export default JoinEmailHeader;
+export default NavigateHeader;
 
 const Wrapper = styled.div`
     height: 70px;
@@ -41,8 +37,4 @@ const HeaderText = styled.div`
     font-color: #242424;
     font-weight: 700;
     font-size: 16px;
-`;
-const Image = styled.img`
-    color: #2e2e2e;
-    cursor: pointer;
 `;
