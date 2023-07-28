@@ -1,14 +1,14 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import JoinRule from "../../Components/Join/JoinRule";
+import JoinRule from "./JoinRule";
 
 
 export default function Join() {
   return (
-    <div>
+    <Container>
       <div>
         <Header>
-            <Title style={{marginRight: "10px"}}>CON</Title>
+            <Title>CON</Title>
             <HeaderTitle>회원가입</HeaderTitle>
         </Header>
       </div>
@@ -17,32 +17,37 @@ export default function Join() {
         <div>
             {/* 네이버로 회원가입 */}
             <JoinBtn>
-                <BtnContent>
+                <JoinBtnContent>
                     <img style={{marginRight: "10px"}} alt="join with Naver" src="./imgs/naver_logo.png"/>
                     <div>네이버로 회원가입</div>
-                </BtnContent>
+                </JoinBtnContent>
             </JoinBtn>
             {/* 이메일로 회원가입 */}
-            <JoinBtn>
-                <BtnContent>
+            <Link to="/join-email" style={{textDecoration:"none"}}><JoinBtn>
+                <JoinBtnContent>
                     <img style={{marginRight: "10px"}} alt="join with Email" src="./imgs/email_logo.png"/>
                     <div>이메일로 회원가입</div>
-                </BtnContent>
-            </JoinBtn>
+                </JoinBtnContent>
+            </JoinBtn></Link>
         </div>
         <div>
             <span>이미 계정이 있으세요?</span>
             <Link to="/login">로그인</Link>
         </div>
       </Form>
-      {/* 회원가입 밑 요소 */}
+      {/* 이용약관 동의 간주 */}
       <JoinRule />
-    </div>
+    </Container>
   )
 }
 
-
-
+const Container = styled.div`
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 const Header = styled.div`
   display: flex;
   justify-content: center;
@@ -56,14 +61,13 @@ const Title = styled.p`
   display: flex;
   font-family: "Montserrat";
   justify-content: center;
-  font-weight: 900;
   font-size: 28px;
   line-height: 34.13px;
   color: rgba(255, 192, 0, 1);
+  margin-right: 10px;
 `;
 const HeaderTitle = styled.p`
   display: flex;
-  font-family: "NanumSquareNeoTitle";
   justify-content: center;
   font-weight: 700;
   font-size: 28px;
@@ -87,7 +91,6 @@ const JoinBtn = styled.button`
   display: flex;
   flex-direction: row;
   padding: 1rem;  
-  font-family: "NanumSquareNeoContents";
   margin-bottom: 30px;
   cursor: pointer;
 
@@ -95,8 +98,9 @@ const JoinBtn = styled.button`
         background: rgba(213, 213, 213, 1);
     }
 `
-const BtnContent = styled.div`
+const JoinBtnContent = styled.div`
   display: flex;
   flex-direction: row;
   align-items: center;
+  text-decoration: none;
 `

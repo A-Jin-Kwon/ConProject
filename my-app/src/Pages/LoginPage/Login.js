@@ -1,18 +1,26 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-import JoinRule from "../../Components/Join/JoinRule";
+import JoinRule from "../JoinPage/JoinRule";
+import LoginNaver from "./LoginNaver";
+
 
 const Login = () => {
     return (
-        <>
-            <img alt="CON" src="./imgs/loginConImg.png"/>
+        <Form>
+            <ConLogo alt="CON" src="./imgs/ConLoginImg.png"/>
             <Header>
-                <Title style={{marginRight: "10px"}}>CON</Title>
+                <Title>CON</Title>
                 <HeaderTitle>으로 문화를 기록해보세요!</HeaderTitle>
             </Header>
             {/* 로그인 버튼 */}
             <LoginBtnWrapper>
-                <LoginBtn to="/login-email">로그인</LoginBtn>
+            <Link to="/login-email" style={{ textDecoration: "none", color:"black" }}><EmailLoginBtn to="/login-email">이메일로 로그인</EmailLoginBtn></Link>
+            </LoginBtnWrapper>
+            {/* 로그인 버튼 */}
+            <LoginBtnWrapper>
+                {/* <LoginNaverBtn> */}
+              <LoginNaver></LoginNaver>
+                {/* </LoginNaverBtn> */}
             </LoginBtnWrapper>
             {/* 로그인 밑 요소 */}
             <BottomWrapper>
@@ -20,34 +28,48 @@ const Login = () => {
                     <span>계정이 없으세요?</span>
                     <BottomJoin to='/join'>회원가입</BottomJoin>
                 </div>
-                <BottomFindPassword>비밀번호 찾기</BottomFindPassword>
+                <BottomFindPassword to='/password-find'>비밀번호 찾기</BottomFindPassword>
             </BottomWrapper>
             <JoinRule/>
-        </>
+        </Form>
     );
 }
 
 export default Login;
 
+const ConLogo = styled.img`
+  width: 419px;
+  height: 399px;
+  padding-left: 90px;
+`
+const Form = styled.form`
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+`;
 const Header = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  font-weight: 700;
+  font-size: 28px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
 `;
 const Title = styled.p`
   display: flex;
   font-family: "Montserrat";
   justify-content: center;
-  font-weight: 900;
   font-size: 28px;
   line-height: 34.13px;
   color: rgba(255, 192, 0, 1);
+  margin-right: 10px;
+
 `;
 const HeaderTitle = styled.p`
   display: flex;
-  font-family: "NanumSquareNeoTitle";
   justify-content: center;
   font-weight: 400;
   font-size: 28px;
@@ -55,9 +77,9 @@ const HeaderTitle = styled.p`
 `;
 
 const LoginBtnWrapper = styled.div`
-  margin: 1.5rem 0;
+  margin: 5px 0;
 `;
-const LoginBtn = styled.button`
+const EmailLoginBtn = styled.button`
   box-shadow: none;
   width: 416px;
   height: 48px;
@@ -66,6 +88,16 @@ const LoginBtn = styled.button`
   border-radius: 0.4rem;
   cursor: pointer;
 `;
+
+// const LoginNaverBtn = styled.button`
+//   box-shadow: none;
+//   width: 416px;
+//   height: 48px;
+//   background-color: rgba(255, 255, 255, 1);
+//   border: 1px solid rgba(3, 225, 102, 1);
+//   border-radius: 0.4rem;
+//   cursor: pointer;
+// `
 
 const BottomWrapper = styled.div`
   display: flex;
@@ -83,3 +115,6 @@ const BottomFindPassword = styled(Link)`
   text-decoration: none;
   color: #464646;
 `;
+
+
+

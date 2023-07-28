@@ -5,9 +5,14 @@ import Home from "./Pages/HomePage/Home";
 import ConRecord from "./Pages/ConRecordPage/ConRecord";
 import Community from "./Pages/CommunityPage/Community";
 import Setting from "./Pages/SettingPage/Setting";
+import Login from "./Pages/LoginPage/Login";
 import LoginEmail from "./Pages/LoginPage/LoginEmail";
+import LoginNaverCallback from './Pages/LoginPage/LoginNaverCallback'
+import PasswordFind from "./Pages/LoginPage/PasswordFind";
 import Join from "./Pages/JoinPage/Join";
 import JoinEmail from "./Pages/JoinEmailPage/JoinEmail";
+import JoinCheck from "./Pages/JoinPage/JoinCheck";
+import JoinRuleFullContent from "./Pages/JoinPage/JoinRuleFullContent";
 import MainLayout from "./Components/MainLayout/MainLayout";
 import MyInformation from "./Pages/SettingPage/MyInformation";
 import ProfileSetting from "./Pages/SettingPage/ProfileSetting";
@@ -28,9 +33,14 @@ function App() {
           </Route>
 
           {/* 헤더가 필요 없다면 이 안에 추가해주세요! */}
+          <Route path="/login" element={<Login />} />
           <Route path="/login-email" element={<LoginEmail />} />
+          <Route path="/loginNaver-Callback" element={<LoginNaverCallback/>} />
+          <Route path="/password-find" element={<PasswordFind />} />
           <Route path="/join" element={<Join />} />
           <Route path="/join-email" element={<JoinEmail />} />
+          <Route path="/join-check" element={<JoinCheck />} />
+          <Route path="/joinRule-fullContent" element={<JoinRuleFullContent/>} />
           <Route path="/myInformation" element={<MyInformation />} />
           <Route path="/profileSetting" element={<ProfileSetting />} />
           <Route path="/community/profile" element={<CommunityProfile />} />
@@ -41,8 +51,8 @@ function App() {
 }
 
 const GlobalStyle = createGlobalStyle`
- body{
-  font-family: 'NanumSquareNeo';
+  body{
+    font-family: 'NanumSquareNeo';
   }`;
 
 export default App;

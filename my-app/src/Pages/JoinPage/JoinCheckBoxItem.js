@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export default function CheckBoxItem({content}) {
+export default function JoinCheckBoxItem({content}) {
   return (
     <Check>
         <CheckBoxGroup>
@@ -44,7 +44,6 @@ const CheckBox = styled.input`
 
 const CheckBoxContent = styled.div`
   color: rgba(46, 46, 46, 1);
-  font-family: "NanumSquareNeoContents";
   font-weight: 700;
   font-size: 16px;
   line-height: 17.69px;

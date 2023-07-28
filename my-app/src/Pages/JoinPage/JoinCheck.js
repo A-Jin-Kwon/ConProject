@@ -1,22 +1,24 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
-import CheckBoxItem from '../../Components/Join/JoinCheckBoxItem';
-import JoinHeader from '../../Components/Header/JoinHeader';
+import JoinCheckBoxItem from './JoinCheckBoxItem';
+import JoinCheckHeader from './JoinCheckHeader';
 
 export default function JoinCheck() {
+
     return(
         <div>
-          <JoinHeader headerTitle="이용약관 및 개인정보에 관한 동의"/>
+          <JoinCheckHeader />
 
           <CheckBoxGroup>
 
             <CheckItem>
-              <CheckBoxItem content="(필수) 이용약관"/>
-              <CheckWhole>전문보기</CheckWhole>
+              <JoinCheckBoxItem content="(필수) 이용약관"/>
+              <CheckWhole to="/joinRule-fullContent">전문보기</CheckWhole>
             </CheckItem>
 
             <CheckItem>
-              <CheckBoxItem content="(필수) 개인정보 수집 및 동의"/>
-              <CheckWhole>전문보기</CheckWhole>
+              <JoinCheckBoxItem content="(필수) 개인정보 수집 및 동의"/>
+              <CheckWhole to="/joinRule-fullContent">전문보기</CheckWhole>
             </CheckItem>
 
           </CheckBoxGroup>
@@ -31,7 +33,7 @@ export default function JoinCheck() {
 
 const CheckBoxGroup = styled.div`
   display: flex;
-  justify-content: left;
+  align-items: center;
   flex-direction: column;
   padding: 150px;
   margin-top: 150px;
@@ -39,17 +41,17 @@ const CheckBoxGroup = styled.div`
 `;
 const CheckItem = styled.div`
   display: flex;
-  justify-content: center;
   flex-direction: row;
   align-items: center;
+  width: 900px;
+  justify-content: space-between;
   margin: 10px;
 `;
-const CheckWhole = styled.div`
-  font-family: "NanumSquareNeoContents";
+const CheckWhole = styled(Link)`
   font-weight: 400;
   font-size: 14px;
   line-height: 15.47px;
-
+  color: black;
 `;
 
 const AgreeBtnWrapper = styled.div`
@@ -66,6 +68,5 @@ const AgreeBtn = styled.button`
   border: 1px solid #ffc000;
   border-radius: 4px;
   cursor: pointer;
-  font-family: "NanumSquareNeoContents";
 
 `;

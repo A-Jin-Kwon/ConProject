@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-const JoinEmailHeader = () => {
+const JoinCheckHeader = () => {
     const navigate = useNavigate();
     const clickHandler = () => {
-        navigate("/login");
+        navigate("/login-email");
     }
 
     return(
@@ -15,7 +15,7 @@ const JoinEmailHeader = () => {
                     <Image src="imgs/navigate_next.png" onClick={clickHandler}/>
                 </SpaceLeft>
                 <HeaderText>
-                    회원가입
+                    비밀번호 찾기
                 </HeaderText>
                 <SpaceRight/>
             </Wrapper>
@@ -23,7 +23,7 @@ const JoinEmailHeader = () => {
     );
 };
 
-export default JoinEmailHeader;
+export default JoinCheckHeader;
 
 const Wrapper = styled.div`
     height: 70px;
