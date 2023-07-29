@@ -12,6 +12,8 @@ import MainLayout from "./Components/MainLayout/MainLayout";
 import MyInformation from "./Pages/SettingPage/MyInformation";
 import ProfileSetting from "./Pages/SettingPage/ProfileSetting";
 import CommunityProfile from "./Pages/CommunityPage/Profile/CommunityProfile";
+import SettingFollowing from "./Pages/SettingPage/SettingFollowing";
+import SettingFollower from "./Pages/SettingPage/SettingFollower";
 import Login from "./Pages/LoginPage/Login";
 import Search from "./Pages/SearchPage/Search";
 import RecordCon from "./Pages/ConRecordPage/RecordCon";
@@ -36,6 +38,9 @@ function App() {
           <Route path="/join-email" element={<JoinEmail />} />
           <Route path="/myInformation" element={<MyInformation />} />
           <Route path="/profileSetting" element={<ProfileSetting />} />
+          <Route path="/communtiy/profile" element={<CommunityProfile />} />
+          <Route path="/setting/following" element={<SettingFollowing />} />
+          <Route path="/setting/follower" element={<SettingFollower />} />
           <Route path="/community/profile" element={<CommunityProfile />} />
           <Route path="/login" element={<Login />} />
           <Route path="/search" element={<Search></Search>} />

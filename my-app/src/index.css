@@ -32,13 +32,13 @@ code {
 
 .Pf_1{
   width: 8%;
-  background-color: #FFC000;
+  background-color: #FFC000 ;
   border-radius: 16px;
 }
 .Pf_2{
   display: flex;
   flex-direction: column;
-  width: 92%;
+  width: 10%;
 }
 .Pf_2_1{
   height: 40%;
@@ -52,6 +52,7 @@ code {
   height: 30%;
   margin-left: 17px;
 }
+
 /*  설정 메뉴  */
 .SelectMenu{
   display: flex;
@@ -319,3 +320,67 @@ code {
   height: 110%;
   border: none;
 }
+
+/*calendar*/
+ .Home1 {
+  height:100vh;
+  width:100vw;
+  font-size: 1.5vh;
+  display: flex;      /* display 설정해줘야 아래 flex로 해주면 direction 선택가능*/
+  flex-direction: column;   /* 이건 세로순으로  태그들을 표시함 css*/
+}
+.Home1 .control{
+  display: flex;
+  flex-direction: row;
+}
+.Home1 table{
+  display:flex;
+  width:50vw;
+  height:50vh;
+}
+.Home1 table tbody{
+  display:flex;
+  flex-direction: column;
+}
+.Home1 tr{
+    display:flex;
+    flex-direction: row;
+}
+.Home1 td{
+    display:flex;
+    border:1px solid #E6E6E6;
+    width:10vw;
+    height:16vh;
+}
+.Home1 td span{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.calendar_span{
+  font-size: 20px;
+  font-weight: 1000;
+  font-family: 'NanumSquareNeo';
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+.calendar_btn1, .calendar_btn2{
+  margin-left: 10px;
+  margin-top: 50px;
+  border: none;
+  background-color: transparent;
+  height: 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.cornModal{
+  position: absolute;
+  border: 1px solid black;
+  margin-top:30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  height: 70px;
+  width: 200px;
+}
+
