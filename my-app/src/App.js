@@ -17,6 +17,8 @@ import SettingFollower from "./Pages/SettingPage/SettingFollower";
 import Login from "./Pages/LoginPage/Login";
 import Search from "./Pages/SearchPage/Search";
 import RecordCon from "./Pages/ConRecordPage/RecordCon";
+import CornNotice from "./Pages/SettingPage/CornNotice";
+import CornFAQ from "./Pages/SettingPage/CornFAQ";
 
 function App() {
   return (
@@ -45,6 +47,8 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/search" element={<Search></Search>} />
           <Route path="/record-con" element={<RecordCon />} />
+          <Route path="/cornNotice" element={<CornNotice />} />
+          <Route path="/cornFAQ" element={<CornFAQ/>}></Route>
         </Routes>
       </div>
     </BrowserRouter>

@@ -46,8 +46,10 @@ const Setting = ()=>{
                 </div>
                 <div className="SM_2">
                    <div className="SM_2_1"><h4>고객센터</h4></div>
-                   <div className="SM_2_2"><h4>공지사항</h4></div>
-                   <div className="SM_2_3"><h4>문의사항</h4></div>
+                   <Link to="/cornNotice" style={{textDecoration:'none', cursor: 'pointer', color:"black"}}>
+                    <div className="SM_1_2" to={'/cornNotice'} id="cornNotice" onClick={clickHandler} settingpage={settingpage}><h4>공지사항</h4></div></Link>
+                   <Link to="/cornFAQ" style={{textDecoration:'none', cursor: 'pointer', color:"black"}}>
+                    <div className="SM_1_2" to={'/cornFAQ'} id="cornFAQ" onClick={clickHandler} settingpage={settingpage}><h4>FAQ</h4></div></Link>
                 </div>
                 <div className="SM_3">
                     <div className="SM_3_1"><h4>정보</h4></div>
