@@ -11,3 +11,427 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+
+.BigWrap{
+  display: flex;
+  flex-direction: column;
+}
+
+/* 설정영역 css 코드 */
+/* Profile 관련*/
+.Profile{
+  display: flex;
+  flex-direction: row;
+  height: 90px;
+  margin-top: 4%;
+  margin-left: 20%;
+  margin-right: 18%;
+}
+
+.Pf_1{
+  width: 8%;
+  background-color: #FFC000 ;
+  border-radius: 16px;
+}
+.Pf_2{
+  display: flex;
+  flex-direction: column;
+  width: 10%;
+}
+.Pf_2_1{
+  height: 40%;
+  margin-left: 17px;
+}
+.Pf_2_2{
+  height: 30%;
+  margin-left: 17px;
+}
+.Pf_2_3{
+  height: 30%;
+  margin-left: 17px;
+}
+
+/*  설정 메뉴  */
+.SelectMenu{
+  display: flex;
+  flex-direction: column;
+  height: 1000px;
+  margin-top: 50px;
+  margin-right: 18%;
+  margin-left: 20%;
+  margin-bottom: 10%;
+}
+.SM_1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 20%;
+}
+
+.SM_1_1,.SM_2_1, .SM_2_2, .SM_2_3{
+  height: 32%;
+}
+.SM_1_2,.SM_1_3{
+  height: 40%;
+}
+.SM_2{
+  display: flex;
+  flex-direction: column;
+  height: 20%;
+}
+.SM_2_1{
+  margin-top: 30px;
+}
+.SM_3{
+  display: flex;
+  flex-direction: column;
+  height: 60%;
+}
+.SM_3_1, .SM_3_2, .SM_3_3, .SM_3_4{
+  height: 60px;
+}
+.SM_3_5{
+  margin-top: 30px;
+}
+.SM_1_1, .SM_2_1, .SM_3_1{
+  background-color: #E6E6E6;
+  border-radius: 4px;
+}
+.SM_3_1{
+  margin-top: 60px;
+}
+.SM_3_5, .SM_3_6{
+  height: 60px;
+}
+.SM_1_1, .SM_1_2, .SM_1_3, .SM_3_1, .SM_2_1, .SM_2_2, .SM_2_3
+, .SM_3_2, .SM_3_3, .SM_3_4, .SM_3_5, .SM_3_6{
+  padding-left: 20px;
+}
+.SM_1_2, .SM_1_3, .SM_2_2, .SM_2_3, .SM_3_2, .SM_3_3, .SM_3_4, .SM_3_5, .SM_3_6{
+  border-bottom: 2px solid #E6E6E6;
+}
+
+/*MyInformation.js 관련*/
+
+.MI_Header{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #E6E6E6;
+  height: 60.67px;
+}
+.MI_Header_1{
+  width: 50%;
+  margin-left: 6%;
+}
+.MI_Header_2{
+  width: 50%;
+  margin-left: 31%;
+}
+
+.Info_Wrap{
+  display: flex;
+  flex-direction: column;
+  height: 1500px;
+}
+.Info_Wrap_1{
+  display: flex;
+  flex-direction: column;
+  height: 200px;
+  margin-top: 30px;
+  margin-left: 13%; margin-right: 13%;
+  border-radius: 12px;
+  background-color: #E6E6E6;
+}
+.Info_Wrap_1_1{
+  height: 50px;
+  color: #6C6C6C;
+  padding-left: 100px;
+  margin-top: 40px;
+}
+.Info_Wrap_1_2{
+  height: 80px;
+  padding-left: 100px;
+  margin-bottom: 10px;
+} 
+.Info_Wrap_2{
+  display: flex;
+  flex-direction: column;
+  height: 30%;
+  margin-top: 30px;
+  margin-left: 23%; margin-right: 23%;
+}
+.Info_Wrap_2_1{
+  display: flex;
+  flex-direction: column;
+  height: 50%;
+}
+.Info_Wrap_2_1_1{
+  padding-left: 30px;
+  height: 25%;
+  border-bottom: 1px solid #E6E6E6;
+}
+.Info_Wrap_2_1_2{
+  padding-left: 30px;
+  height: 25%;
+  border-bottom: 1px solid #E6E6E6;
+}
+.Info_Wrap_2_1_3{
+  padding-left: 30px;
+  height: 25%;
+  border-bottom: 1px solid #E6E6E6;
+}
+.Info_Wrap_2_1_4{
+  display: flex;
+  justify-content: space-between;
+  padding-left: 30px;
+  height: 25%;
+  border-bottom: 1px solid #E6E6E6;
+}
+.Info_Wrap_2_2{
+  color: red;
+  height: 10%;
+  margin-top: 150px;
+  padding-left: 30px;
+  border-bottom: 1px solid #E6E6E6;
+}
+.contentsOnOff {
+  width: 20px;
+  height: 10px;
+  margin-right: 60px;
+  margin-top: 15px;
+}
+#switch {
+  position: absolute;
+  /* hidden */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+.switch_label {
+  position: relative;
+  cursor: pointer;
+  display: inline-block;
+  width: 58px;
+  height: 28px;
+  background: #E6E6E6;
+  border: 2px solid white;
+  border-radius: 20px;
+  transition: 0.2s;
+}
+.switch_label:hover {
+  background: #efefef;
+}
+.onf_btn {
+  position: absolute;
+  top: 4px;
+  left: 3px;
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 20px;
+  background: white;
+  transition: 0.2s;
+}
+
+/* checking style */
+#switch:checked+.switch_label {
+  background: #FFC000;
+  border: 2px solid #FFC000;
+}
+
+#switch:checked+.switch_label:hover {
+  background: #FFD750;
+}
+
+/* move */
+#switch:checked+.switch_label .onf_btn {
+  left: 34px;
+  background: #fff;
+  box-shadow: 1px 2px 3px #00000020;
+}
+
+/* ProfileSetting.js 관련*/
+.PS_Wrap{
+  display: flex;
+  flex-direction: column;
+  height: 2000px;
+}
+.PS_Wrap_1{
+  margin-top: 70px;
+  height: 100px;
+  width: 100px;
+  margin-left: 45.25%;
+  border-radius: 16px;
+  background-color: #FFC000;
+}
+.PS_Wrap_2{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #E6E6E6;
+  height: 50px;
+  margin-top: 100px;
+  width: 60%;
+  margin-left: 20%;
+  padding-left: 15px;
+}
+.PS_Wrap_2_1{
+  width: 50px;
+}
+.PS_Wrap_2_2{
+  width: 500px;
+  margin-left: 50px;
+}
+.PS_Wrap_2_2_Btn, .PS_Wrap_3_2_Btn{
+  width: 900px;
+  height: 35px;
+  margin-top: 14px;
+  background-color: transparent;
+  border: none;
+  outline: none;
+}
+.PS_Wrap_3{
+  display: flex;
+  flex-direction: row;
+  border-bottom: 1px solid #E6E6E6;
+  height: 50px;
+  width: 60%;
+  margin-left: 20%;
+  padding-left: 15px;
+}
+.PS_Wrap_3_2{
+  width: 500px;
+  margin-left: 36px;
+}
+.PS_Wrap_4{
+  height: 150px;
+  margin-top: 10%;
+  width: 30%;
+  height: 50px;
+  margin-left: 37%;
+}
+.PS_Wrap_4_Btn{
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: #FFC000;
+  width: 80%;
+  height: 110%;
+  border: none;
+}
+
+/*calendar*/
+ .Home1 {
+  height:100vh;
+  width:100vw;
+  font-size: 1.5vh;
+  display: flex;      /* display 설정해줘야 아래 flex로 해주면 direction 선택가능*/
+  flex-direction: column;   /* 이건 세로순으로  태그들을 표시함 css*/
+}
+.Home1 .control{
+  display: flex;
+  flex-direction: row;
+}
+.Home1 table{
+  display:flex;
+  width:50vw;
+  height:50vh;
+}
+.Home1 table tbody{
+  display:flex;
+  flex-direction: column;
+}
+.Home1 tr{
+    display:flex;
+    flex-direction: row;
+}
+.Home1 td{
+    display:flex;
+    border:1px solid #E6E6E6;
+    width:10vw;
+    height:16vh;
+}
+.Home1 td span{
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+}
+.calendar_span{
+  font-size: 20px;
+  font-weight: 1000;
+  font-family: 'NanumSquareNeo';
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+.calendar_btn1, .calendar_btn2{
+  margin-left: 10px;
+  margin-top: 50px;
+  border: none;
+  background-color: transparent;
+  height: 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.cornModal{
+  position: absolute;
+  border: 1px solid black;
+  margin-top:30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  height: 70px;
+  width: 200px;
+}
+
+/*아코디언*/
+.FAQwrapper{
+	display: flex;
+	width: 100vw;
+	justify-content: center;
+	align-items: center;
+	margin-top:  10px;
+}
+.FAQtitle:hover{
+	background: white;
+}  
+  .FAQaccordion{
+	width: 1100px;
+  }
+  
+  .FAQitem{
+	background: 	white;
+	margin-bottom: 10px;
+	padding: 10px 20px;
+  }
+  
+  .FAQtitle{
+  font-size: 10px;
+	color: black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+  border-bottom: 1px solid #E6E6E6;
+  }
+  
+  .FAQcontent{
+	color: black;
+	max-height: 0;
+	overflow: hidden;
+	transition: all 0.5s cubic-bezier(0,1,0,1);
+  background-color: #E6E6E6;
+  }
+  
+  .FAQcontent.show{
+	height: auto;
+	max-height: 9999px;
+	transition: all 0.5s cubic-bezier(1,0,1,0);
+  }
+
+  .FAQjaju{
+	color: black;
+	font-size: 10px;
+	font-weight: bolder;
+	margin-top: 50px;
+  }
