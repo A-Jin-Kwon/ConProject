@@ -23,7 +23,7 @@ export default function Join() {
                 </JoinBtnContent>
             </JoinBtn>
             {/* 이메일로 회원가입 */}
-            <Link to="/join-email" style={{textDecoration:"none"}}><JoinBtn>
+            <Link to="/join-check" style={{textDecoration:"none"}}><JoinBtn>
                 <JoinBtnContent>
                     <img style={{marginRight: "10px"}} alt="join with Email" src="./imgs/email_logo.png"/>
                     <div>이메일로 회원가입</div>
