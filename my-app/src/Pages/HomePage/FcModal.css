@@ -25,8 +25,9 @@
     background-color: transparent; /* 마우스 호버 시 배경색 변경 */
   }
   .fc-header-toolbar.fc-toolbar{
-    width: 300px;
+    width: 250px;
     margin-bottom: 40px;
+    font-size: 13px;
   } 
  .fc-col-header-cell.fc-day.fc-day-sun,
  .fc-col-header-cell.fc-day.fc-day-mon,.fc-col-header-cell.fc-day.fc-day-tue,.fc-col-header-cell.fc-day.fc-day-wed
@@ -49,6 +50,25 @@
     padding-top: 10px;
     cursor: pointer;
   }
+  .add-button {
+    font-family: 'NanumSquareNeo';
+    position: absolute;
+    border: none;
+    right: 300px;
+    margin-top: 5px;
+    background-color: white;
+    border-radius: 16px;
+    width: 95px;
+    height: 32px;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.5); /* 그림자 효과 설정 */
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  .add-button:hover {
+    background-color: #FFC000; /* 커서를 올렸을 때의 배경색 변경 */
+  }
+  
+
 
   /* fcmodal */
 

@@ -384,3 +384,54 @@ code {
   width: 200px;
 }
 
+/*아코디언*/
+.FAQwrapper{
+	display: flex;
+	width: 100vw;
+	justify-content: center;
+	align-items: center;
+	margin-top:  10px;
+}
+.FAQtitle:hover{
+	background: white;
+}  
+  .FAQaccordion{
+	width: 1100px;
+  }
+  
+  .FAQitem{
+	background: 	white;
+	margin-bottom: 10px;
+	padding: 10px 20px;
+  }
+  
+  .FAQtitle{
+  font-size: 10px;
+	color: black;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	cursor: pointer;
+  border-bottom: 1px solid #E6E6E6;
+  }
+  
+  .FAQcontent{
+	color: black;
+	max-height: 0;
+	overflow: hidden;
+	transition: all 0.5s cubic-bezier(0,1,0,1);
+  background-color: #E6E6E6;
+  }
+  
+  .FAQcontent.show{
+	height: auto;
+	max-height: 9999px;
+	transition: all 0.5s cubic-bezier(1,0,1,0);
+  }
+
+  .FAQjaju{
+	color: black;
+	font-size: 10px;
+	font-weight: bolder;
+	margin-top: 50px;
+  }
