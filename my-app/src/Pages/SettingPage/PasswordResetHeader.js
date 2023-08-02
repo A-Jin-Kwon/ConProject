@@ -1,10 +1,10 @@
 import styled from 'styled-components';
 import { useNavigate } from 'react-router-dom';
 
-const JoinCheckHeader = () => {
+const PasswordResetHeader = () => {
     const navigate = useNavigate();
     const clickHandler = () => {
-        navigate("/join-check");
+        navigate("/myInformation");
     }
 
     return(
@@ -15,7 +15,7 @@ const JoinCheckHeader = () => {
                     <Image src="imgs/navigate_next.png" onClick={clickHandler}/>
                 </SpaceLeft>
                 <HeaderText>
-                    전문 보기
+                    비밀번호 재설정
                 </HeaderText>
                 <SpaceRight/>
             </Wrapper>
@@ -23,7 +23,7 @@ const JoinCheckHeader = () => {
     );
 };
 
-export default JoinCheckHeader;
+export default PasswordResetHeader;
 
 const Wrapper = styled.div`
     height: 70px;

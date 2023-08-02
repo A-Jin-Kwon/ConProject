@@ -8,8 +8,8 @@ import JoinCheckHeader from './JoinCheckHeader';
 export default function JoinCheck() {
 
   const data = [
-      { id: 0, title: 'CON 이용약관 (필수)' },
-      { id: 1, title: '개인정보 수집 및 동의 (필수)' },
+      { id: 0, title: 'CON 이용약관 (필수)', link: "/joinRule-conUse" },
+      { id: 1, title: '개인정보 수집 및 동의 (필수)', link: "/joinRule-privacy" },
   ];
 
   // 체크된 아이템을 담을 배열
@@ -77,7 +77,7 @@ export default function JoinCheck() {
                     checked={checkedItems.includes(data.id) ? true : false} />
                 </td>
                 <td >{data.title}</td>
-                <Link to="/joinRule-fullContent">
+                <Link to={data.link}>
                   <td style={{paddingTop: "15px", paddingLeft: "550px", color: "black"}}>전문보기</td>
                 </Link>
               </tr>

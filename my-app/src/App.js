@@ -12,11 +12,13 @@ import PasswordFind from "./Pages/LoginPage/PasswordFind";
 import Join from "./Pages/JoinPage/Join";
 import JoinEmail from "./Pages/JoinEmailPage/JoinEmail";
 import JoinCheck from "./Pages/JoinPage/JoinCheck";
-import JoinRuleFullContent from "./Pages/JoinPage/JoinRuleFullContent";
+import JoinRuleConUse from "./Pages/JoinPage/JoinRuleConUse";
+import JoinRulePrivacy from "./Pages/JoinPage/JoinRulePrivacy";
 import MainLayout from "./Components/MainLayout/MainLayout";
 import MyInformation from "./Pages/SettingPage/MyInformation";
 import ProfileSetting from "./Pages/SettingPage/ProfileSetting";
 import CommunityProfile from "./Pages/CommunityPage/Profile/CommunityProfile";
+import PasswordReset from "./Pages/SettingPage/PasswordReset";
 
 function App() {
   return (
@@ -40,10 +42,12 @@ function App() {
           <Route path="/join" element={<Join />} />
           <Route path="/join-email" element={<JoinEmail />} />
           <Route path="/join-check" element={<JoinCheck />} />
-          <Route path="/joinRule-fullContent" element={<JoinRuleFullContent/>} />
+          <Route path="/joinRule-conUse" element={<JoinRuleConUse/>} />
+          <Route path="/joinRule-privacy" element={<JoinRulePrivacy/>} />
           <Route path="/myInformation" element={<MyInformation />} />
           <Route path="/profileSetting" element={<ProfileSetting />} />
           <Route path="/community/profile" element={<CommunityProfile />} />
+          <Route path="/setting/password-reset" element={<PasswordReset />} />
         </Routes>
       </div>
     </BrowserRouter>

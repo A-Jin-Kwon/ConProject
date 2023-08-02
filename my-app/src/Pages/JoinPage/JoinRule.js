@@ -7,8 +7,8 @@ const JoinRule = () => {
         // 이용약관 동의 간주
         <JoinRuleContent> 
             {/* 이용약관 동의하러 들어가기 */}
-            <p>SNS로 로그인 및 회원가입 시 CON의 <Link to="/joinRule-fullContent">이용약관</Link>과 <br/>
-            <Link to="/joinRule-fullContent">개인정보 수집 및 이용</Link>에 동의한 것으로 간주합니다.</p>
+            <p>SNS로 로그인 및 회원가입 시 CON의 <Link to="/joinRule-conUse">이용약관</Link>과 <br/>
+            <Link to="/joinRule-privacy">개인정보 수집 및 이용</Link>에 동의한 것으로 간주합니다.</p>
         </JoinRuleContent>
 
     )
