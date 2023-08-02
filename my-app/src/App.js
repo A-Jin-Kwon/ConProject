@@ -19,6 +19,7 @@ import Search from "./Pages/SearchPage/Search";
 import RecordCon from "./Pages/ConRecordPage/RecordCon";
 import CornNotice from "./Pages/SettingPage/CornNotice";
 import CornFAQ from "./Pages/SettingPage/CornFAQ";
+import ConRecordPage from "./Pages/ConRecordPage/ConMenu/ConRecordPage";
 
 function App() {
   return (
@@ -48,7 +49,7 @@ function App() {
           <Route path="/search" element={<Search></Search>} />
           <Route path="/record-con" element={<RecordCon />} />
           <Route path="/cornNotice" element={<CornNotice />} />
-          <Route path="/cornFAQ" element={<CornFAQ/>}></Route>
+          <Route path="/cornFAQ" element={<CornFAQ />}></Route>
         </Routes>
       </div>
     </BrowserRouter>
