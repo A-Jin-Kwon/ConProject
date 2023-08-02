@@ -1,6 +1,7 @@
 import { Link as ReactRouterDomLink, useLocation } from "react-router-dom";
-import HeaderStyled from "styled-components";
+import HeaderStyled, { css } from "styled-components";
 import { useState, useEffect } from "react";
+import SearchBar from "../StyledComponents/SearchBar";
 
 const Header = () => {
   const curLocation = useLocation();
@@ -31,23 +32,28 @@ const Header = () => {
   return (
     <HeaderWrapper>
       <MenuBar>
-        <div>
-          <LinkWrapper className="" to={"/"} id="home" currentPage={currentPage}>
-            홈
-          </LinkWrapper>
-          <LinkWrapper className="" to={"/conrecord"} id="conrecord" currentPage={currentPage}>
-            콘 기록
-          </LinkWrapper>
-          <LinkWrapper className="" to={"/community"} id="community" currentPage={currentPage}>
-            커뮤니티
-          </LinkWrapper>
-          <LinkWrapper className="" to={"/setting"} id="setting" currentPage={currentPage}>
-            설정
-          </LinkWrapper>
-        </div>
+        <MenuLeftContainer>
+          <Link to={"/"}>
+            <img height="38px" src="imgs/Con_main_logo.svg"></img>
+          </Link>
+          <MenuLinksWrapper>
+            <LinkWrapper className="" to={"/"} id="home" currentPage={currentPage}>
+              홈
+            </LinkWrapper>
+            <LinkWrapper className="" to={"/conrecord"} id="conrecord" currentPage={currentPage}>
+              콘 기록
+            </LinkWrapper>
+            <LinkWrapper className="" to={"/community"} id="community" currentPage={currentPage}>
+              커뮤니티
+            </LinkWrapper>
+            <LinkWrapper className="" to={"/setting"} id="setting" currentPage={currentPage}>
+              설정
+            </LinkWrapper>
+          </MenuLinksWrapper>
+        </MenuLeftContainer>
         <ProfileWrapper>
           <HeaderRightDiv>
-            <img src="imgs/search.png" />
+            <SearchBar placeholder={"콘텐츠, 유저를 검색해보세요!"}></SearchBar>
           </HeaderRightDiv>
           <HeaderRightDiv>
             {/* 임시 프로필입니다 */}
@@ -71,27 +77,71 @@ export default Header;
 /** 스타일 */
 const HeaderWrapper = HeaderStyled.div`
     border-bottom: 1px solid #E8E8E8;
+    background-color:white;
+    position:fixed;
+    width:100%;
+    height:70px;
+    z-index:1;
 `;
 const MenuBar = HeaderStyled.div`
+    max-width:1180px;
+    height:100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-left: 20rem;
-    margin-right: 20rem;
-    height:70px;
+    margin:0 auto 0 auto;
 `;
 
 const Link = ({ children, currentPage, ...props }) => {
   return <ReactRouterDomLink {...props}>{children}</ReactRouterDomLink>;
 };
 
+const MenuLeftContainer = HeaderStyled.div`
+  display:flex;
+  height:100%;
+  width:538px;
+  justify-content:space-between;
+  align-items:center;
+`;
+
+const MenuLinksWrapper = HeaderStyled.div`
+  display:flex;
+  justify-content:space-between;
+  height:100%;
+  width:390px;
+
+  > img{
+    margin-right:10px;
+  }
+`;
+
 const LinkWrapper = HeaderStyled(Link)`
+    box-sizing:border-box;
+    border-radius:8px;
     text-decoration: none;
+    width:90px;
+    height:100%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    transition: 0.5s;
     
     // 현재 탭의 id와 state가 일치하면 노란색으로 색상을 바꾸어줍니다.
-    color: ${(props) => (props.id === props.currentPage ? "#FFC000" : "#242424")};
-    padding: 10px;
+    ${(props) =>
+      props.id === props.currentPage
+        ? css`
+            color: #ffc000;
+            cursor: default;
+          `
+        : css`
+            color: #242424;
+            cursor: pointer;
+            &:hover {
+              color: #909090;
+            }
+          `}
 `;
+
 const ProfileWrapper = HeaderStyled.div`
     display: flex;
     align-items: center;

@@ -56,7 +56,7 @@ const ProfileStatus = styled.div`
 const ProfileConMid = styled.div`
   width: 100%;
   height: 234px;
-  background-color: #f8f8f8;
+  background: linear-gradient(to right, #e8c4fc, #fdeacf);
   border-bottom: 1px solid #e6e6e6;
   font-size: 14px;
 `;

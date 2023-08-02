@@ -35,7 +35,7 @@ const Menu = ({ menu1, menu2 }) => {
 
   return (
     <MenuContainer>
-      <UnderLine left={xpos} top={ypos} />
+      <UnderLine $left={xpos} $top={ypos} />
       <MenuWrapper>
         <StyledBtn name={`${menu1.eng}`} ref={contentBtn} onClick={(e) => setCurrentMenu(e.target.name)}>
           {menu1.kor}
@@ -77,8 +77,8 @@ const UnderLine = styled.div`
   background-color: #ffc000;
   height: 3px;
   position: absolute;
-  left: ${(props) => props.left + "px"};
-  top: ${(props) => props.top + "px"};
+  left: ${(props) => props.$left + "px"};
+  top: ${(props) => props.$top + "px"};
   transition: 0.5s;
 `;
 export default Menu;
