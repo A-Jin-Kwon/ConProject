@@ -10,20 +10,35 @@ import Menu from "./Menu";
 
 const Search = () => {
   const TVShow = useSelector((state) => state.TVShowSearchReducer);
-  console.log(TVShow);
+  console.log(Object.values(TVShow).filter((it) => it.backdrop_path));
 
   return (
     <>
-      <SearchHeader></SearchHeader>
-      <SearchUI placeholder="콘텐츠를 검색해보세요!"></SearchUI>
+      {/* <SearchHeader></SearchHeader> */}
+      {/* <SearchUI placeholder="콘텐츠를 검색해보세요!"></SearchUI> */}
       <Menu menu1={{ eng: "contents", kor: "콘텐츠" }} menu2={{ eng: "user", kor: "유저" }}></Menu>
       <PageLayout>
-        {JSON.stringify(TVShow) !== "{}" ? (
+        {/* {JSON.stringify(TVShow) !== "{}" ? (
           <Div>
             {Object.values(TVShow)
               .filter((it) => it.show.image)
               .map((it) => (
                 <SearchConWrapper key={it.show.id} it={it}></SearchConWrapper>
+              ))}
+          </Div>
+        ) : (
+          <NoResult>
+            <span>검색결과가 없습니다.</span>
+            <span>콘텐츠와 유저를 검색해주세요.</span>
+          </NoResult>
+        )} */}
+
+        {JSON.stringify(TVShow) !== "{}" ? (
+          <Div>
+            {Object.values(TVShow)
+              .filter((it) => it.backdrop_path)
+              .map((it) => (
+                <SearchConWrapper key={it.id} it={it}></SearchConWrapper>
               ))}
           </Div>
         ) : (
@@ -39,7 +54,8 @@ const Search = () => {
 
 const Div = styled.div`
   display: flex;
-  justify-content: space-between;
+  /* margin-left: 1rem; */
+  /* justify-content: space-between; */
   flex-wrap: wrap;
   margin-top: 2rem;
 `;

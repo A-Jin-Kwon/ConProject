@@ -1,20 +1,36 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import SearchModal from "./SearchModal";
 
 const SearchConWrapper = ({ it }) => {
   const [optionClicked, setOptionClicked] = useState(false);
+  const optionRef = useRef();
+
+  //option 1개만 띄우기
+  useEffect(() => {
+    function handleOutside(e) {
+      if (optionRef.current && !optionRef.current.contains(e.target)) {
+        setOptionClicked(false);
+      }
+    }
+    document.addEventListener("mousedown", handleOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleOutside);
+    };
+  }, [optionRef]);
 
   return (
     <Wrapper>
-      <StyledImg src={it.show.image.medium}></StyledImg>
+      <StyledImg src={`https://image.tmdb.org/t/p/w400${it.backdrop_path}`}></StyledImg>
       <ConInfoWrapper>
         <Div>
-          <ConTitle>{it.show.name}</ConTitle>
-          <Option onClick={() => setOptionClicked((state) => !state)}>more_vert</Option>
+          <ConTitle>{it.title}</ConTitle>
+          <Option ref={optionRef} onClick={() => setOptionClicked((state) => !state)}>
+            more_vert
+          </Option>
           {optionClicked ? <SearchModal /> : <></>}
         </Div>
-        <ConCategory>{it.show.genres[0]}</ConCategory>
+        <ConCategory>{it.genre_ids[0]}</ConCategory>
       </ConInfoWrapper>
     </Wrapper>
   );
@@ -26,6 +42,7 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   border-radius: 8px;
   margin-bottom: 1rem;
+  margin-left: 15px;
 `;
 
 const StyledImg = styled.img`

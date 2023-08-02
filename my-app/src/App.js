@@ -28,6 +28,7 @@ function App() {
             <Route path="/conrecord" element={<RecordMain />} />
             <Route path="/community" element={<Community />} />
             <Route path="/setting" element={<Setting />} />
+            <Route path="/search" element={<Search></Search>} />
           </Route>
 
           {/* 헤더가 필요 없다면 이 안에 추가해주세요! */}
@@ -38,7 +39,6 @@ function App() {
           <Route path="/profileSetting" element={<ProfileSetting />} />
           <Route path="/community/profile" element={<CommunityProfile />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/search" element={<Search></Search>} />
           <Route path="/record-con" element={<RecordCon />} />
         </Routes>
       </div>

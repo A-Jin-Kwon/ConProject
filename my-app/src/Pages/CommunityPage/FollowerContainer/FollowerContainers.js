@@ -47,7 +47,7 @@ const FollowerContainers = () => {
 const FollowerContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  /* justify-content: space-between; */
 `;
 
 export default FollowerContainers;

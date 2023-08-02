@@ -10,38 +10,36 @@ const Follower = ({ src }) => {
   const [followed, setFollowed] = useState(false);
 
   return (
-    <div>
-      <FollowWrapper>
-        <StyledLink to={"profile"}>
-          <FollowTop>
-            <FollowImg src={src}></FollowImg>
-            <FollowNickname>닉네임</FollowNickname>
-            <FollowBtnWrapper>
-              <StyledFollowButton
-                onClick={(e) => {
-                  //Link의 우선 동작을 막기 위해
-                  e.preventDefault();
-                  setFollowed((state) => !state);
-                }}
-                isFollowed={followed === false}
-              >
-                {followed === false ? "팔로우" : "팔로잉"}
-              </StyledFollowButton>
-            </FollowBtnWrapper>
-          </FollowTop>
-          <FollowMid
-            onClick={(e) => {
-              e.preventDefault();
-              dispatch({ type: "modalFlip" });
-            }}
-          ></FollowMid>
-          <FollowBottom>
-            <ContentTitle>뿅뿅 지구오락실 시즌2</ContentTitle>
-            <ContentRecommend>추천 콘텐츠</ContentRecommend>
-          </FollowBottom>
-        </StyledLink>
-      </FollowWrapper>
-    </div>
+    <FollowWrapper>
+      <StyledLink to={"profile"}>
+        <FollowTop>
+          <FollowImg src={src}></FollowImg>
+          <FollowNickname>닉네임</FollowNickname>
+          <FollowBtnWrapper>
+            <StyledFollowButton
+              onClick={(e) => {
+                //Link의 우선 동작을 막기 위해
+                e.preventDefault();
+                setFollowed((state) => !state);
+              }}
+              isFollowed={followed === false}
+            >
+              {followed === false ? "팔로우" : "팔로잉"}
+            </StyledFollowButton>
+          </FollowBtnWrapper>
+        </FollowTop>
+        <FollowMid
+          onClick={(e) => {
+            e.preventDefault();
+            dispatch({ type: "modalFlip" });
+          }}
+        ></FollowMid>
+        <FollowBottom>
+          <ContentTitle>뿅뿅 지구오락실 시즌2</ContentTitle>
+          <ContentRecommend>추천 콘텐츠</ContentRecommend>
+        </FollowBottom>
+      </StyledLink>
+    </FollowWrapper>
   );
 };
 
@@ -61,6 +59,8 @@ const FollowWrapper = styled.div`
   border: 1px solid #e6e6e6;
   border-radius: 8px;
   margin-top: 2rem;
+  box-shadow: rgba(70, 70, 70, 0.18) 0px 2px 16px 0px;
+  margin-left: 15px;
 `;
 
 const FollowTop = styled.div`
@@ -96,7 +96,8 @@ const FollowBtnWrapper = styled.div`
 const FollowMid = styled.div`
   width: 100%;
   height: 160px;
-  background-color: #f8f8f8;
+  /* background-color: #f8f8f8; */
+  background: linear-gradient(to right, #ffeece, #ffecc0);
   border-bottom: 1px solid #e6e6e6;
   font-size: 14px;
 `;
