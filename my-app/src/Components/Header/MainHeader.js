@@ -7,20 +7,16 @@ const Header = () => {
   useEffect(() => {
     const curPath = curLocation.pathname;
 
-    if(curPath === '/'){
-      setCurrentPage('home');
-    }
-    else if(curPath === '/conrecord'){
-      setCurrentPage('conrecord');
-    }
-    else if(curPath === '/community'){
-      setCurrentPage('community');
-    }
-    else if(curPath === '/setting'){
-      setCurrentPage('setting');
-    }
-    else{
-      setCurrentPage('');
+    if (curPath === "/") {
+      setCurrentPage("home");
+    } else if (curPath === "/conrecord") {
+      setCurrentPage("conrecord");
+    } else if (curPath === "/community") {
+      setCurrentPage("community");
+    } else if (curPath === "/setting") {
+      setCurrentPage("setting");
+    } else {
+      setCurrentPage("");
     }
   }, [curLocation]);
 
@@ -36,10 +32,18 @@ const Header = () => {
     <HeaderWrapper>
       <MenuBar>
         <div>
-          <LinkWrapper className="" to={"/"} id="home" currentPage={currentPage}>홈</LinkWrapper>
-          <LinkWrapper className="" to={"/conrecord"} id="conrecord" currentPage={currentPage}>콘 기록</LinkWrapper>
-          <LinkWrapper className="" to={"/community"} id="community" currentPage={currentPage}>커뮤니티</LinkWrapper>
-          <LinkWrapper className="" to={"/setting"} id="setting" currentPage={currentPage}>설정</LinkWrapper>
+          <LinkWrapper className="" to={"/"} id="home" currentPage={currentPage}>
+            홈
+          </LinkWrapper>
+          <LinkWrapper className="" to={"/conrecord"} id="conrecord" currentPage={currentPage}>
+            콘 기록
+          </LinkWrapper>
+          <LinkWrapper className="" to={"/community"} id="community" currentPage={currentPage}>
+            커뮤니티
+          </LinkWrapper>
+          <LinkWrapper className="" to={"/setting"} id="setting" currentPage={currentPage}>
+            설정
+          </LinkWrapper>
         </div>
         <ProfileWrapper>
           <HeaderRightDiv>
@@ -74,6 +78,7 @@ const MenuBar = HeaderStyled.div`
     align-items: center;
     margin-left: 20rem;
     margin-right: 20rem;
+    height:70px;
 `;
 
 const Link = ({ children, currentPage, ...props }) => {

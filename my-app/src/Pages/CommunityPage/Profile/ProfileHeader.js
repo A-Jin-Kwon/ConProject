@@ -6,7 +6,7 @@ import { StyledFollowButton } from "../../../Components/StyledComponents/StyledC
 const ProfileHeader = () => {
   const [followed, setFollowed] = useState(false);
   return (
-    <ProfileHeaderContainer>
+    <HeaderContainer>
       <HeaderWrapper>
         {/* <span className="material-symbols-outlined">chevron_left</span> */}
         <BackBtn>chevron_left</BackBtn>
@@ -17,11 +17,11 @@ const ProfileHeader = () => {
           </StyledFollowButton>
         </ProfileFollowBtnWrapper>
       </HeaderWrapper>
-    </ProfileHeaderContainer>
+    </HeaderContainer>
   );
 };
 
-const ProfileHeaderContainer = styled.header`
+const HeaderContainer = styled.header`
   border-bottom: 1px solid #e8e8e8;
   box-sizing: border-box;
   margin: 0;
@@ -35,9 +35,13 @@ const HeaderWrapper = styled.div`
   box-sizing: border-box;
   align-items: center;
   height: 100%;
+
+  > div {
+    font-weight: 700;
+  }
 `;
 
-const BackBtn = styled.div.attrs({
+const BackBtn = styled.span.attrs({
   className: "material-symbols-outlined",
 })`
   cursor: pointer;
@@ -51,4 +55,5 @@ const ProfileFollowBtnWrapper = styled.div`
   height: 40px;
 `;
 
+export { BackBtn, HeaderContainer, HeaderWrapper };
 export default ProfileHeader;

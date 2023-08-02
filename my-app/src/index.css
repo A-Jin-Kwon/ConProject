@@ -36,7 +36,7 @@ code {
 .Pf_2 {
   display: flex;
   flex-direction: column;
-  width: 92%;
+  width: 10%;
 }
 .Pf_2_1 {
   height: 40%;
@@ -50,6 +50,7 @@ code {
   height: 30%;
   margin-left: 17px;
 }
+
 /*  설정 메뉴  */
 .SelectMenu {
   display: flex;
@@ -353,4 +354,119 @@ code {
   font-family: "Montserrat";
   font-weight: 900;
   src: url("./fonts/Montserrat-Black.ttf");
+}
+/*calendar*/
+.Home1 {
+  height: 100vh;
+  width: 100vw;
+  font-size: 1.5vh;
+  display: flex; /* display 설정해줘야 아래 flex로 해주면 direction 선택가능*/
+  flex-direction: column; /* 이건 세로순으로  태그들을 표시함 css*/
+}
+.Home1 .control {
+  display: flex;
+  flex-direction: row;
+}
+.Home1 table {
+  display: flex;
+  width: 50vw;
+  height: 50vh;
+}
+.Home1 table tbody {
+  display: flex;
+  flex-direction: column;
+}
+.Home1 tr {
+  display: flex;
+  flex-direction: row;
+}
+.Home1 td {
+  display: flex;
+  border: 1px solid #e6e6e6;
+  width: 10vw;
+  height: 16vh;
+}
+.Home1 td span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.calendar_span {
+  font-size: 20px;
+  font-weight: 1000;
+  font-family: "NanumSquareNeo";
+  margin-bottom: 50px;
+  margin-top: 50px;
+}
+.calendar_btn1,
+.calendar_btn2 {
+  margin-left: 10px;
+  margin-top: 50px;
+  border: none;
+  background-color: transparent;
+  height: 30px;
+  cursor: pointer;
+  font-size: 20px;
+}
+.cornModal {
+  position: absolute;
+  border: 1px solid black;
+  margin-top: 30px;
+  padding: 20px;
+  background-color: white;
+  border-radius: 12px;
+  height: 70px;
+  width: 200px;
+}
+
+/*아코디언*/
+.FAQwrapper {
+  display: flex;
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  margin-top: 10px;
+}
+.FAQtitle:hover {
+  background: white;
+}
+.FAQaccordion {
+  width: 1100px;
+}
+
+.FAQitem {
+  background: white;
+  margin-bottom: 10px;
+  padding: 10px 20px;
+}
+
+.FAQtitle {
+  font-size: 10px;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  border-bottom: 1px solid #e6e6e6;
+}
+
+.FAQcontent {
+  color: black;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.5s cubic-bezier(0, 1, 0, 1);
+  background-color: #e6e6e6;
+}
+
+.FAQcontent.show {
+  height: auto;
+  max-height: 9999px;
+  transition: all 0.5s cubic-bezier(1, 0, 1, 0);
+}
+
+.FAQjaju {
+  color: black;
+  font-size: 10px;
+  font-weight: bolder;
+  margin-top: 50px;
 }
