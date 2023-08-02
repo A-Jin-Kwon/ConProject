@@ -1,17 +1,21 @@
 import styled from 'styled-components';
-import PrevArrow from './PrevArrow';
+import { useNavigate } from 'react-router-dom';
 
-// 헤더에 들어갈 텍스트와 화살표를 눌렀을 때 이동할 라우트를 보내주세요.
-const NavigateHeader = ({headerTitlte, path}) => {
+const PasswordResetHeader = () => {
+    const navigate = useNavigate();
+    const clickHandler = () => {
+        navigate("/myInformation");
+    }
+
     return(
         <header>
             <Wrapper>
                 <SpaceLeft/>
                 <SpaceLeft>
-                    <PrevArrow path={path}/>
+                    <Image src="imgs/navigate_next.png" onClick={clickHandler}/>
                 </SpaceLeft>
                 <HeaderText>
-                    {headerTitlte}
+                    비밀번호 재설정
                 </HeaderText>
                 <SpaceRight/>
             </Wrapper>
@@ -19,7 +23,7 @@ const NavigateHeader = ({headerTitlte, path}) => {
     );
 };
 
-export default NavigateHeader;
+export default PasswordResetHeader;
 
 const Wrapper = styled.div`
     height: 70px;
@@ -37,4 +41,8 @@ const HeaderText = styled.div`
     color: #242424;
     font-weight: 700;
     font-size: 16px;
+`;
+const Image = styled.img`
+    color: #2e2e2e;
+    cursor: pointer;
 `;

@@ -127,7 +127,7 @@ const Login = () => {
           <span>계정이 없으세요?</span>
           <BottomJoin to='/join'>회원가입</BottomJoin>
         </div>
-        <BottomFindPassword>비밀번호 찾기</BottomFindPassword>
+        <BottomFindPassword to="/password-find">비밀번호 찾기</BottomFindPassword>
       </BottomWrapper>
     </Container>
   );
