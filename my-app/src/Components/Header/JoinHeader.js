@@ -9,7 +9,6 @@ const JoinHeader = ({headerTitle}) => {
 export default JoinHeader;
 
 const HeaderWrapper = styled.div`
-    font-family: "NanumSquareNeoTitle";
     border-bottom: 1px solid #E8E8E8;
     font-weight: 700;
     font-size: 16px;

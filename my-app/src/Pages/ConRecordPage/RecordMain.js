@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { useNavigate } from "react-router-dom";
+import ConRecordPage from "./ConMenu/ConRecordPage";
 
 const RecordMain = () => {
   const navigate = useNavigate();
@@ -13,23 +14,20 @@ const RecordMain = () => {
       <AddCon onClick={addClickHandler}>
         <AddIcon src="imgs/edit_square.png" />
       </AddCon>
-      <ContentsWrapper>
-        <div>추가된 콘이 없습니다.</div>
-        <div>콘을 기록해보세요!</div>
-      </ContentsWrapper>
+      <ConRecordPage />
     </div>
   );
 };
 
 export default RecordMain;
 
-const ContentsWrapper = styled.div`
-  height: calc(100vh - 71px);
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;
-`;
+// const ContentsWrapper = styled.div`
+//   height: calc(100vh - 71px);
+//   display: flex;
+//   justify-content: center;
+//   flex-direction: column;
+//   align-items: center;
+// `;
 const AddIcon = styled.img`
   width: 24px;
   height: 24px;
@@ -45,4 +43,5 @@ const AddCon = styled.div`
   position: absolute;
   right: 20rem;
   cursor: pointer;
+  margin: 2rem 0;
 `;
