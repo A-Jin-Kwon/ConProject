@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import GetEachCon from "./GetEachCon";
+import DeleteCon from "../DeleteCon/DeleteCon";
 
 const ShowCons = () => {
   // 임시 객체 배열 - 백에서 데이터 가져올 예정
@@ -55,14 +56,30 @@ const ShowCons = () => {
     },
   ]);
 
+  const [isDelModOpen, setIsDelModOpen] = useState(false);
+  const delModalHandler = () => {
+    setIsDelModOpen(true);
+  };
+  const closeModalHandler = () => {
+    setIsDelModOpen(false);
+  };
+
   return (
     <Container>
       <NumOfCon>{record.length}개 콘</NumOfCon>
       <ConContainer>
         {record.map((ele, idx) => (
-          <GetEachCon ele={ele} key={idx} />
+          <GetEachCon
+            ele={ele}
+            key={idx}
+            idx={idx}
+            delModalHandler={delModalHandler}
+          />
         ))}
       </ConContainer>
+      {isDelModOpen ? (
+        <DeleteCon closeModalHandler={closeModalHandler} />
+      ) : null}
     </Container>
   );
 };

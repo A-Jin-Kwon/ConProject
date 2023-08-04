@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const ShowModal = () => {
+const ShowModal = ({ delModalHandler }) => {
   return (
     <ModalMenu>
       <LI>
@@ -13,7 +13,7 @@ const ShowModal = () => {
         <Span>공유하기</Span>
       </LI>
       <HR />
-      <LI className="Delete">
+      <LI className="Delete" onClick={delModalHandler}>
         <img src="imgs/delete.svg" />
         <Span>삭제하기</Span>
       </LI>

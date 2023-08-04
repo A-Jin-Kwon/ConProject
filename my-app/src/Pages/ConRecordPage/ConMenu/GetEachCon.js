@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ShowModal from "../Modal/ShowModal";
 import { useState, useEffect, useRef } from "react";
 
-const GetEachCon = ({ ele, key }) => {
+const GetEachCon = ({ ele, idx, delModalHandler }) => {
   const [isOpen, setIsOpen] = useState(false);
   const clickHandler = () => {
     setIsOpen(!isOpen);
@@ -31,11 +31,11 @@ const GetEachCon = ({ ele, key }) => {
             <Title>{ele.title}</Title>
             <Vert
               src="imgs/more_vert.svg"
-              id={key}
+              id={idx}
               onClick={clickHandler}
               ref={modalRef}
             />
-            {isOpen ? <ShowModal /> : null}
+            {isOpen ? <ShowModal delModalHandler={delModalHandler} /> : null}
           </TitleWrapper>
           <Date>{ele.date}</Date>
         </div>
