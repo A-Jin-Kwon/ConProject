@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 import { styled } from "styled-components";
+import NavigateHeader from "../../Components/Header/NavigateHeader";
 
 const CornNotice = () => {
   const [settingpage, setSettingPage] = useState("cornNotice");
@@ -17,17 +18,8 @@ const CornNotice = () => {
   ];
 
   return (
-    <div style={{ fontFamily: 'NanumSquareNeo' }}>
-      <header className="MI_Header">
-        <Link to="/setting" style={{ textDecoration: 'none', cursor: 'pointer', color: "black", marginLeft: "10%" }}>
-          <div className="MI_Header_1" to={'/setting'} id="backToSetting" onClick={clickHandler} settingpage={settingpage}>
-            <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;</h2>
-          </div>
-        </Link>
-        <div className="MI_Header_2">
-          <h4>공지사항</h4>
-        </div>
-      </header>
+    <div>
+      <NavigateHeader headerTitlte={"공지사항"}/>
       <NoticeBigWraper>
         {notice.map((noticeItem, index) => (
           <NoticeWraper key={index}>
