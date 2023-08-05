@@ -59,7 +59,7 @@ function App() {
           <Route path="/setting/follower" element={<SettingFollower />} />
           <Route path="/community/profile" element={<CommunityProfile />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/setting/password-reset" element={<PasswordReset />} />
+          <Route path="/password-reset" element={<PasswordReset />} />
           <Route path="/search" element={<Search></Search>} />
           <Route path="/record-con" element={<RecordCon />} />
           <Route path="/cornNotice" element={<CornNotice />} />

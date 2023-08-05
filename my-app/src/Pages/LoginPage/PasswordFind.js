@@ -1,4 +1,4 @@
-import PasswordFindHeader from "./PasswordFindHeader";
+import NavigateHeader from "../../Components/Header/NavigateHeader";
 import { styled } from "styled-components";
 import { useState } from "react";
 
@@ -46,7 +46,7 @@ const PasswordFind = () => {
 
     return(
         <>
-            <PasswordFindHeader />
+            <NavigateHeader headerTitlte={"비밀번호 찾기"}/>
             <Container>
                 <Form onSubmit={submitHandler}>
                     <Label>
