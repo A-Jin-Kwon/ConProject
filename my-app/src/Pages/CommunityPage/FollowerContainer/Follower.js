@@ -124,5 +124,5 @@ const ContentRecommend = styled.div`
   color: #464646;
 `;
 
-export { FollowWrapper, FollowBottom, ContentTitle, ContentRecommend };
+export { FollowWrapper, FollowBottom, ContentTitle, ContentRecommend, StyledLink };
 export default Follower;

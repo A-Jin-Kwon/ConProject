@@ -21,7 +21,7 @@ const Backdrop = styled.div`
   height: 100%;
   background-color: rgba(0, 0, 0, 0.88);
   position: fixed;
-  z-index: 2;
+  z-index: 100;
 `;
 
 export default Modal;

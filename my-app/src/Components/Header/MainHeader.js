@@ -81,7 +81,7 @@ const HeaderWrapper = HeaderStyled.div`
     position:fixed;
     width:100%;
     height:70px;
-    z-index:1;
+    z-index:4;
 `;
 const MenuBar = HeaderStyled.div`
     max-width:1180px;
