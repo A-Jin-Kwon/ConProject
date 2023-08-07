@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import { useState } from "react";
 import { styled } from "styled-components";
 import { StyledFollowButton } from "../../Components/StyledComponents/StyledComponents";
+import NavigateHeader from "../../Components/Header/NavigateHeader";
 
 
 const SettingFollower = ()=>{
@@ -31,13 +32,9 @@ const SettingFollower = ()=>{
     const [followed, setFollowed] = useState(false);
 
     return(
-        <div style={{fontFamily:'NanumSquareNeo'}}>
-            <header className="MI_Header">
-            <Link to="/setting" style={{textDecoration:'none', cursor: 'pointer', color:"black", marginLeft:"10%"}}>
-                <div className="MI_Header_1" to={'/setting'} id="backToSetting" onClick={clickHandler} settingpage={settingpage}>
-                    <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;</h2></div></Link>
-                <div className="MI_Header_2"><h4>&nbsp;&nbsp;&nbsp;팔로워</h4></div>
-            </header>
+        <div>
+            <NavigateHeader headerTitlte={"팔로워"}/>
+
             <Following_Wrap>
                 <Following_Wrap_1>
                     <Following_Wrap_1_1>

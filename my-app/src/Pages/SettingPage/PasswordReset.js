@@ -34,7 +34,7 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                 />
                 <IconPassword
-                  src={showPassword ? "imgs/visibility.png" : "imgs/visibility_off.png"}
+                  src={showPassword ? "imgs/visibility_off.svg" : "imgs/visibility.svg"}
                   onClick={visibilityHandler}
                 />
               </PasswordWrapper>
@@ -46,11 +46,11 @@ const Login = () => {
               <LabelSpan>새로운 비밀번호</LabelSpan>
               <PasswordWrapper>
                 <PasswordInput
-                  placeholder="비밀번호 입력"
+                  placeholder="새로운 비밀번호 입력"
                   type={showPassword ? "text" : "password"}
                 />
                 <IconPassword
-                  src={showPassword ? "imgs/visibility.png" : "imgs/visibility_off.png"}
+                  src={showPassword ? "imgs/visibility_off.svg" : "imgs/visibility.svg"}
                   onClick={visibilityHandler}
                 />
               </PasswordWrapper>
@@ -73,7 +73,8 @@ const Login = () => {
 export default Login;
 
 const Container = styled.div`
-  padding-top: 200px;
+  /* padding-top: 200px; */
+  height: calc(100vh - 70px);
   display: flex;
   flex-direction: column;
   justify-content: center;

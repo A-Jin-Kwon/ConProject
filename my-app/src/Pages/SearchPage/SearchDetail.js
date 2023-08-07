@@ -29,7 +29,7 @@ const SearchDetail = () => {
       {Object.keys(data).length !== 0 ? (
         <PageLayout>
           <AboutCon>
-            <StyledImg src={`https://image.tmdb.org/t/p/w400${data.backdrop_path}`}></StyledImg>
+            <StyledImg src={`https://image.tmdb.org/t/p/original${data.poster_path}`}></StyledImg>
             <ConInfoWrapper>
               {/* <Title>{data.name}</Title> */}
               <Title>{data.title}</Title>

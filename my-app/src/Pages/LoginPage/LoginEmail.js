@@ -82,14 +82,14 @@ const Login = () => {
                 />
               {/* focus 상태라면 이미지를 보여주고, blur 되었다면 이미지를 숨깁니다. */}
               {isEmailFocused ?
-                <IconEmail src="imgs/cancel.png" 
+                <IconEmail src="imgs/cancel.svg" 
                   // onMouseDown으로, onClick 보다 blur 이벤트가 먼저 실행되는 것을 방지할 수 있습니다.
                   onMouseDown={(e) => {
                     e.preventDefault();
                   }}
                   onClick={cancelHandler}
                 />
-              : isEmailValid ? null : <IconError src="imgs/error.png"/>}
+              : isEmailValid ? null : <IconError src="imgs/error.svg"/>}
             </EmailWrapper>
 
             {/* 이메일 형식이 바르지 않다면 에러 메세지를 띄웁니다. */}
@@ -110,7 +110,7 @@ const Login = () => {
                 type={showPassword ? "text" : "password"}
               />
               <IconPassword
-                src={showPassword ? "imgs/visibility.png" : "imgs/visibility_off.png"}
+                src={showPassword ? "imgs/visibility_off.svg" : "imgs/visibility.svg"}
                 onClick={visibilityHandler}
               />
             </PasswordWrapper>

@@ -26,6 +26,7 @@ const Wrapper = styled.div`
     display: flex;
     align-items: center;
     border-bottom: 1px solid #e6e6e6;
+    position: relative;
 `;
 const SpaceLeft = styled.div`
     flex: 1;
