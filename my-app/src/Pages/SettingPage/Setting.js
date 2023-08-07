@@ -15,7 +15,7 @@ const Setting = ()=>{
   
     
     return(
-        <div className="BigWrap" style={{fontFamily:'NanumSquareNeo'}}>
+        <div className="BigWrap">
             <div className="Profile">
                 <div className="Pf_1"></div>
                 <div className="Pf_2">

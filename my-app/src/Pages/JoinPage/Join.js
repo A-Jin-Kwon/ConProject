@@ -22,7 +22,7 @@ export default function Join() {
             {/* 네이버로 회원가입 */}
             <JoinBtn>
                 <JoinBtnContent>
-                    <img style={{marginRight: "10px"}} alt="join with Naver" src="./imgs/naver_logo.png"/>
+                    <img style={{marginRight: "10px"}} alt="join with Naver" src="./imgs/naver_logo.svg"/>
                     <div>네이버로 회원가입</div>
                 </JoinBtnContent>
             </JoinBtn>
@@ -30,7 +30,7 @@ export default function Join() {
             <Link to="/join-check" style={{textDecoration:"none"}}>
               <JoinBtn>
                 <JoinBtnContent onClick={emailJoinHandler}>
-                    <img style={{marginRight: "10px"}} alt="join with Email" src="./imgs/email_logo.png"/>
+                    <img style={{marginRight: "10px"}} alt="join with Email" src="./imgs/email_logo.svg"/>
                     <div>이메일로 회원가입</div>
                 </JoinBtnContent>
               </JoinBtn>  

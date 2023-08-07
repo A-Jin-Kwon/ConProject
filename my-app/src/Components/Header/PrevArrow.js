@@ -9,7 +9,7 @@ const PrevArrow = () => {
     navigate(-1);
   };
 
-  return <Image src="imgs/navigate_next.png" onClick={clickHandler} />;
+  return <Image src="imgs/navigate_next.svg" onClick={clickHandler} />;
 };
 
 export default PrevArrow;
@@ -17,4 +17,5 @@ export default PrevArrow;
 const Image = styled.img`
   color: #2e2e2e;
   cursor: pointer;
+  position: absolute;
 `;
