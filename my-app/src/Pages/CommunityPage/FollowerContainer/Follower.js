@@ -60,7 +60,7 @@ const FollowWrapper = styled.div`
   border-radius: 8px;
   margin-top: 2rem;
   box-shadow: rgba(70, 70, 70, 0.18) 0px 2px 16px 0px;
-  margin-left: 15px;
+  margin-right: 15px;
 `;
 
 const FollowTop = styled.div`

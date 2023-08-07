@@ -4,7 +4,6 @@ import SearchHeader from "./SearchHeader";
 import { useSelector } from "react-redux";
 
 import PageLayout from "../CommunityPage/PageLayout";
-import SearchUI from "../../Components/StyledComponents/SearchUI";
 import SearchConWrapper from "./SearchConWrapper";
 import Menu from "./Menu";
 
@@ -18,21 +17,6 @@ const Search = () => {
       {/* <SearchUI placeholder="콘텐츠를 검색해보세요!"></SearchUI> */}
       <Menu menu1={{ eng: "contents", kor: "콘텐츠" }} menu2={{ eng: "user", kor: "유저" }}></Menu>
       <PageLayout>
-        {/* {JSON.stringify(TVShow) !== "{}" ? (
-          <Div>
-            {Object.values(TVShow)
-              .filter((it) => it.show.image)
-              .map((it) => (
-                <SearchConWrapper key={it.show.id} it={it}></SearchConWrapper>
-              ))}
-          </Div>
-        ) : (
-          <NoResult>
-            <span>검색결과가 없습니다.</span>
-            <span>콘텐츠와 유저를 검색해주세요.</span>
-          </NoResult>
-        )} */}
-
         {JSON.stringify(TVShow) !== "{}" ? (
           <Div>
             {Object.values(TVShow)
@@ -43,8 +27,9 @@ const Search = () => {
           </Div>
         ) : (
           <NoResult>
+            <img src="/imgs/error.svg"></img>
             <span>검색결과가 없습니다.</span>
-            <span>콘텐츠와 유저를 검색해주세요.</span>
+            <span>다른 검색어를 입력하시거나 철자와 띄어쓰기를 확인해보세요.</span>
           </NoResult>
         )}
       </PageLayout>
@@ -54,8 +39,6 @@ const Search = () => {
 
 const Div = styled.div`
   display: flex;
-  /* margin-left: 1rem; */
-  /* justify-content: space-between; */
   flex-wrap: wrap;
   margin-top: 2rem;
 `;
@@ -68,15 +51,20 @@ const NoResult = styled.div`
   width: 100%;
   height: 60vh;
 
+  > img {
+    margin-bottom: 2rem;
+  }
+
   > span:first-child {
     font-size: 25px;
     font-weight: 700;
-    margin-bottom: 10px;
+    line-height: 32px;
   }
 
   > span:nth-child(2) {
     font-size: 20px;
     font-weight: 400;
+    line-height: 32px;
   }
 `;
 

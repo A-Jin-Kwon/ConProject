@@ -20,7 +20,7 @@ const SearchBar = ({ placeholder }) => {
   // 검색 기능
   useEffect(() => {
     const getCon = async (queryString) => {
-      const res = await axios(`${baseURL}movie?query=${queryString}&api_key=${privateKey}&language=${baseLanguage}`);
+      const res = await axios(`${baseURL}multi?query=${queryString}&api_key=${privateKey}&language=${baseLanguage}`);
       dispatch({ type: "loadTVShow", tvShow: res.data.results });
       console.log(res.data.results);
       return res.data.results;

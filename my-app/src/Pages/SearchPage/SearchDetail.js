@@ -4,49 +4,79 @@ import PageLayout from "../CommunityPage/PageLayout";
 import { useLocation } from "react-router-dom";
 import { convert } from "iso-country-code-to-korean";
 import axios from "axios";
+import { setHours } from "date-fns";
 
-const baseURL = "https://api.themoviedb.org/3/movie/";
+const baseURL = "https://api.themoviedb.org/3/";
 const privateKey = "2d110def1aebc18d7c0afdc58440a8d7";
 const baseLanguage = "ko";
 
 const SearchDetail = () => {
   const location = useLocation();
-  console.log(location.state.id);
-
+  const contentType = location.state.media_type;
   const [data, setData] = useState({});
+
+  // function setHistory() {
+  //   let searchHistory = JSON.parse(localStorage.getItem("history"));
+  //   contentType === "movie" ? searchHistory.push(`${data.title}`) : searchHistory.push(`${data.name}`);
+  //   localStorage.setItem("history", JSON.stringify(searchHistory));
+  // }
+
   useEffect(() => {
     const getMovieData = async () => {
-      const res = await axios(`${baseURL}${location.state.id}?&api_key=${privateKey}&language=${baseLanguage}&now_playing`);
+      const res = await axios(`${baseURL}${location.state.media_type}/${location.state.id}?&api_key=${privateKey}&language=${baseLanguage}`);
       console.log(res.data);
       setData(res.data);
     };
     getMovieData();
+    // setHistory();
   }, []);
 
   return (
     //빈배열 확인 필수임
     <>
       {Object.keys(data).length !== 0 ? (
-        <PageLayout>
-          <AboutCon>
-            <StyledImg src={`https://image.tmdb.org/t/p/w400${data.backdrop_path}`}></StyledImg>
-            <ConInfoWrapper>
-              {/* <Title>{data.name}</Title> */}
-              <Title>{data.title}</Title>
-              <EtcInfoWrapper>
-                {/* <Div>개봉 | {data.first_air_date}</Div> */}
-                <Div>개봉 | {data.release_date}</Div>
-                <Div>장르 | {data.genres[0].name}</Div>
-                <Div>국가 | {convert(data.production_countries[0].iso_3166_1)}</Div>
-                <Div>러닝타임 | {data.runtime}분</Div>
-              </EtcInfoWrapper>
-            </ConInfoWrapper>
-          </AboutCon>
-          <ConExplainWrapper>
-            <ExplainInfo>정보</ExplainInfo>
-            <ConExplain>{data.overview}</ConExplain>
-          </ConExplainWrapper>
-        </PageLayout>
+        contentType === "movie" ? (
+          <PageLayout>
+            <AboutCon>
+              <StyledImg src={`https://image.tmdb.org/t/p/original${data.poster_path}`}></StyledImg>
+              <ConInfoWrapper>
+                {/* <Title>{data.name}</Title> */}
+                <Title>{data.title}</Title>
+                <EtcInfoWrapper>
+                  <Div>개봉 | {data.release_date}</Div>
+                  <Div>장르 | {data.genres[0].name}</Div>
+                  <Div>국가 | {convert(data.production_countries[0].iso_3166_1)}</Div>
+                  <Div>러닝타임 | {data.runtime}분</Div>
+                </EtcInfoWrapper>
+              </ConInfoWrapper>
+            </AboutCon>
+            <ConExplainWrapper>
+              <ExplainInfo>정보</ExplainInfo>
+              <ConExplain>{data.overview}</ConExplain>
+            </ConExplainWrapper>
+          </PageLayout>
+        ) : (
+          <PageLayout>
+            <AboutCon>
+              <StyledImg src={`https://image.tmdb.org/t/p/original${data.poster_path}`}></StyledImg>
+              <ConInfoWrapper>
+                <Title>{data.name}</Title>
+                <EtcInfoWrapper>
+                  <Div>방송 시간 | {data.release_date}</Div>
+                  <Div>
+                    방송 기간 | {data.first_air_date} ~ {data.last_episode_to_air ? data.last_episode_to_air.air_date : ""}
+                  </Div>
+                  <Div>채널 | {data.networks[0].name}</Div>
+                  <Div>장르 | {data.genres[0].name}</Div>
+                </EtcInfoWrapper>
+              </ConInfoWrapper>
+            </AboutCon>
+            <ConExplainWrapper>
+              <ExplainInfo>정보</ExplainInfo>
+              <ConExplain>{data.overview}</ConExplain>
+            </ConExplainWrapper>
+          </PageLayout>
+        )
       ) : (
         <></>
       )}

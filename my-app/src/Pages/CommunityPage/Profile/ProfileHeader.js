@@ -10,7 +10,7 @@ const ProfileHeader = () => {
     <HeaderContainer>
       <HeaderWrapper>
         {/* <span className="material-symbols-outlined">chevron_left</span> */}
-        <PrevArrow></PrevArrow>
+        <PrevArrow />
         {/* <BackBtn>chevron_left</BackBtn> */}
         <div>프로필</div>
         <ProfileFollowBtnWrapper>
