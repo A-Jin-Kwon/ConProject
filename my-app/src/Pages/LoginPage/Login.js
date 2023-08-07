@@ -4,24 +4,26 @@ import JoinRule from "../JoinPage/JoinRule";
 import LoginNaver from "./LoginNaver";
 
 
+
 const Login = () => {
     return (
         <Form>
-            <ConLogo alt="CON" src="./imgs/ConLoginImg.png"/>
+            <ConLogo alt="CON" src="./imgs/ConLoginImg.svg"/>
             <Header>
                 <Title>CON</Title>
                 <HeaderTitle>으로 문화를 기록해보세요!</HeaderTitle>
             </Header>
-            {/* 로그인 버튼 */}
+
+            {/* 이메일로 로그인하기 버튼 */}
             <LoginBtnWrapper>
-            <Link to="/login-email" style={{ textDecoration: "none", color:"black" }}><EmailLoginBtn to="/login-email">이메일로 로그인</EmailLoginBtn></Link>
+              <Link to="/login-email" style={{ textDecoration: "none", color:"black" }}><EmailLoginBtn to="/login-email">이메일로 로그인</EmailLoginBtn></Link>
             </LoginBtnWrapper>
-            {/* 로그인 버튼 */}
+
+            {/* 네이버로 로그인하기 버튼 */}
             <LoginBtnWrapper>
-                {/* <LoginNaverBtn> */}
-              <LoginNaver></LoginNaver>
-                {/* </LoginNaverBtn> */}
+              <LoginNaver/>
             </LoginBtnWrapper>
+
             {/* 로그인 밑 요소 */}
             <BottomWrapper>
                 <div>

@@ -187,7 +187,7 @@ const JoinEmail = () => {
                 onChange={pwdChangeHandler}
               />
               <IconPassword
-                src={showPassword ? "imgs/visibility.png" : "imgs/visibility_off.png"}
+                src={showPassword ? "imgs/visibility_off.svg" : "imgs/visibility.svg"}
                 onClick={visibilityHandler}
               />
             </PasswordWrapper>
@@ -204,7 +204,7 @@ const JoinEmail = () => {
                 onChange={checkPwdChangeHandler}
               />
               <IconPassword
-                src={showCheckPassword ? "imgs/visibility.png" : "imgs/visibility_off.png"}
+                src={showCheckPassword ? "imgs/visibility_off.svg" : "imgs/visibility.svg"}
                 onClick={visibilityCheckHandler}
               />
             </PasswordWrapper>

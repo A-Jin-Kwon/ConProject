@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { styled } from "styled-components";
+import NavigateHeader from "../../Components/Header/NavigateHeader";
+
 
 const CornFAQ = () => {
   const [settingpage, setSettingPage] = useState("cornFAQ");
@@ -34,7 +36,7 @@ const CornFAQ = () => {
   const [selected, setSelected] = useState(null)
 
   const toggle = (i) =>{
-    if (selected == i) {
+    if (selected === i) {
         return setSelected(null)
     }
 
@@ -43,31 +45,9 @@ const CornFAQ = () => {
 
 
   return (
-    <div style={{ fontFamily: "NanumSquareNeo" }}>
-      <header className="MI_Header">
-        <Link
-          to="/setting"
-          style={{
-            textDecoration: "none",
-            cursor: "pointer",
-            color: "black",
-            marginLeft: "10%",
-          }}
-        >
-          <div
-            className="MI_Header_1"
-            to={"/setting"}
-            id="backToSetting"
-            onClick={clickHandler}
-            settingpage={settingpage}
-          >
-            <h2>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&lt;</h2>
-          </div>
-        </Link>
-        <div className="MI_Header_2">
-          <h4>FAQ</h4>
-        </div>
-      </header>
+    <div>
+      <NavigateHeader headerTitlte={"FAQ"}/>
+
       <div className='FAQwrapper'>
             <div className='FAQaccordion'>
               <div className='FAQjaju'><h1>사람들이 자주 하는 질문을 확인해보세요</h1></div>

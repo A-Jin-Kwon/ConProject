@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import JoinRulePrivacyHeader from './JoinRulePrivacyHeader';
+import NavigateHeader from "../../Components/Header/NavigateHeader";
 
 export default function JoinRulePrivacy() {
     return(
         <div>
-            <JoinRulePrivacyHeader/>
+            <NavigateHeader headerTitlte={"개인정보 정책"}/>
             <Container>
                 <JoinRule>Con 개인정보처리방침</JoinRule>
                 <JoinRuleContent>
@@ -351,6 +351,7 @@ const Box3Bottom = styled.div`
     box-sizing: border-box;
     border: 1px solid rgba(230, 230, 230, 1);
 `;
+// 높이 및 글씨체 설정
 const Box3BottomColumn = styled.div`
     height: 42px;
     border-bottom: 1px solid rgba(230, 230, 230, 1);
@@ -379,7 +380,7 @@ const Box4BottomColumn = styled.div`
     box-sizing: border-box;
     flex-direction: column;
 `;
-// 표4 하단 오른쪽 콘텐츠 정렬 및 글씨체 지정
+// 표4 하단 오른쪽 콘텐츠 왼쪽정렬 및 글씨체 설정
 const Box4BottomColumnContent = styled.p`
     width: 901px;
     display: flex;
