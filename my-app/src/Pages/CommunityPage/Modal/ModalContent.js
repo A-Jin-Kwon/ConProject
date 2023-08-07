@@ -37,7 +37,7 @@ const ModalWrapper = styled.div`
   height: 220px;
   background-color: white;
   border-radius: 8px;
-  z-index: 10;
+  z-index: 150;
   transform: translate(-50%, -50%);
   cursor: pointer;
 `;

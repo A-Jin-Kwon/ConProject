@@ -17,7 +17,8 @@ const ShowStars = () => {
             onChange={changeHandler}
           />
         </Stack>
-      );
+    );
 };
 
 export default ShowStars;
+

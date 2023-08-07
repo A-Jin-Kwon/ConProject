@@ -25,6 +25,8 @@ import Search from "./Pages/SearchPage/Search";
 import RecordCon from "./Pages/ConRecordPage/RecordCon";
 import CornNotice from "./Pages/SettingPage/CornNotice";
 import CornFAQ from "./Pages/SettingPage/CornFAQ";
+import SearchDetail from "./Pages/SearchPage/SearchDetail";
+import ShareCon from "./Pages/ConRecordPage/ShareCon/ShareCon";
 // import ConRecordPage from "./Pages/ConRecordPage/ConMenu/ConRecordPage";
 
 function App() {
@@ -40,6 +42,10 @@ function App() {
             <Route path="/community" element={<Community />} />
             <Route path="/setting" element={<Setting />} />
             <Route path="/search" element={<Search></Search>} />
+            <Route
+              path="/searchDetail"
+              element={<SearchDetail></SearchDetail>}
+            />
           </Route>
 
           {/* 헤더가 필요 없다면 이 안에 추가해주세요! */}
@@ -59,11 +65,12 @@ function App() {
           <Route path="/setting/follower" element={<SettingFollower />} />
           <Route path="/community/profile" element={<CommunityProfile />} />
           <Route path="/login" element={<Login />} />
-          <Route path="/setting/password-reset" element={<PasswordReset />} />
+          <Route path="/password-reset" element={<PasswordReset />} />
           <Route path="/search" element={<Search></Search>} />
           <Route path="/record-con" element={<RecordCon />} />
           <Route path="/cornNotice" element={<CornNotice />} />
           <Route path="/cornFAQ" element={<CornFAQ />}></Route>
+          <Route path="/share-con" element={<ShareCon />}></Route>
         </Routes>
       </div>
     </BrowserRouter>

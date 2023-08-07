@@ -1,10 +1,11 @@
 import styled from 'styled-components';
-import JoinRuleConUseHeader from './JoinRuleConUseHeader';
+import NavigateHeader from "../../Components/Header/NavigateHeader";
 
 export default function JoinRuleConUse() {
     return(
         <div>
-            <JoinRuleConUseHeader />
+            <NavigateHeader headerTitlte={"이용약관"}/>
+
             <Container>
                 <JoinRule>CON 이용약관</JoinRule>
                 <JoinRuleNumber>제1장 총칙</JoinRuleNumber>

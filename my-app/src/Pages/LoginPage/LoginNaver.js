@@ -1,52 +1,86 @@
-import React, {Component} from 'react';
+import styled from 'styled-components'
+import { useEffect, useRef } from 'react'
 
-class LoginNaver extends Component {
-    componentDidMount() {
-        const naverScript = document.createElement('script');
-        naverScript.src = "https://static.nid.naver.com/js/naveridlogin_js_sdk_2.0.2.js"
-        naverScript.type = "text/javascript";
-        document.head.appendChild(naverScript);
+const LoginNaver = ({ setGetToken, setUserInfo }) => {
 
-        naverScript.onload = () => {
-            const naverLogin = new window.naver.LoginWithNaverId({
-                clientId: 'Rjdcguo0ogppErYYtIwR',
-                callbackUrl: 'http://localhost:3000/LoginNaver-Callback',
-                callbackHandle: true,
-                isPopup: true,
-                loginButton: {
-                    color: "green",
-                    type: 3,
-                    height: 48,
-                    width: 416
-                }
-            });
+    const naverRef = useRef()
+	const { naver } = window
 
-            naverLogin.init();
-            naverLogin.logout();
-            naverLogin.getLoginStatus((status) => {
-                if (status) {
-                    console.log("Naver 로그인 상태", naverLogin.user);
-                    const {id, email} = naverLogin.user;
+	const NAVER_CLIENT_ID = "X58rQNkatvImLCjdhG8I"
+	const NAVER_CALLBACK_URL = "http://localhost:3000/loginNaver-Callback"
 
-                    if (id === undefined) {
-                        alert("아이디는 필수동의");
-                        naverLogin.reprompt();
-                        return;
-                    }
-                    else if (email === undefined) {
-                        alert("이메일은 필수동의");
-                        naverLogin.reprompt();
-                        return;
-                    }
-                } else {
-                    console.log('Naver 비로그인 상태');
-                }
-            })
+	const initializeNaverLogin = () => {
+		const naverLogin = new naver.LoginWithNaverId({
+			clientId: NAVER_CLIENT_ID,
+			callbackUrl: NAVER_CALLBACK_URL,          
+			isPopup: false,
+			loginButton: { color: 'green', type: 3, height: 58 },
+			callbackHandle: true,
+		});
+		naverLogin.init();
+	}
+
+    useEffect( () => {
+        initializeNaverLogin()
+
+        // useEffect 내에서 토큰 추출 및 처리
+        const userAccessToken = () => {
+            if (window.location.href.includes('access_token')) {
+                const token = window.location.href.split('=')[1].split('&')[0];
+                // 토큰을 상태로 저장하거나 원하는 처리를 수행합니다.
+                setGetToken(token);
+            }
         }
-    }
-    render () {
-        return <div id="naverIdLogin"></div>
-    }
+        userAccessToken();
+    });
+
+	// const userAccessToken = () => {
+	// 	window.location.href.includes('access_token') && getToken()
+	// }
+	// const getToken = () => {
+	// 	const token = window.location.href.split('=')[1].split('&')[0]
+	// }
+
+	// useEffect(() => {
+	// 	initializeNaverLogin()
+	// 	userAccessToken()
+	// }, [])
+
+    
+
+	const handleNaverLogin = () => {
+		// naverRef.current.children[0].click()
+        LoginNaver.login()
+	}
+
+	return (
+		<>
+			<NaverIdLogin ref={naverRef} id="naverIdLogin" />
+			<NaverLoginBtn onClick={handleNaverLogin}>
+			    네이버로 로그인
+			</NaverLoginBtn>
+		</>
+	)
+
 }
 
 export default LoginNaver;
+
+// 기존 지정된 로그인 버튼 모양 안 보이도록 함
+const NaverIdLogin = styled.div`
+	display: none;
+`
+
+const NaverLoginBtn = styled.button`
+	display: flex;
+	align-items: center;
+    justify-content: center;
+    box-shadow: none;
+    width: 416px;
+    height: 48px;
+    background-color: rgba(255, 255, 255, 1);
+    border: 1px solid rgba(3, 225, 102, 1);
+    border-radius: 0.4rem;
+    cursor: pointer;
+`
+

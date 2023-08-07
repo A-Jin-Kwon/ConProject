@@ -2,8 +2,7 @@ import { useState } from 'react';
 import { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
-import JoinCheckHeader from './JoinCheckHeader';
-
+import NavigateHeader from "../../Components/Header/NavigateHeader";
 
 export default function JoinCheck() {
 
@@ -52,7 +51,8 @@ export default function JoinCheck() {
 
   return (
     <div>
-      <JoinCheckHeader/>
+      <NavigateHeader headerTitlte={"이용약관 및 개인정보에 관한 동의"}/>
+
       <form>
         <StyledTable>
           <thead>

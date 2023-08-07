@@ -35,7 +35,13 @@ const GetEachCon = ({ ele, idx, delModalHandler }) => {
               onClick={clickHandler}
               ref={modalRef}
             />
-            {isOpen ? <ShowModal delModalHandler={delModalHandler} /> : null}
+            {isOpen ? (
+              <ShowModal
+                delModalHandler={delModalHandler}
+                imgPath={ele.img}
+                title={ele.title}
+              />
+            ) : null}
           </TitleWrapper>
           <Date>{ele.date}</Date>
         </div>

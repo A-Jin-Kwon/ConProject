@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useRef } from "react";
 import styled from "styled-components";
 import SearchModal from "./SearchModal";
+import { Link as ReactRouterDomLink } from "react-router-dom";
+
+import { StyledLink } from "../CommunityPage/FollowerContainer/Follower";
 
 const SearchConWrapper = ({ it }) => {
   const [optionClicked, setOptionClicked] = useState(false);
@@ -21,17 +24,19 @@ const SearchConWrapper = ({ it }) => {
 
   return (
     <Wrapper>
-      <StyledImg src={`https://image.tmdb.org/t/p/w400${it.backdrop_path}`}></StyledImg>
-      <ConInfoWrapper>
-        <Div>
-          <ConTitle>{it.title}</ConTitle>
-          <Option ref={optionRef} onClick={() => setOptionClicked((state) => !state)}>
-            more_vert
-          </Option>
-          {optionClicked ? <SearchModal /> : <></>}
-        </Div>
-        <ConCategory>{it.genre_ids[0]}</ConCategory>
-      </ConInfoWrapper>
+      <StyledLink to={`/searchDetail`} state={{ id: it.id }}>
+        <StyledImg src={`https://image.tmdb.org/t/p/w400${it.backdrop_path}`}></StyledImg>
+        <ConInfoWrapper>
+          <Div>
+            <ConTitle>{it.title}</ConTitle>
+            <Option ref={optionRef} onClick={() => setOptionClicked((state) => !state)}>
+              more_vert
+            </Option>
+            {optionClicked ? <SearchModal /> : <></>}
+          </Div>
+          <ConCategory>{it.genre_ids[0]}</ConCategory>
+        </ConInfoWrapper>
+      </StyledLink>
     </Wrapper>
   );
 };
@@ -84,4 +89,6 @@ const ConCategory = styled.div`
   color: #464646;
   margin-top: 0.5rem;
 `;
+
+export { StyledImg };
 export default SearchConWrapper;
