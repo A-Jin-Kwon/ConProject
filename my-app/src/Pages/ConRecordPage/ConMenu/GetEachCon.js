@@ -1,8 +1,9 @@
 import styled from "styled-components";
 import ShowModal from "../Modal/ShowModal";
 import { useState, useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 
-const GetEachCon = ({ ele, idx, delModalHandler }) => {
+const GetEachCon = ({ ele, idx, delModalHandler, record }) => {
   const [isOpen, setIsOpen] = useState(false);
   const clickHandler = () => {
     setIsOpen(!isOpen);
@@ -22,9 +23,19 @@ const GetEachCon = ({ ele, idx, delModalHandler }) => {
     return () => document.removeEventListener("click", handleClose);
   }, [isOpen]);
 
+  const Navigate = useNavigate();
+
+  // 콘기록 이미지 클릭 시, 상세 페이지로 이동
+  const imgClickHandler = () => {
+    console.log(record);
+    Navigate(`/conrecord/${ele.id}`, {
+      state: record,
+    });
+  };
+
   return (
     <EachCon>
-      <Img src={ele.img} />
+      <Img src={ele.img} onClick={imgClickHandler} />
       <InfoContainer>
         <div>
           <TitleWrapper>
@@ -66,6 +77,7 @@ const EachCon = styled.div`
 const Img = styled.img`
   border-radius: 12px 12px 0 0;
   width: 280px;
+  cursor: pointer;
 `;
 const Vert = styled.img`
   cursor: pointer;

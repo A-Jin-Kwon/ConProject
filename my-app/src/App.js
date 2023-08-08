@@ -27,6 +27,7 @@ import CornNotice from "./Pages/SettingPage/CornNotice";
 import CornFAQ from "./Pages/SettingPage/CornFAQ";
 import SearchDetail from "./Pages/SearchPage/SearchDetail";
 import ShareCon from "./Pages/ConRecordPage/ShareCon/ShareCon";
+import ConDetailPage from "./Pages/ConRecordPage/ConDetailPage/ConDetailPage";
 // import ConRecordPage from "./Pages/ConRecordPage/ConMenu/ConRecordPage";
 
 function App() {
@@ -71,6 +72,7 @@ function App() {
           <Route path="/cornNotice" element={<CornNotice />} />
           <Route path="/cornFAQ" element={<CornFAQ />}></Route>
           <Route path="/share-con" element={<ShareCon />}></Route>
+          <Route path="/conrecord/:id" element={<ConDetailPage />} />
         </Routes>
       </div>
     </BrowserRouter>
