@@ -60,11 +60,12 @@ export default GetEachCon;
 const EachCon = styled.div`
   border: 1px solid #e6e6e6;
   border-radius: 12px;
-  margin: 1rem;
   position: relative;
+  width: 280px;
 `;
 const Img = styled.img`
   border-radius: 12px 12px 0 0;
+  width: 280px;
 `;
 const Vert = styled.img`
   cursor: pointer;

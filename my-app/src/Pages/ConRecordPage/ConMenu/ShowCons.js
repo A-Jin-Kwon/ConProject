@@ -87,17 +87,15 @@ const ShowCons = () => {
 export default ShowCons;
 
 const Container = styled.div`
-  padding-top: 4.5rem;
+  padding: 4.5rem 0;
+  width: 70%;
+  margin: 0 auto;
 `;
 const NumOfCon = styled.h3`
   display: flex;
-  width: 80%;
-  margin: 0 auto;
 `;
 const ConContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  width: 80%;
-  margin: 0 auto;
-  justify-content: center;
+  gap: 40px 5%;
 `;
