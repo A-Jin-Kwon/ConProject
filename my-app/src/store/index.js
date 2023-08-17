@@ -1,27 +1,45 @@
 import { combineReducers, createStore } from "redux";
 
 const headerInitialState = {};
-const communityInitialState = { currentMenu: "total", isModalClicked: false };
+const communityInitialState = { currentMenu: "total", isModalClicked: false, content: {} };
 const TVShowInitialState = {};
 const SearchInputInitialState = { input: "" };
-const ConAddInitialState = { content: {} };
 
 const headerReducer = (state = headerInitialState, action) => {
   return {};
 };
 
 const communityReducer = (state = communityInitialState, action) => {
-  if (action.type === "changeMenu") {
-    return {
-      ...state,
-      currentMenu: action.menu,
-    };
-  } else if (action.type === "modalFlip") {
-    return {
-      ...state,
-      isModalClicked: !state.isModalClicked,
-    };
-  } else return communityInitialState;
+  switch (action.type) {
+    case "changeMenu": {
+      return {
+        ...state,
+        currentMenu: action.menu,
+      };
+    }
+    case "modalFlip": {
+      return {
+        ...state,
+        isModalClicked: !state.isModalClicked,
+      };
+    }
+    case "Multiple_Modal&ClickedContent": {
+      return {
+        ...state,
+        isModalClicked: !state.isModalClicked,
+        content: action.content,
+      };
+    }
+    case "Multiple_Modal&InitCon": {
+      return {
+        ...state,
+        isModalClicked: !state.isModalClicked,
+        content: action.content,
+      };
+    }
+    default:
+      return communityInitialState;
+  }
 };
 
 const TVShowSearchReducer = (state = TVShowInitialState, action) => {
@@ -41,24 +59,11 @@ const SearchInputReducer = (state = SearchInputInitialState, action) => {
   } else return SearchInputInitialState;
 };
 
-const ConAddReducer = (state = ConAddInitialState, action) => {
-  if (action.type === "addCon") {
-    return {
-      content: action.content,
-    };
-  } else if (action.type === "initCon") {
-    return {
-      content: {},
-    };
-  } else return ConAddInitialState;
-};
-
 const rootReducer = combineReducers({
   headerReducer,
   communityReducer,
   TVShowSearchReducer,
   SearchInputReducer,
-  ConAddReducer,
 });
 
 const store = createStore(rootReducer);
