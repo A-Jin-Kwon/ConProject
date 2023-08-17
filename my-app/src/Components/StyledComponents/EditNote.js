@@ -23,9 +23,10 @@ const EditNote = forwardRef((props, ref) => {
     <Edit
       ref={ref}
       onClick={(e) => {
+        //상세 페이지로 넘어가는 것을 막기 위해서
         e.preventDefault();
-        // console.log(props.content);
-        dispatch({ type: "modalFlip" }, { type: "addCon", content: props.content });
+        dispatch({ type: "Multiple_Modal&ClickedContent", content: props.content });
+        // dispatch({ type: "addCon", content: props.content });
         // props.setOptionClicked(true);
       }}
     >

@@ -1,9 +1,13 @@
 import React from "react";
 import styled, { css } from "styled-components";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const ModalContent = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const selectedContent = useSelector((state) => state.communityReducer);
+  console.log(selectedContent.content);
   return (
     <ModalWrapper>
       <Div>콘을 추가하시겠습니까?</Div>
@@ -12,14 +16,14 @@ const ModalContent = () => {
           cancle
           onClick={(e) => {
             e.stopPropagation();
-            dispatch({ type: "modalFlip" }, { type: "initCon" });
+            dispatch({ type: "Multiple_Modal&InitCon", content: {} });
           }}
         >
           취소
         </ModalBtn>
         <ModalBtn
           onClick={(e) => {
-            console.log(e);
+            navigate("/record-con", { state: { content: selectedContent.content } });
           }}
         >
           추가
