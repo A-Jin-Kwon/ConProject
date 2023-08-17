@@ -20,6 +20,7 @@ const Follower = ({ src }) => {
               onClick={(e) => {
                 //Link의 우선 동작을 막기 위해
                 e.preventDefault();
+                console.log("clicked");
                 setFollowed((state) => !state);
               }}
               isFollowed={followed === false}
@@ -31,6 +32,7 @@ const Follower = ({ src }) => {
         <FollowMid
           onClick={(e) => {
             e.preventDefault();
+            console.log("hah");
             dispatch({ type: "modalFlip" });
           }}
         ></FollowMid>
@@ -60,7 +62,7 @@ const FollowWrapper = styled.div`
   border-radius: 8px;
   margin-top: 2rem;
   box-shadow: rgba(70, 70, 70, 0.18) 0px 2px 16px 0px;
-  margin-left: 15px;
+  margin-right: 15px;
 `;
 
 const FollowTop = styled.div`

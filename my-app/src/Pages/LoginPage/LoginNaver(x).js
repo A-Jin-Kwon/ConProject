@@ -22,28 +22,28 @@ const LoginNaver = ({ setGetToken, setUserInfo }) => {
   useEffect(() => {
     initializeNaverLogin();
 
-    // useEffect 내에서 토큰 추출 및 처리
-    const userAccessToken = () => {
-      if (window.location.href.includes("access_token")) {
-        const token = window.location.href.split("=")[1].split("&")[0];
-        // 토큰을 상태로 저장하거나 원하는 처리를 수행합니다.
-        setGetToken(token);
-      }
-    };
-    userAccessToken();
+    //     // useEffect 내에서 토큰 추출 및 처리
+    //     const userAccessToken = () => {
+    //         if (window.location.href.includes('access_token')) {
+    //             const token = window.location.href.split('=')[1].split('&')[0];
+    //             // 토큰을 상태로 저장하거나 원하는 처리를 수행합니다.
+    //             setGetToken(token);
+    //         }
+    //     }
+    //     userAccessToken();
   });
 
-  // const userAccessToken = () => {
-  // 	window.location.href.includes('access_token') && getToken()
-  // }
-  // const getToken = () => {
-  // 	const token = window.location.href.split('=')[1].split('&')[0]
-  // }
+  const userAccessToken = () => {
+    window.location.href.includes("access_token") && getToken();
+  };
+  const getToken = () => {
+    const token = window.location.href.split("=")[1].split("&")[0];
+  };
 
-  // useEffect(() => {
-  // 	initializeNaverLogin()
-  // 	userAccessToken()
-  // }, [])
+  useEffect(() => {
+    initializeNaverLogin();
+    userAccessToken();
+  }, []);
 
   const handleNaverLogin = () => {
     // naverRef.current.children[0].click()
@@ -57,9 +57,10 @@ const LoginNaver = ({ setGetToken, setUserInfo }) => {
     </>
   );
 };
+
 export default LoginNaver;
 
-// 기존 지정된 로그인 버튼 모양 안 보이도록 함
+// 기존 로그인 버튼 모양 안 보이도록 함
 const NaverIdLogin = styled.div`
   display: none;
 `;

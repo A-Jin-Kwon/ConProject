@@ -12,17 +12,11 @@ const Community = () => {
 
   return (
     <>
-      {!isModalClicked ? (
-        <>
-          <Menu menu1={{ eng: "recommend", kor: "추천" }} menu2={{ eng: "following", kor: "팔로잉" }}></Menu>
-          <PageLayout>
-            <FollowerContainers></FollowerContainers>
-          </PageLayout>
-        </>
-      ) : (
-        // <CommunityModal></CommunityModal>
-        <Modal></Modal>
-      )}
+      {isModalClicked && <Modal></Modal>}
+      <Menu menu1={{ eng: "recommend", kor: "추천" }} menu2={{ eng: "following", kor: "팔로잉" }}></Menu>
+      <PageLayout>
+        <FollowerContainers></FollowerContainers>
+      </PageLayout>
     </>
   );
 };

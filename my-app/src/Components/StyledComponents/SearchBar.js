@@ -1,13 +1,7 @@
-import axios from "axios";
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { useDispatch } from "react-redux";
 import styled, { css } from "styled-components";
 import { useNavigate, useLocation } from "react-router-dom";
-
-//TMDB 사용
-const baseURL = "https://api.themoviedb.org/3/search/";
-const privateKey = "2d110def1aebc18d7c0afdc58440a8d7";
-const baseLanguage = "ko";
 
 const SearchBar = ({ placeholder }) => {
   const [inputValue, setInputValue] = useState("");
@@ -17,19 +11,15 @@ const SearchBar = ({ placeholder }) => {
   const { pathname } = useLocation();
   const searchRef = useRef();
 
-  // 검색 기능
+  // 검색 기능은 SearchPage/search.js로 이관
+
   useEffect(() => {
-    const getCon = async (queryString) => {
-      const res = await axios(`${baseURL}movie?query=${queryString}&api_key=${privateKey}&language=${baseLanguage}`);
-      dispatch({ type: "loadTVShow", tvShow: res.data.results });
-      console.log(res.data.results);
-      return res.data.results;
-    };
+    dispatch({ type: "newInput", input: inputValue });
     if (isSearchBarClicked) {
       navigate(`/search`);
-      // navigate(`/search?q=${queryString}`);
+      navigate(`/search?q=${inputValue}`);
     }
-    getCon(inputValue);
+    // getCon(inputValue);
     if (inputValue === "" && isSearchBarClicked) navigate("/");
   }, [inputValue]);
 
@@ -47,13 +37,6 @@ const SearchBar = ({ placeholder }) => {
     };
   });
 
-  // useEffect(() => {
-  //   if (pathname !== "/search") {
-  //     setIsSearchBarClicked(false);
-  //     setInputValue("");
-  //   }
-  // }, [pathname]);
-
   return (
     <SearchBarWrapper $isSearchBarClicked={isSearchBarClicked} ref={searchRef}>
       <Form>
@@ -68,6 +51,7 @@ const SearchBar = ({ placeholder }) => {
           placeholder={placeholder}
           onInput={(e) => {
             setInputValue(e.target.value);
+            // console.log(inputValue);
             // if (e.target.value !== "") navigate(`/search?q=`);
           }}
           value={inputValue}

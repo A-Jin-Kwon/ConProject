@@ -1,40 +1,47 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, forwardRef } from "react";
 import styled from "styled-components";
 import SearchModal from "./SearchModal";
-import { Link as ReactRouterDomLink } from "react-router-dom";
 
 import { StyledLink } from "../CommunityPage/FollowerContainer/Follower";
+import EditNote from "../../Components/StyledComponents/EditNote";
 
 const SearchConWrapper = ({ it }) => {
   const [optionClicked, setOptionClicked] = useState(false);
   const optionRef = useRef();
 
-  //option 1개만 띄우기
-  useEffect(() => {
-    function handleOutside(e) {
-      if (optionRef.current && !optionRef.current.contains(e.target)) {
-        setOptionClicked(false);
-      }
-    }
-    document.addEventListener("mousedown", handleOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleOutside);
-    };
-  }, [optionRef]);
+  // //option 1개만 띄우기
+  // useEffect(() => {
+  //   function handleOutside(e) {
+  //     if (optionRef.current && !optionRef.current.contains(e.target)) {
+  //       setOptionClicked(false);
+  //     }
+  //   }
+  //   document.addEventListener("mousedown", handleOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleOutside);
+  //   };
+  // }, [optionRef]);
 
   return (
     <Wrapper>
-      <StyledLink to={`/searchDetail`} state={{ id: it.id }}>
-        <StyledImg src={`https://image.tmdb.org/t/p/w400${it.backdrop_path}`}></StyledImg>
+      <StyledLink to={`/searchDetail`} state={{ media_type: it.media_type, id: it.id }}>
+        <StyledImg src={`https://image.tmdb.org/t/p/original${it.poster_path}`}></StyledImg>
         <ConInfoWrapper>
           <Div>
-            <ConTitle>{it.title}</ConTitle>
-            <Option ref={optionRef} onClick={() => setOptionClicked((state) => !state)}>
-              more_vert
-            </Option>
-            {optionClicked ? <SearchModal /> : <></>}
+            {it.media_type === "tv" ? <ConTitle>{it.name}</ConTitle> : <ConTitle>{it.title}</ConTitle>}
+            <EditNote
+              ref={optionRef}
+              setOptionClicked={setOptionClicked}
+              content={it}
+              // onClick={(e) => {
+              //   e.preventDefault();
+              //   setOptionClicked(true);
+              //   console.log("asjdnkajndk");
+              // }}
+            ></EditNote>
+            {/* {optionClicked ? <SearchModal /> : <></>} */}
           </Div>
-          <ConCategory>{it.genre_ids[0]}</ConCategory>
+          {it.media_type === "tv" ? <ConCategory>드라마</ConCategory> : <ConCategory>영화</ConCategory>}
         </ConInfoWrapper>
       </StyledLink>
     </Wrapper>
@@ -47,7 +54,7 @@ const Wrapper = styled.div`
   box-sizing: border-box;
   border-radius: 8px;
   margin-bottom: 1rem;
-  margin-left: 15px;
+  margin-right: 15px;
 `;
 
 const StyledImg = styled.img`
