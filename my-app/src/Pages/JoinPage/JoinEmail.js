@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import NavigateHeader from "../../Components/Header/NavigateHeader";
+import { Link } from "react-router-dom";
 
 const JoinEmail = () => {
   // 이메일 값이 유효한지 아닌지 저장하는 state입니다.
@@ -213,7 +214,7 @@ const JoinEmail = () => {
 
         {/* 회원가입 */}
         <JoinBtnWrapper>
-          <JoinBtn>가입하기</JoinBtn>
+          <Link to="/profile-setting"><JoinBtn>다음</JoinBtn></Link>
         </JoinBtnWrapper>
       </Form>
 
