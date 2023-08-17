@@ -184,11 +184,11 @@ const JoinEmail = () => {
             <PasswordWrapper>
               <PasswordInput
                 placeholder="비밀번호 입력"
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? "password" : "text"}
                 onChange={pwdChangeHandler}
               />
               <IconPassword
-                src={showPassword ? "imgs/visibility_off.svg" : "imgs/visibility.svg"}
+                src={showPassword ? "./imgs/visibility_off.svg" : "./imgs/visibility.svg"}
                 onClick={visibilityHandler}
               />
             </PasswordWrapper>
@@ -201,11 +201,11 @@ const JoinEmail = () => {
             <PasswordWrapper>
               <PasswordInput
                 placeholder="비밀번호 입력"
-                type={showCheckPassword ? "text" : "password"}
+                type={showCheckPassword ? "password" : "text"}
                 onChange={checkPwdChangeHandler}
               />
               <IconPassword
-                src={showCheckPassword ? "imgs/visibility_off.svg" : "imgs/visibility.svg"}
+                src={showCheckPassword ? "./imgs/visibility_off.svg" : "./imgs/visibility.svg"}
                 onClick={visibilityCheckHandler}
               />
             </PasswordWrapper>

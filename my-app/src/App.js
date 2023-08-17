@@ -27,8 +27,9 @@ import RecordCon from "./Pages/ConRecordPage/RecordCon";
 import CornNotice from "./Pages/SettingPage/CornNotice";
 import CornFAQ from "./Pages/SettingPage/CornFAQ";
 import SearchDetail from "./Pages/SearchPage/SearchDetail";
-import ConRecordPage from "./Pages/ConRecordPage/ConMenu/ConRecordPage";
-
+import ShareCon from "./Pages/ConRecordPage/ShareCon/ShareCon";
+import ConDetailPage from "./Pages/ConRecordPage/ConDetailPage/ConDetailPage";
+// import ConRecordPage from "./Pages/ConRecordPage/ConMenu/ConRecordPage";
 
 function App() {
   return (
@@ -42,8 +43,11 @@ function App() {
             <Route path="/conrecord" element={<RecordMain />} />
             <Route path="/community" element={<Community />} />
             <Route path="/setting" element={<Setting />} />
-            <Route path="/search" element={<Search></Search>} />
-            <Route path="/searchDetail" element={<SearchDetail></SearchDetail>} />
+            <Route path="/search" element={<Search />} />
+            <Route
+              path="/searchDetail"
+              element={<SearchDetail></SearchDetail>}
+            />
           </Route>
 
           {/* 헤더가 필요 없다면 이 안에 추가해주세요! */}
@@ -68,6 +72,8 @@ function App() {
           <Route path="/record-con" element={<RecordCon />} />
           <Route path="/cornNotice" element={<CornNotice />} />
           <Route path="/cornFAQ" element={<CornFAQ />}></Route>
+          <Route path="/share-con" element={<ShareCon />} />
+          <Route path="/conrecord/:id" element={<ConDetailPage />} />
         </Routes>
       </div>
     </BrowserRouter>
