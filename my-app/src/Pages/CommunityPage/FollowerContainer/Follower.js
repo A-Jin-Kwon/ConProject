@@ -20,6 +20,7 @@ const Follower = ({ src }) => {
               onClick={(e) => {
                 //Link의 우선 동작을 막기 위해
                 e.preventDefault();
+                console.log("clicked");
                 setFollowed((state) => !state);
               }}
               isFollowed={followed === false}
@@ -31,6 +32,7 @@ const Follower = ({ src }) => {
         <FollowMid
           onClick={(e) => {
             e.preventDefault();
+            console.log("hah");
             dispatch({ type: "modalFlip" });
           }}
         ></FollowMid>

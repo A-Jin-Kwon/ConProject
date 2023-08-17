@@ -9,9 +9,7 @@ const ProfileHeader = () => {
   return (
     <HeaderContainer>
       <HeaderWrapper>
-        {/* <span className="material-symbols-outlined">chevron_left</span> */}
         <PrevArrow />
-        {/* <BackBtn>chevron_left</BackBtn> */}
         <div>프로필</div>
         <ProfileFollowBtnWrapper>
           <StyledFollowButton onClick={() => setFollowed((state) => !state)} isFollowed={followed === false}>
@@ -43,19 +41,10 @@ const HeaderWrapper = styled.div`
   }
 `;
 
-const BackBtn = styled.span.attrs({
-  className: "material-symbols-outlined",
-})`
-  cursor: pointer;
-  &:hover {
-    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
-  }
-`;
-
 const ProfileFollowBtnWrapper = styled.div`
   width: 100px;
   height: 40px;
 `;
 
-export { BackBtn, HeaderContainer, HeaderWrapper };
+export { HeaderContainer, HeaderWrapper };
 export default ProfileHeader;

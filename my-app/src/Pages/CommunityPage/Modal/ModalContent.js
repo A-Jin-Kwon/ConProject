@@ -2,8 +2,6 @@ import React from "react";
 import styled, { css } from "styled-components";
 import { useDispatch } from "react-redux";
 
-function handleCancle() {}
-
 const ModalContent = () => {
   const dispatch = useDispatch();
   return (
@@ -14,12 +12,18 @@ const ModalContent = () => {
           cancle
           onClick={(e) => {
             e.stopPropagation();
-            dispatch({ type: "modalFlip" });
+            dispatch({ type: "modalFlip" }, { type: "initCon" });
           }}
         >
           취소
         </ModalBtn>
-        <ModalBtn>추가</ModalBtn>
+        <ModalBtn
+          onClick={(e) => {
+            console.log(e);
+          }}
+        >
+          추가
+        </ModalBtn>
       </BtnWrapper>
     </ModalWrapper>
   );

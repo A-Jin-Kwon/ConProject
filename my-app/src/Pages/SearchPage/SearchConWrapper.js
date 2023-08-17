@@ -1,25 +1,26 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, forwardRef } from "react";
 import styled from "styled-components";
 import SearchModal from "./SearchModal";
 
 import { StyledLink } from "../CommunityPage/FollowerContainer/Follower";
+import EditNote from "../../Components/StyledComponents/EditNote";
 
 const SearchConWrapper = ({ it }) => {
   const [optionClicked, setOptionClicked] = useState(false);
   const optionRef = useRef();
 
-  //option 1개만 띄우기
-  useEffect(() => {
-    function handleOutside(e) {
-      if (optionRef.current && !optionRef.current.contains(e.target)) {
-        setOptionClicked(false);
-      }
-    }
-    document.addEventListener("mousedown", handleOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleOutside);
-    };
-  }, [optionRef]);
+  // //option 1개만 띄우기
+  // useEffect(() => {
+  //   function handleOutside(e) {
+  //     if (optionRef.current && !optionRef.current.contains(e.target)) {
+  //       setOptionClicked(false);
+  //     }
+  //   }
+  //   document.addEventListener("mousedown", handleOutside);
+  //   return () => {
+  //     document.removeEventListener("mousedown", handleOutside);
+  //   };
+  // }, [optionRef]);
 
   return (
     <Wrapper>
@@ -28,10 +29,17 @@ const SearchConWrapper = ({ it }) => {
         <ConInfoWrapper>
           <Div>
             {it.media_type === "tv" ? <ConTitle>{it.name}</ConTitle> : <ConTitle>{it.title}</ConTitle>}
-            <Option ref={optionRef} onClick={() => setOptionClicked((state) => !state)}>
-              more_vert
-            </Option>
-            {optionClicked ? <SearchModal /> : <></>}
+            <EditNote
+              ref={optionRef}
+              setOptionClicked={setOptionClicked}
+              content={it}
+              // onClick={(e) => {
+              //   e.preventDefault();
+              //   setOptionClicked(true);
+              //   console.log("asjdnkajndk");
+              // }}
+            ></EditNote>
+            {/* {optionClicked ? <SearchModal /> : <></>} */}
           </Div>
           {it.media_type === "tv" ? <ConCategory>드라마</ConCategory> : <ConCategory>영화</ConCategory>}
         </ConInfoWrapper>

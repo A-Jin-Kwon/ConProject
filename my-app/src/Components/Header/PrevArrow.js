@@ -5,17 +5,25 @@ import { useNavigate } from "react-router-dom";
 
 const PrevArrow = () => {
   const navigate = useNavigate();
+  const markup = { __html: "chevron_left" };
+
   const clickHandler = () => {
     navigate(-1);
   };
-
-  return <Image src="/imgs/navigate_next.svg" onClick={clickHandler} />;
+  // 리액트에서 innerHTML을 사용하는 방법 dangerouslySetInnerHTML로 사용하기
+  return <BackBtn dangerouslySetInnerHTML={markup} onClick={clickHandler}></BackBtn>;
 };
 
 export default PrevArrow;
 
+const BackBtn = styled.span.attrs({
+  className: "material-symbols-outlined",
+})`
+  cursor: pointer;
+  color: #2e2e2e;
+`;
+
 const Image = styled.img`
   color: #2e2e2e;
   cursor: pointer;
-  position: absolute;
 `;
