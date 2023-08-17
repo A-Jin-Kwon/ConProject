@@ -4,7 +4,6 @@ import PageLayout from "../CommunityPage/PageLayout";
 import { useLocation } from "react-router-dom";
 import { convert } from "iso-country-code-to-korean";
 import axios from "axios";
-import { setHours } from "date-fns";
 
 const baseURL = "https://api.themoviedb.org/3/";
 const privateKey = "2d110def1aebc18d7c0afdc58440a8d7";
