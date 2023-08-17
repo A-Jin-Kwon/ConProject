@@ -9,7 +9,7 @@ const PrevArrow = () => {
     navigate(-1);
   };
 
-  return <Image src="imgs/navigate_next.svg" onClick={clickHandler} />;
+  return <Image src="/imgs/navigate_next.svg" onClick={clickHandler} />;
 };
 
 export default PrevArrow;

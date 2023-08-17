@@ -25,7 +25,7 @@ const SearchConWrapper = ({ it }) => {
   return (
     <Wrapper>
       <StyledLink to={`/searchDetail`} state={{ id: it.id }}>
-        <StyledImg src={`https://image.tmdb.org/t/p/original${it.poster_path}`}></StyledImg>
+        <StyledImg src={`https://image.tmdb.org/t/p/w400${it.backdrop_path}`}></StyledImg>
         <ConInfoWrapper>
           <Div>
             <ConTitle>{it.title}</ConTitle>

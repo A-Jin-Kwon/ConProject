@@ -167,6 +167,7 @@ const Following_Wrap_1_1 = styled.div`
     display: flex;
     flex-direction: row;
     width: 50%;
+    padding-right: 30px;
 `
 const Following_Wrap_1_1_1 = styled.div`
     width: 80px;
