@@ -107,7 +107,7 @@ const Login = () => {
             <PasswordWrapper>
               <PasswordInput
                 placeholder="비밀번호 입력"
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? "password" : "text"}
               />
               <IconPassword
                 src={showPassword ? "imgs/visibility_off.svg" : "imgs/visibility.svg"}

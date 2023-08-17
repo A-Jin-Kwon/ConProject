@@ -46,7 +46,7 @@ const Login = () => {
               <LabelSpan>새로운 비밀번호</LabelSpan>
               <PasswordWrapper>
                 <PasswordInput
-                  placeholder="새로운 비밀번호 입력"
+                  placeholder="비밀번호 입력"
                   type={showPassword ? "text" : "password"}
                 />
                 <IconPassword
@@ -73,8 +73,12 @@ const Login = () => {
 export default Login;
 
 const Container = styled.div`
+<<<<<<< HEAD
   /* padding-top: 200px; */
   height: calc(100vh - 70px);
+=======
+  padding-top: 200px;
+>>>>>>> develop
   display: flex;
   flex-direction: column;
   justify-content: center;

@@ -1,12 +1,66 @@
 import styled from "styled-components";
 import JoinRule from "./JoinRule";
 import { Link, useNavigate } from "react-router-dom";
+import { useRef, useEffect } from "react";
+import LoginNaver from "../LoginPage/LoginNaver";
 
-export default function Join() {
+const Join = () => {
   const navigate = useNavigate();
   const emailJoinHandler = () => {
     navigate('/join-email');
   };
+
+
+  const naverRef = useRef()
+	const { naver } = window
+
+	const NAVER_CLIENT_ID = "5qae87hNMTZ0AQ5VOOmW"
+	const NAVER_CALLBACK_URL = "http://localhost:3000/"
+
+	const initializeNaverLogin = () => {
+		const naverLogin = new naver.LoginWithNaverId({
+			clientId: NAVER_CLIENT_ID,
+			callbackUrl: NAVER_CALLBACK_URL,
+			isPopup: false,
+			loginButton: { color: 'green', type: 3, height: 58 },
+			callbackHandle: true,
+			callback() {
+				// 로그인 성공 시 처리할 작업
+				getToken();
+			},
+		})
+		naverLogin.init();
+		// naverLogout.init();
+	}
+
+  	const userAccessToken = () => {
+		window.location.href.includes('access_token') && getToken()
+	}
+	const getToken = () => {
+		const token = window.location.href.split('=')[1].split('&')[0]
+    	console.log(token);
+		// axios 이용, 백엔드와 통신하여 access token을 받아와서 로컬 스토리지 등에 저장하는 작업을 수행
+	}
+
+	// const getToken = async () => {
+	// 	const token = window.location.href.split('=')[1].split('&')[0];
+	// 	try {
+	// 	  const response = await axios.post("http://localhost:3000/login/members/sign-up", { token: token });
+	// 	  const { access_token } = response.data;
+	// 	  localStorage.setItem("access_token", access_token);
+	// 	} catch (error) {
+	// 	  console.log(error);
+	// 	}
+	//   }
+
+	useEffect(() => {
+		initializeNaverLogin()
+		userAccessToken()
+	}, [])
+
+	const handleNaverLogin = () => {
+		naverRef.current.children[0].click()
+	};
 
   return (
     <Container>
@@ -21,9 +75,10 @@ export default function Join() {
         <div>
             {/* 네이버로 회원가입 */}
             <JoinBtn>
+                <NaverIdLogin ref={naverRef} id="naverIdLogin" />
                 <JoinBtnContent>
                     <img style={{marginRight: "10px"}} alt="join with Naver" src="./imgs/naver_logo.svg"/>
-                    <div>네이버로 회원가입</div>
+                    <div onClick={handleNaverLogin}>네이버로 회원가입</div>
                 </JoinBtnContent>
             </JoinBtn>
             {/* 이메일로 회원가입 */}
@@ -47,6 +102,12 @@ export default function Join() {
   )
 }
 
+export default Join;
+
+
+const NaverIdLogin = styled.div`
+	display: none;
+`;
 const Container = styled.div`
   height: 100vh;
   display: flex;
@@ -109,4 +170,4 @@ const JoinBtnContent = styled.div`
   flex-direction: row;
   align-items: center;
   text-decoration: none;
-`
+`;
