@@ -8,7 +8,7 @@ import LoginNaver from "./LoginNaver";
 const Login = () => {
     return (
         <Form>
-            <ConLogo alt="CON" src="./imgs/ConLoginImg.png"/>
+            <ConLogo alt="CON" src="./imgs/ConLoginImg.svg"/>
             <Header>
                 <Title>CON</Title>
                 <HeaderTitle>으로 문화를 기록해보세요!</HeaderTitle>
@@ -21,7 +21,7 @@ const Login = () => {
 
             {/* 네이버로 로그인하기 버튼 */}
             <LoginBtnWrapper>
-              <LoginNaver></LoginNaver>
+              <LoginNaver/>
             </LoginBtnWrapper>
 
             {/* 로그인 밑 요소 */}

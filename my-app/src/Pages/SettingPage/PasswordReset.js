@@ -34,7 +34,7 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                 />
                 <IconPassword
-                  src={showPassword ? "imgs/visibility.png" : "imgs/visibility_off.png"}
+                  src={showPassword ? "imgs/visibility_off.svg" : "imgs/visibility.svg"}
                   onClick={visibilityHandler}
                 />
               </PasswordWrapper>
@@ -50,7 +50,7 @@ const Login = () => {
                   type={showPassword ? "text" : "password"}
                 />
                 <IconPassword
-                  src={showPassword ? "imgs/visibility.png" : "imgs/visibility_off.png"}
+                  src={showPassword ? "imgs/visibility_off.svg" : "imgs/visibility.svg"}
                   onClick={visibilityHandler}
                 />
               </PasswordWrapper>
@@ -73,7 +73,12 @@ const Login = () => {
 export default Login;
 
 const Container = styled.div`
+<<<<<<< HEAD
+  /* padding-top: 200px; */
+  height: calc(100vh - 70px);
+=======
   padding-top: 200px;
+>>>>>>> develop
   display: flex;
   flex-direction: column;
   justify-content: center;

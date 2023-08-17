@@ -63,7 +63,6 @@ const LoginNaver = ({ setGetToken, setUserInfo }) => {
 	)
 
 }
-
 export default LoginNaver;
 
 // 기존 지정된 로그인 버튼 모양 안 보이도록 함

@@ -10,13 +10,14 @@ import LoginEmail from "./Pages/LoginPage/LoginEmail";
 import LoginNaverCallback from "./Pages/LoginPage/LoginNaverCallback";
 import PasswordFind from "./Pages/LoginPage/PasswordFind";
 import Join from "./Pages/JoinPage/Join";
-import JoinEmail from "./Pages/JoinEmailPage/JoinEmail";
 import JoinCheck from "./Pages/JoinPage/JoinCheck";
+import JoinEmail from "./Pages/JoinPage/JoinEmail";
+import ProfileSetting from "./Pages/JoinPage/ProfileSetting";
 import JoinRuleConUse from "./Pages/JoinPage/JoinRuleConUse";
 import JoinRulePrivacy from "./Pages/JoinPage/JoinRulePrivacy";
 import MainLayout from "./Components/MainLayout/MainLayout";
 import MyInformation from "./Pages/SettingPage/MyInformation";
-import ProfileSetting from "./Pages/SettingPage/ProfileSetting";
+import SettingProfile from "./Pages/SettingPage/SettingProfile";
 import CommunityProfile from "./Pages/CommunityPage/Profile/CommunityProfile";
 import PasswordReset from "./Pages/SettingPage/PasswordReset";
 import SettingFollowing from "./Pages/SettingPage/SettingFollowing";
@@ -42,7 +43,7 @@ function App() {
             <Route path="/conrecord" element={<RecordMain />} />
             <Route path="/community" element={<Community />} />
             <Route path="/setting" element={<Setting />} />
-            <Route path="/search" element={<Search></Search>} />
+            <Route path="/search" element={<Search />} />
             <Route
               path="/searchDetail"
               element={<SearchDetail></SearchDetail>}
@@ -55,23 +56,23 @@ function App() {
           <Route path="/loginNaver-Callback" element={<LoginNaverCallback />} />
           <Route path="/password-find" element={<PasswordFind />} />
           <Route path="/join" element={<Join />} />
-          <Route path="/join-email" element={<JoinEmail />} />
           <Route path="/join-check" element={<JoinCheck />} />
+          <Route path="/join-email" element={<JoinEmail />} />
+          <Route path="/profile-setting" element={<ProfileSetting />} />
           <Route path="/joinRule-conUse" element={<JoinRuleConUse />} />
           <Route path="/joinRule-privacy" element={<JoinRulePrivacy />} />
           <Route path="/myInformation" element={<MyInformation />} />
-          <Route path="/profileSetting" element={<ProfileSetting />} />
+          <Route path="/settingProfile" element={<SettingProfile />} />
           <Route path="/communtiy/profile" element={<CommunityProfile />} />
           <Route path="/setting/following" element={<SettingFollowing />} />
           <Route path="/setting/follower" element={<SettingFollower />} />
           <Route path="/community/profile" element={<CommunityProfile />} />
-          <Route path="/login" element={<Login />} />
           <Route path="/password-reset" element={<PasswordReset />} />
           <Route path="/search" element={<Search></Search>} />
           <Route path="/record-con" element={<RecordCon />} />
           <Route path="/cornNotice" element={<CornNotice />} />
           <Route path="/cornFAQ" element={<CornFAQ />}></Route>
-          <Route path="/share-con" element={<ShareCon />}></Route>
+          <Route path="/share-con" element={<ShareCon />} />
           <Route path="/conrecord/:id" element={<ConDetailPage />} />
         </Routes>
       </div>

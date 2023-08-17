@@ -4,7 +4,7 @@ const ProfileButton = styled.button`
   background-color: #ffc000;
   height: 100px;
   width: 100px;
-  border-radius: 16px;
+  border-radius: 12px;
   border: none;
   cursor: pointer;
 `;
@@ -25,7 +25,7 @@ const Button = ({ children, isActive, isFollowed, ...props }) => {
 const StyledFollowButton = styled(Button)`
   width: 100%;
   height: 100%;
-  border-radius: 4px;
+  border-radius: 8px;
   border: none;
   color: white;
   cursor: pointer;

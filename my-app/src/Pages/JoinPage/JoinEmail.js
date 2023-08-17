@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { useState } from "react";
 import NavigateHeader from "../../Components/Header/NavigateHeader";
+import { Link } from "react-router-dom";
 
 const JoinEmail = () => {
   // 이메일 값이 유효한지 아닌지 저장하는 state입니다.
@@ -183,11 +184,11 @@ const JoinEmail = () => {
             <PasswordWrapper>
               <PasswordInput
                 placeholder="비밀번호 입력"
-                type={showPassword ? "text" : "password"}
+                type={showPassword ? "password" : "text"}
                 onChange={pwdChangeHandler}
               />
               <IconPassword
-                src={showPassword ? "imgs/visibility.svg" : "imgs/visibility_off.svg"}
+                src={showPassword ? "./imgs/visibility_off.svg" : "./imgs/visibility.svg"}
                 onClick={visibilityHandler}
               />
             </PasswordWrapper>
@@ -200,11 +201,11 @@ const JoinEmail = () => {
             <PasswordWrapper>
               <PasswordInput
                 placeholder="비밀번호 입력"
-                type={showCheckPassword ? "text" : "password"}
+                type={showCheckPassword ? "password" : "text"}
                 onChange={checkPwdChangeHandler}
               />
               <IconPassword
-                src={showCheckPassword ? "imgs/visibility.svg" : "imgs/visibility_off.svg"}
+                src={showCheckPassword ? "./imgs/visibility_off.svg" : "./imgs/visibility.svg"}
                 onClick={visibilityCheckHandler}
               />
             </PasswordWrapper>
@@ -213,7 +214,7 @@ const JoinEmail = () => {
 
         {/* 회원가입 */}
         <JoinBtnWrapper>
-          <JoinBtn>가입하기</JoinBtn>
+          <Link to="/profile-setting"><JoinBtn>다음</JoinBtn></Link>
         </JoinBtnWrapper>
       </Form>
 

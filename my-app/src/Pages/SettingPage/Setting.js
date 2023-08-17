@@ -15,7 +15,7 @@ const Setting = ()=>{
   
     
     return(
-        <div className="BigWrap" style={{fontFamily:'NanumSquareNeo'}}>
+        <div className="BigWrap">
             <div className="Profile">
                 <div className="Pf_1"></div>
                 <div className="Pf_2">
@@ -40,16 +40,16 @@ const Setting = ()=>{
                 <div className="SM_1">
                     <div className="SM_1_1"><h4>기본 설정</h4></div>
                     <Link to="/myInformation" style={{textDecoration:'none', cursor: 'pointer', color:"black"}}>
-                    <div className="SM_1_2" to={'/myInformation'} id="myInformation" onClick={clickHandler} settingpage={settingpage}><h4>내 정보 관리</h4></div></Link>
-                    <Link to="/profileSetting" style={{textDecoration:'none', cursor: 'pointer', color:"black"}}>
-                    <div className="SM_1_3"to={'/profileSetting'} id="profileSetting" onClick={clickHandler} settingpage={settingpage}><h4>프로필 설정</h4></div></Link>
+                        <div className="SM_1_2" to={'/myInformation'} id="myInformation" onClick={clickHandler} settingpage={settingpage}><h4>내 정보 관리</h4></div></Link>
+                    <Link to="/settingProfile" style={{textDecoration:'none', cursor: 'pointer', color:"black"}}>
+                        <div className="SM_1_3"to={'/profileSetting'} id="profileSetting" onClick={clickHandler} settingpage={settingpage}><h4>프로필 설정</h4></div></Link>
                 </div>
                 <div className="SM_2">
-                   <div className="SM_2_1"><h4>고객센터</h4></div>
-                   <Link to="/cornNotice" style={{textDecoration:'none', cursor: 'pointer', color:"black"}}>
-                    <div className="SM_1_2" to={'/cornNotice'} id="cornNotice" onClick={clickHandler} settingpage={settingpage}><h4>공지사항</h4></div></Link>
-                   <Link to="/cornFAQ" style={{textDecoration:'none', cursor: 'pointer', color:"black"}}>
-                    <div className="SM_1_2" to={'/cornFAQ'} id="cornFAQ" onClick={clickHandler} settingpage={settingpage}><h4>FAQ</h4></div></Link>
+                    <div className="SM_2_1"><h4>고객센터</h4></div>
+                    <Link to="/cornNotice" style={{textDecoration:'none', cursor: 'pointer', color:"black"}}>
+                        <div className="SM_1_2" to={'/cornNotice'} id="cornNotice" onClick={clickHandler} settingpage={settingpage}><h4>공지사항</h4></div></Link>
+                    <Link to="/cornFAQ" style={{textDecoration:'none', cursor: 'pointer', color:"black"}}>
+                        <div className="SM_1_2" to={'/cornFAQ'} id="cornFAQ" onClick={clickHandler} settingpage={settingpage}><h4>FAQ</h4></div></Link>
                 </div>
                 <div className="SM_3">
                     <div className="SM_3_1"><h4>정보</h4></div>
@@ -68,14 +68,16 @@ export default Setting;
 const Pf_3 = styled.div`
     display: flex;
     flex-direction: row;
-    width: 16%;
-    height: 80%;
+    width: 172px;
+    height: 76px;
+    /* width: 16%;
+    height: 80%; */
     margin-top: 5px;
-    background-color: #E6E6E6;
-    border-radius: 16px;
+    background-color: rgba(242, 242, 242, 1);
+    border-radius: 12px;
 `
 const Pf_3_1 = styled.div`
-    border-right: 1px solid #6C6C6C;
+    border-right: 1px solid rgba(230, 230, 230, 1); 
     display: flex;
     flex-direction: column;
     width: 50%;

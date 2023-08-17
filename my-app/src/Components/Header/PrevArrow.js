@@ -17,4 +17,5 @@ export default PrevArrow;
 const Image = styled.img`
   color: #2e2e2e;
   cursor: pointer;
+  position: absolute;
 `;
