@@ -1,7 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
 
-import Home from "./Pages/HomePage/Home";
+// import Home from "./Pages/HomePage/Home";
+import MyHome from "./Pages/HomePage/MyHome";
 import RecordMain from "./Pages/ConRecordPage/RecordMain";
 import Community from "./Pages/CommunityPage/Community";
 import Setting from "./Pages/SettingPage/Setting";
@@ -39,15 +40,13 @@ function App() {
         <Routes>
           {/* 헤더가 필요한 페이지면 이 안에 추가해주세요! */}
           <Route element={<MainLayout />}>
-            <Route path="/" element={<Home />} />
+            <Route path="/" element={<MyHome />} />
+            {/* <Route path="/" element={<Home />} /> */}
             <Route path="/conrecord" element={<RecordMain />} />
             <Route path="/community" element={<Community />} />
             <Route path="/setting" element={<Setting />} />
             <Route path="/search" element={<Search />} />
-            <Route
-              path="/searchDetail"
-              element={<SearchDetail></SearchDetail>}
-            />
+            <Route path="/searchDetail" element={<SearchDetail></SearchDetail>} />
           </Route>
 
           {/* 헤더가 필요 없다면 이 안에 추가해주세요! */}
@@ -82,7 +81,15 @@ function App() {
 
 const GlobalStyle = createGlobalStyle`
   body{
-    font-family: 'NanumSquareNeo';
+    @font-face: {
+      font-family: 'NanumSquareNeo';  
+      unicode-range: U+1100-11FF, U+3130-318F, U+A960-A97F, U+AC00-D7A3, U+D7B0-D7FF;
+    }
+    @font-face: {
+      font-family: "Montserrat";
+      unicode-range: U+0030-0039,U+0041-005A,U+0061-007A
+    }
+    font-family: 'NanumSquareNeo', "Montserrat";
   }`;
 
 export default App;

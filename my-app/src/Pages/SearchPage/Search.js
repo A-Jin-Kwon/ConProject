@@ -93,4 +93,6 @@ const NoResult = styled.div`
   }
 `;
 
+// 이거 왜 안됨?
+// export { getCon };
 export default Search;

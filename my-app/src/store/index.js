@@ -1,7 +1,7 @@
 import { combineReducers, createStore } from "redux";
 
 const headerInitialState = {};
-const communityInitialState = { currentMenu: "total", isModalClicked: false, content: {} };
+const communityInitialState = { currentMenu: "total", isModalClicked: false, content: {}, input: "" };
 const TVShowInitialState = {};
 const SearchInputInitialState = { input: "" };
 
@@ -35,6 +35,18 @@ const communityReducer = (state = communityInitialState, action) => {
         ...state,
         isModalClicked: !state.isModalClicked,
         content: action.content,
+      };
+    }
+    case "Multiple_Modal&HomeSearch": {
+      return {
+        ...state,
+        isModalClicked: true,
+        input: action.input,
+      };
+    }
+    case "HomeSearchInput": {
+      return {
+        ...state,
       };
     }
     default:
