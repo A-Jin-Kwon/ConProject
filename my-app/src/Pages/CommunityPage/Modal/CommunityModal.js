@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 
 import ModalContent from "./ModalContent";
 
-const Modal = () => {
+const Modal = (modalContent) => {
   const dispatch = useDispatch();
   const isModalClicked = useSelector((state) => state.communityReducer.isModalClicked);
   return (

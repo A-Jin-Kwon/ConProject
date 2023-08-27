@@ -97,5 +97,5 @@ const ConCategory = styled.div`
   margin-top: 0.5rem;
 `;
 
-export { StyledImg };
+export { StyledImg, ConTitle };
 export default SearchConWrapper;
