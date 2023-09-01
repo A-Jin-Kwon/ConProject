@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
 import Box from "@mui/material/Box";
 import Popper from "@mui/material/Popper";
 
 import { ConTitle } from "../../SearchPage/SearchConWrapper";
+import { SettingsPowerRounded } from "@mui/icons-material";
 
 //TMDB 사용
 const baseURL = "https://api.themoviedb.org/3/search/";
@@ -14,22 +15,27 @@ const privateKey = "2d110def1aebc18d7c0afdc58440a8d7";
 const baseLanguage = "ko";
 
 const AlarmSearch = ({ anchorEl }) => {
-  // const InputValue = useSelector((state) => state.SearchInputReducer);
+  const dispatch = useDispatch();
   const InputValue = useSelector((state) => state.communityReducer.input);
   const [TVShow, setTVShow] = useState({});
-
-  console.log(InputValue);
+  const [selectedCon, setSelectedCon] = useState("");
+  const [open, setOpen] = useState(true);
 
   useEffect(() => {
     const getCon = async (queryString) => {
       const res = await axios(`${baseURL}multi?query=${queryString}&api_key=${privateKey}&language=${baseLanguage}`);
       setTVShow(res.data.results);
-      // console.log(res.data.results);
+      console.log("home input : ", InputValue);
     };
-    console.log("home input : ", InputValue);
     getCon(InputValue);
     console.log(TVShow);
   }, [InputValue]);
+
+  useEffect(() => {
+    dispatch({ type: "setSelectedConTitle", selectedConTitle: selectedCon });
+    if (selectedCon !== "") setOpen(false);
+    else setOpen(true);
+  }, [selectedCon]);
 
   // 개봉, 방송 날짜에서 연도만 뽑기
   const dateFormating = (date) => {
@@ -39,7 +45,7 @@ const AlarmSearch = ({ anchorEl }) => {
   };
 
   return (
-    <StyledPopper open={true} anchorEl={anchorEl}>
+    <StyledPopper open={open} anchorEl={anchorEl}>
       <Box sx={{ borderRadius: 2, bgcolor: "background.paper" }}>
         {" "}
         {JSON.stringify(TVShow) !== "[]" ? (
@@ -47,7 +53,12 @@ const AlarmSearch = ({ anchorEl }) => {
             {Object.values(TVShow)
               .filter((it) => it.poster_path)
               .map((it) => (
-                <FlexDiv>
+                <FlexDiv
+                  key={it.id}
+                  onClick={() => {
+                    it.media_type === "tv" ? setSelectedCon(it.name) : setSelectedCon(it.title);
+                  }}
+                >
                   <StyledImg src={`https://image.tmdb.org/t/p/original${it.poster_path}`}></StyledImg>
                   <ContentInfo>
                     {it.media_type === "tv" ? <ConTitle>{it.name}</ConTitle> : <ConTitle>{it.title}</ConTitle>}
@@ -58,12 +69,11 @@ const AlarmSearch = ({ anchorEl }) => {
               ))}
           </div>
         ) : (
-          <>nores</>
-          // <NoResult>
-          //   <img src="/imgs/error.svg"></img>
-          //   <span>검색결과가 없습니다.</span>
-          //   <span>다른 검색어를 입력하시거나 철자와 띄어쓰기를 확인해보세요.</span>
-          // </NoResult>
+          <NoResults>
+            {/* <img src="/imgs/error.svg"></img> */}
+            <NoResult>검색결과가 없습니다.</NoResult>
+            <div>다른 검색어를 입력하시거나 철자와 띄어쓰기를 확인해보세요.</div>
+          </NoResults>
         )}
       </Box>
     </StyledPopper>
@@ -82,6 +92,7 @@ const StyledImg = styled.img`
 const FlexDiv = styled.div`
   display: flex;
   margin: 5px;
+  z-index: 100;
   &:hover {
     background-color: #fff1c6;
     cursor: pointer;
@@ -94,5 +105,17 @@ const ContentInfo = styled.div`
 
 const ContentDate = styled.div`
   margin-top: 1rem;
+`;
+
+const NoResults = styled.div`
+  background-color: hsla(0, 0%, 82%, 0.3);
+  border-radius: 4px;
+  box-shadow: rgba(0, 0, 0, 0.2) 0px 12px 28px 0px, rgba(0, 0, 0, 0.1) 0px 2px 4px 0px, rgba(255, 255, 255, 0.05) 0px 0px 0px 1px inset;
+  font-size: 16px;
+`;
+
+const NoResult = styled.div`
+  display: flex;
+  justify-content: center;
 `;
 export default AlarmSearch;

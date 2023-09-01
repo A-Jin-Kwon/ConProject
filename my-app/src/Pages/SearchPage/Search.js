@@ -9,6 +9,9 @@ import SearchConWrapper from "./SearchConWrapper";
 import Menu from "./Menu";
 import Modal from "../CommunityPage/Modal/CommunityModal";
 
+// use mui
+import Grid from "@mui/material/Grid";
+
 //TMDB 사용
 const baseURL = "https://api.themoviedb.org/3/search/";
 const privateKey = "2d110def1aebc18d7c0afdc58440a8d7";
@@ -43,14 +46,15 @@ const Search = () => {
       <Menu menu1={{ eng: "contents", kor: "콘텐츠" }} menu2={{ eng: "user", kor: "유저" }}></Menu>
       <PageLayout>
         {JSON.stringify(TVShow) !== "[]" ? (
-          <Div>
+          <Grid container>
             {Object.values(TVShow)
               .filter((it) => it.poster_path)
               .map((it) => (
                 <SearchConWrapper key={it.id} it={it}></SearchConWrapper>
               ))}
-          </Div>
+          </Grid>
         ) : (
+          // </Div>
           <NoResult>
             <img src="/imgs/error.svg"></img>
             <span>검색결과가 없습니다.</span>

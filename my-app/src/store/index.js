@@ -1,7 +1,7 @@
 import { combineReducers, createStore } from "redux";
 
 const headerInitialState = {};
-const communityInitialState = { currentMenu: "total", isModalClicked: false, content: {}, input: "" };
+const communityInitialState = { currentMenu: "total", isModalClicked: false, content: {}, input: "", selectedConTitle: "" };
 const TVShowInitialState = {};
 const SearchInputInitialState = { input: "" };
 
@@ -21,6 +21,13 @@ const communityReducer = (state = communityInitialState, action) => {
       return {
         ...state,
         isModalClicked: !state.isModalClicked,
+      };
+    }
+    // 홈 알람에서 콘 검색을 통해 선택된 콘의 제목
+    case "setSelectedConTitle": {
+      return {
+        ...state,
+        selectedConTitle: action.selectedConTitle,
       };
     }
     case "Multiple_Modal&ClickedContent": {

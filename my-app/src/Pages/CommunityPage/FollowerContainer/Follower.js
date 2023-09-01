@@ -1,47 +1,67 @@
 import React, { useState } from "react";
 import styled, { css } from "styled-components";
+// import { styled } from "@mui/material/styles";
 import { Link as ReactRouterDomLink } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+// mui 사용
+import Grid from "@mui/material/Grid";
+import Paper from "@mui/material/Paper";
+import Card from "@mui/material/Card";
+
 import { StyledFollowButton } from "../../../Components/StyledComponents/StyledComponents";
+
+// const Item = styled(Paper)(({ theme }) => ({
+//   backgroundColor: theme.palette.mode === "dark" ? "#1A2027" : "#fff",
+//   ...theme.typography.body2,
+//   padding: theme.spacing(1),
+//   textAlign: "center",
+//   color: theme.palette.text.secondary,
+// }));
 
 const Follower = ({ src }) => {
   const dispatch = useDispatch();
   const [followed, setFollowed] = useState(false);
 
   return (
-    <FollowWrapper>
-      <StyledLink to={"profile"}>
-        <FollowTop>
-          <FollowImg src={src}></FollowImg>
-          <FollowNickname>닉네임</FollowNickname>
-          <FollowBtnWrapper>
-            <StyledFollowButton
+    // <FollowWrapper>
+    <Grid item xs={12} sm={6} md={4} lg={3}>
+      <Paper sx={{ m: 1 }}>
+        <Card>
+          <StyledLink to={"profile"}>
+            <FollowTop>
+              <FollowImg src={src}></FollowImg>
+              <FollowNickname>닉네임</FollowNickname>
+              <FollowBtnWrapper>
+                <StyledFollowButton
+                  onClick={(e) => {
+                    //Link의 우선 동작을 막기 위해
+                    e.preventDefault();
+                    console.log("clicked");
+                    setFollowed((state) => !state);
+                  }}
+                  isFollowed={followed === false}
+                >
+                  {followed === false ? "팔로우" : "팔로잉"}
+                </StyledFollowButton>
+              </FollowBtnWrapper>
+            </FollowTop>
+            <FollowMid
               onClick={(e) => {
-                //Link의 우선 동작을 막기 위해
                 e.preventDefault();
-                console.log("clicked");
-                setFollowed((state) => !state);
+                console.log("hah");
+                dispatch({ type: "modalFlip" });
               }}
-              isFollowed={followed === false}
-            >
-              {followed === false ? "팔로우" : "팔로잉"}
-            </StyledFollowButton>
-          </FollowBtnWrapper>
-        </FollowTop>
-        <FollowMid
-          onClick={(e) => {
-            e.preventDefault();
-            console.log("hah");
-            dispatch({ type: "modalFlip" });
-          }}
-        ></FollowMid>
-        <FollowBottom>
-          <ContentTitle>뿅뿅 지구오락실 시즌2</ContentTitle>
-          <ContentRecommend>추천 콘텐츠</ContentRecommend>
-        </FollowBottom>
-      </StyledLink>
-    </FollowWrapper>
+            ></FollowMid>
+            <FollowBottom>
+              <ContentTitle>뿅뿅 지구오락실 시즌2</ContentTitle>
+              <ContentRecommend>추천 콘텐츠</ContentRecommend>
+            </FollowBottom>
+          </StyledLink>
+        </Card>
+      </Paper>
+    </Grid>
+    // </FollowWrapper>
   );
 };
 
@@ -62,7 +82,6 @@ const FollowWrapper = styled.div`
   border-radius: 8px;
   margin-top: 2rem;
   box-shadow: rgba(70, 70, 70, 0.18) 0px 2px 16px 0px;
-  margin-right: 15px;
 `;
 
 const FollowTop = styled.div`
