@@ -1,5 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styled from "styled-components";
+import Container from "@mui/material/Container";
+import Box from "@mui/material/Box";
 
 // 뷰포트 크기 감지와 이에 따른 요소 재배치 구현 안 되어 있음
 const Menu = ({ menu1, menu2 }) => {
@@ -34,20 +36,24 @@ const Menu = ({ menu1, menu2 }) => {
   }, [currentMenu]);
 
   return (
-    <MenuContainer>
-      <UnderLine $left={xpos} $top={ypos} />
-      <MenuWrapper>
-        <StyledBtn name={`${menu1.eng}`} ref={contentBtn} onClick={(e) => setCurrentMenu(e.target.name)}>
-          {menu1.kor}
-        </StyledBtn>
-        <StyledBtn name={`${menu2.eng}`} ref={userBtn} onClick={(e) => setCurrentMenu(e.target.name)}>
-          {menu2.kor}
-        </StyledBtn>
-      </MenuWrapper>
-    </MenuContainer>
+    // <MenuContainer>
+    <Container>
+      <Box sx={{ mt: 2, borderBottom: 1, borderColor: "#e8e8e8" }}>
+        <UnderLine $left={xpos} $top={ypos} />
+        <MenuWrapper>
+          <StyledBtn name={`${menu1.eng}`} ref={contentBtn} onClick={(e) => setCurrentMenu(e.target.name)}>
+            {menu1.kor}
+          </StyledBtn>
+          <StyledBtn name={`${menu2.eng}`} ref={userBtn} onClick={(e) => setCurrentMenu(e.target.name)}>
+            {menu2.kor}
+          </StyledBtn>
+        </MenuWrapper>
+      </Box>
+    </Container>
   );
 };
 
+// boder를 끝까지 하려면 이걸로 해야한다.
 const MenuContainer = styled.div`
   width: 100%;
   box-sizing: border-box;

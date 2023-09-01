@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Container from "@mui/material/Container";
 
 const Content = styled.main`
   max-width: 1180px;
@@ -11,9 +12,13 @@ const Content = styled.main`
 const PageLayout = ({ children }) => {
   return (
     <>
-      <Content>{children}</Content>
+      <Container>{children}</Container>
     </>
   );
 };
+
+const StyledContainer = styled(Container)`
+  padding: 0;
+`;
 
 export default PageLayout;

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import { useDispatch } from "react-redux";
 
+// (구) 메뉴 현재는 사용하지 않는 메뉴창입니다.
 const Menu = () => {
   const [currentMenu, setCurrentMenu] = useState("total");
   const dispatch = useDispatch();

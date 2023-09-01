@@ -32,11 +32,6 @@ const HomeCalendar = () => {
 
   const handleDateClick = (e) => {
     console.log(e);
-    // console.log(e.jsEvent.clientX);
-    // console.log(e.jsEvent.clientY);
-    // setPopperX(e.jsEvent.clientX);
-    // setPopperY(e.jsEvent.clientY);
-    // handleAnchorPos(e);
     setClientX(e.jsEvent.clientX);
     setAnchorEl(e.dayEl);
     setPopperOpen(true);
@@ -44,9 +39,11 @@ const HomeCalendar = () => {
   };
 
   const handleDayCellContent = (arg) => {
-    // console.log(arg);
+    console.log(arg);
+    const today = new Date();
     const date = arg.date.getDate();
-    const isToday = date === new Date().getDate();
+    const month = arg.date.getMonth();
+    const isToday = date === today.getDate() && month === today.getMonth();
 
     if (isToday) {
       // return <div className="today-cell">{date}</div>;

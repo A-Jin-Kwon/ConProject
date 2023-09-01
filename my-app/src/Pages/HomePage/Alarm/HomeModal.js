@@ -50,28 +50,37 @@ const theme = createTheme({
 const HomeModal = () => {
   const dispatch = useDispatch();
   const isModalClicked = useSelector((state) => state.communityReducer.isModalClicked);
+  const selectedConTitle = useSelector((state) => state.communityReducer.selectedConTitle);
   // 검색 입력 값
   const [inputValue, setInputValue] = useState("");
+  const today = new Date();
+  console.log(today.getDate());
   const [open, setOpen] = useState(false);
-  const [date, setDate] = useState(dayjs("2022-04-17"));
-  const [time, setTime] = useState(dayjs("2022-04-17T15:30"));
+  const [date, setDate] = useState(dayjs(makeToday()));
+  const [time, setTime] = useState(dayjs(makeTodayTime()));
   const [anchorEl, setAnchorEl] = useState(null);
+  const [emailAddress, setEmailAddress] = useState("");
 
+  function makeToday() {
+    const today = new Date();
+    return today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate();
+  }
+  function makeTodayTime() {
+    const today = new Date();
+    return today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate() + "T" + today.getHours() + ":" + today.getMinutes();
+  }
   // 알림 누르면 나오는 모달 관리
   useEffect(() => {
-    console.log("in home modal isModalClicked :", isModalClicked);
     setOpen(isModalClicked);
   }, [isModalClicked]);
 
   useEffect(() => {
-    console.log("open: ", open);
-  }, [open]);
+    dispatch({ type: "Multiple_Modal&HomeSearch", input: inputValue });
+  }, [inputValue]);
 
-  // 왜 이게 있으면
-  // 검색 입력 redux 관리
-  // useEffect(() => {
-  //   dispatch({ type: "newInput", input: inputValue });
-  // }, [inputValue]);
+  useEffect(() => {
+    if (selectedConTitle !== "") setInputValue(selectedConTitle);
+  }, [selectedConTitle]);
 
   const handleCloseBtnClicked = () => {
     setOpen(false);
@@ -82,7 +91,6 @@ const HomeModal = () => {
   const handleModalSearch = (e) => {
     setAnchorEl(e.target);
     setInputValue(e.target.value);
-    dispatch({ type: "Multiple_Modal&HomeSearch", input: inputValue });
   };
 
   return (
@@ -119,9 +127,6 @@ const HomeModal = () => {
                         "& .MuiInputLabel-root": {
                           color: "#F1b600", //label 색상변경
                         },
-                        "& .MuiInputLabel-root": {
-                          color: "#F1b600", //label 색상변경
-                        },
                       },
                       "& .MuiInputLabel-root": {
                         color: "#F1b600", //label 색상변경
@@ -150,9 +155,6 @@ const HomeModal = () => {
                       "& .MuiInputLabel-root": {
                         color: "#F1b600", //label 색상변경
                       },
-                      "& .MuiInputLabel-root": {
-                        color: "#F1b600", //label 색상변경
-                      },
                     },
                     "& .MuiInputLabel-root": {
                       color: "#F1b600", //label 색상변경
@@ -168,7 +170,16 @@ const HomeModal = () => {
           {/* 이메일 입력 */}
           <ModalDialogContent dividers>
             <AlternateEmailIcon sx={{ mr: 2 }} />
-            <ModalTextField id="outlined-search" label="Email" type="email" color="yellow" />
+            <ModalTextField
+              id="outlined-search"
+              label="Email"
+              type="email"
+              color="yellow"
+              onInput={(e) => {
+                setEmailAddress(e.target.value);
+              }}
+              value={emailAddress}
+            />
           </ModalDialogContent>
           <DialogActions>
             <Button autoFocus color="black">

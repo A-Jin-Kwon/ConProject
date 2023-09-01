@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import styled from "styled-components";
 import { useSelector } from "react-redux";
+import Grid from "@mui/material/Grid";
 
 import Follower from "./Follower";
 // 예시로 포켓몬 사진을 사용했습니다.
@@ -24,7 +25,8 @@ const FollowerContainers = () => {
   }, [currentMenu]);
 
   return (
-    <FollowerContainer>
+    // <FollowerContainer>
+    <Grid container>
       {pokemon
         .filter((it) => {
           return currentMenu === "movie"
@@ -40,14 +42,15 @@ const FollowerContainers = () => {
         .map((it) => {
           return <Follower key={it.id} src={it.url}></Follower>;
         })}
-    </FollowerContainer>
+    </Grid>
+    // </FollowerContainer>
   );
 };
 
 const FollowerContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: space-between; */
+  justify-content: space-between;
 `;
 
 export default FollowerContainers;
