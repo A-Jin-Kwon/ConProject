@@ -1,9 +1,14 @@
 import styled from "styled-components";
 import { useState } from "react";
 import NavigateHeader from "../../Components/Header/NavigateHeader";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const baseServerURL = `http://34.125.244.221:8080`;
 
 const JoinEmail = () => {
+  const navigate = useNavigate();
+
   // 이메일 값이 유효한지 아닌지 저장하는 state입니다.
   const [isEmailValid, setIsEmailValid] = useState(true);
 
@@ -17,15 +22,13 @@ const JoinEmail = () => {
   const EmailblurHandler = () => {
     setIsEmailFocused(false);
 
-    if(emailInput === ''){
+    if (emailInput === "") {
       setIsEmailValid(true);
-    }
-    else{
-      if(checkEmailValid()){
+    } else {
+      if (checkEmailValid()) {
         setIsEmailValid(true);
         console.log("형식에 맞는 이메일!");
-      }
-      else{
+      } else {
         setIsEmailValid(false);
         console.log("형식에 맞지 않는 이메일!");
       }
@@ -40,20 +43,18 @@ const JoinEmail = () => {
     setIsNameFocused(false);
   };
 
-
   // 이메일 입력값을 저장합니다.
-  const [emailInput, setEmailInput] = useState('');
+  const [emailInput, setEmailInput] = useState("");
   const changeHandler = (e) => {
     setEmailInput(e.target.value);
     console.log(emailInput);
   };
 
-    // 이름 입력값을 저장합니다.
-    const [nameInput, setNameInput] = useState('');
-    const NameChangeHandler = (e) => {
-        setNameInput(e.target.value);
-    };
-  
+  // 이름 입력값을 저장합니다.
+  const [nameInput, setNameInput] = useState("");
+  const NameChangeHandler = (e) => {
+    setNameInput(e.target.value);
+  };
 
   // 이메일 형식을 확인하는 함수
   const checkEmailValid = () => {
@@ -63,10 +64,10 @@ const JoinEmail = () => {
 
   // 이메일 x버튼을 누를 때 발생하는 함수
   const cancelHandler = () => {
-    setEmailInput('');
+    setEmailInput("");
   };
   const nameCancelHandler = () => {
-    setNameInput('');
+    setNameInput("");
   };
 
   // 비밀번호 보이기는 true, 숨기기는 false입니다.
@@ -85,22 +86,20 @@ const JoinEmail = () => {
   const submitHandler = (e) => {
     e.preventDefault();
 
-    if(pwdInput==='' || checkPwdInput===''){
-        console.log("비번 또는 확인 비번이 입력되지 않았습니다.");
-    }
-    else{
-        if(pwdInput === checkPwdInput){
-            console.log("비번과 확인 비번이 일치합니다.");
-        }
-        else{
-            console.log("비번과 확인 비번이 일치하지 않습니다.");
-        }
+    if (pwdInput === "" || checkPwdInput === "") {
+      console.log("비번 또는 확인 비번이 입력되지 않았습니다.");
+    } else {
+      if (pwdInput === checkPwdInput) {
+        console.log("비번과 확인 비번이 일치합니다.");
+      } else {
+        console.log("비번과 확인 비번이 일치하지 않습니다.");
+      }
     }
   };
 
-//   비번, 확인 비번 저장
-  const [pwdInput, setPwdInput] = useState('');
-  const [checkPwdInput, setCheckPwdInput] = useState('');
+  //   비번, 확인 비번 저장
+  const [pwdInput, setPwdInput] = useState("");
+  const [checkPwdInput, setCheckPwdInput] = useState("");
   const pwdChangeHandler = (e) => {
     setPwdInput(e.target.value);
   };
@@ -108,116 +107,107 @@ const JoinEmail = () => {
     setCheckPwdInput(e.target.value);
   };
 
+  // 서버에 회원가입 데이터 넘기기
+  const handleJoinRequest = async () => {
+    try {
+      const res = await axios.post(baseServerURL + `/members/sign-up`, { email: emailInput, password: pwdInput, checkPassword: checkPwdInput, name: nameInput });
+      if (res.data.isSuccess) {
+        console.log(res);
+        navigate("/profile-setting");
+      } else {
+        console.log("error code :", res.data.code);
+        console.log("error message :", res.data.message);
+        console.log("error result :", res.data.result);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
   return (
     <div>
-      <NavigateHeader headerTitlte={'회원가입'} path={'/join'}/>
+      <NavigateHeader headerTitlte={"회원가입"} path={"/join"} />
 
       <ContentsWrapper>
-      <div>
-        <Header>이메일로 회원가입하기</Header>
-      </div>
-
-      <Form onSubmit={submitHandler}>
-        {/* 이름 */}
         <div>
-          <Label>
-            <LabelSpan>이름</LabelSpan>
-            <NameWrapper>
-                <NameInput
-                  placeholder="your name"
-                  onFocus={NamefocusHandler}
-                  onBlur={NameblurHandler}
-                  onChange={NameChangeHandler}
-                  value={nameInput}
-                />
-              {/* focus 상태라면 이미지를 보여주고, blur 되었다면 이미지를 숨깁니다. */}
-              {isNameFocused ?
-                <IconEmail src="imgs/cancel.png" 
-                  // onMouseDown으로, onClick 보다 blur 이벤트가 먼저 실행되는 것을 방지할 수 있습니다.
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                  }}
-                  onClick={nameCancelHandler}
-                />
-              : null}
-            </NameWrapper>
-          </Label>
+          <Header>이메일로 회원가입하기</Header>
         </div>
 
-        {/* 이메일 */}
-        <div>
-          <Label>
-            <LabelSpan>이메일</LabelSpan>
-            <EmailWrapper>
-                <EmailInput
-                  placeholder="youremail@email.com"
-                  onFocus={EmailfocusHandler}
-                  onBlur={EmailblurHandler}
-                  onChange={changeHandler}
-                  value={emailInput}
-                  isEmailValid={isEmailValid}
-                />
-              {/* focus 상태라면 이미지를 보여주고, blur 되었다면 이미지를 숨깁니다. */}
-              {isEmailFocused ?
-                <IconEmail src="imgs/cancel.png" 
-                  // onMouseDown으로, onClick 보다 blur 이벤트가 먼저 실행되는 것을 방지할 수 있습니다.
-                  onMouseDown={(e) => {
-                    e.preventDefault();
-                  }}
-                  onClick={cancelHandler}
-                />
-              : isEmailValid ? null : <IconError src="imgs/error.png"/>}
-            </EmailWrapper>
+        <Form onSubmit={submitHandler}>
+          {/* 이름 */}
+          <div>
+            <Label>
+              <LabelSpan>이름</LabelSpan>
+              <NameWrapper>
+                <NameInput placeholder="your name" onFocus={NamefocusHandler} onBlur={NameblurHandler} onChange={NameChangeHandler} value={nameInput} />
+                {/* focus 상태라면 이미지를 보여주고, blur 되었다면 이미지를 숨깁니다. */}
+                {isNameFocused ? (
+                  <IconEmail
+                    src="imgs/cancel.png"
+                    // onMouseDown으로, onClick 보다 blur 이벤트가 먼저 실행되는 것을 방지할 수 있습니다.
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                    }}
+                    onClick={nameCancelHandler}
+                  />
+                ) : null}
+              </NameWrapper>
+            </Label>
+          </div>
 
-            {/* 이메일 형식이 바르지 않다면 에러 메세지를 띄웁니다. */}
-            {isEmailValid ? null 
-              : <ErrorMessage>
-                  올바른 이메일 형태로 입력해주세요.
-                </ErrorMessage>
-            }
-          </Label>
-        </div>
-        {/* 비밀번호 */}
-        <div>
-          <Label>
-            <LabelSpan>비밀번호</LabelSpan>
-            <PasswordWrapper>
-              <PasswordInput
-                placeholder="비밀번호 입력"
-                type={showPassword ? "password" : "text"}
-                onChange={pwdChangeHandler}
-              />
-              <IconPassword
-                src={showPassword ? "./imgs/visibility_off.svg" : "./imgs/visibility.svg"}
-                onClick={visibilityHandler}
-              />
-            </PasswordWrapper>
-          </Label>
-        </div>
-        {/* 비밀번호 확인 */}
-        <div>
-          <Label>
-            <LabelSpan>비밀번호 확인</LabelSpan>
-            <PasswordWrapper>
-              <PasswordInput
-                placeholder="비밀번호 입력"
-                type={showCheckPassword ? "password" : "text"}
-                onChange={checkPwdChangeHandler}
-              />
-              <IconPassword
-                src={showCheckPassword ? "./imgs/visibility_off.svg" : "./imgs/visibility.svg"}
-                onClick={visibilityCheckHandler}
-              />
-            </PasswordWrapper>
-          </Label>
-        </div>
+          {/* 이메일 */}
+          <div>
+            <Label>
+              <LabelSpan>이메일</LabelSpan>
+              <EmailWrapper>
+                <EmailInput placeholder="youremail@email.com" onFocus={EmailfocusHandler} onBlur={EmailblurHandler} onChange={changeHandler} value={emailInput} isEmailValid={isEmailValid} />
+                {/* focus 상태라면 이미지를 보여주고, blur 되었다면 이미지를 숨깁니다. */}
+                {isEmailFocused ? (
+                  <IconEmail
+                    src="imgs/cancel.png"
+                    // onMouseDown으로, onClick 보다 blur 이벤트가 먼저 실행되는 것을 방지할 수 있습니다.
+                    onMouseDown={(e) => {
+                      e.preventDefault();
+                    }}
+                    onClick={cancelHandler}
+                  />
+                ) : isEmailValid ? null : (
+                  <IconError src="imgs/error.png" />
+                )}
+              </EmailWrapper>
 
-        {/* 회원가입 */}
-        <JoinBtnWrapper>
-          <Link to="/profile-setting"><JoinBtn>다음</JoinBtn></Link>
-        </JoinBtnWrapper>
-      </Form>
+              {/* 이메일 형식이 바르지 않다면 에러 메세지를 띄웁니다. */}
+              {isEmailValid ? null : <ErrorMessage>올바른 이메일 형태로 입력해주세요.</ErrorMessage>}
+            </Label>
+          </div>
+          {/* 비밀번호 */}
+          <div>
+            <Label>
+              <LabelSpan>비밀번호</LabelSpan>
+              <PasswordWrapper>
+                <PasswordInput placeholder="비밀번호 입력" type={showPassword ? "password" : "text"} onChange={pwdChangeHandler} />
+                <IconPassword src={showPassword ? "./imgs/visibility_off.svg" : "./imgs/visibility.svg"} onClick={visibilityHandler} />
+              </PasswordWrapper>
+            </Label>
+          </div>
+          {/* 비밀번호 확인 */}
+          <div>
+            <Label>
+              <LabelSpan>비밀번호 확인</LabelSpan>
+              <PasswordWrapper>
+                <PasswordInput placeholder="비밀번호 입력" type={showCheckPassword ? "password" : "text"} onChange={checkPwdChangeHandler} />
+                <IconPassword src={showCheckPassword ? "./imgs/visibility_off.svg" : "./imgs/visibility.svg"} onClick={visibilityCheckHandler} />
+              </PasswordWrapper>
+            </Label>
+          </div>
 
+          {/* 회원가입 */}
+          <JoinBtnWrapper>
+            {/* <Link to="/profile-setting"> */}
+            <JoinBtn onClick={handleJoinRequest}>다음</JoinBtn>
+            {/* </Link> */}
+          </JoinBtnWrapper>
+        </Form>
       </ContentsWrapper>
     </div>
   );
@@ -298,9 +288,7 @@ const EmailInput = styled.input`
   padding: 16px 18px;
   width: 380px;
 
-  border: ${({isEmailValid}) => (
-    isEmailValid ? '1px solid #d5d5d5' : '1px solid #E61A1A'
-  )};
+  border: ${({ isEmailValid }) => (isEmailValid ? "1px solid #d5d5d5" : "1px solid #E61A1A")};
 
   &:focus {
     outline: none;

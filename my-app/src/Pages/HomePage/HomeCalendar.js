@@ -39,7 +39,7 @@ const HomeCalendar = () => {
   };
 
   const handleDayCellContent = (arg) => {
-    console.log(arg);
+    // console.log(arg);
     const today = new Date();
     const date = arg.date.getDate();
     const month = arg.date.getMonth();

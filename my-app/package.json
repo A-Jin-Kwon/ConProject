@@ -27,6 +27,7 @@
     "dayjs": "^1.11.9",
     "iso-country-code-to-korean": "^1.0.4",
     "react": "^18.2.0",
+    "react-cookie": "^6.1.0",
     "react-datepicker": "^4.16.0",
     "react-dom": "^18.2.0",
     "react-redux": "^8.1.1",
