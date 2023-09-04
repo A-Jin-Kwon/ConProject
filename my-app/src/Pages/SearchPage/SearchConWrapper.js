@@ -7,11 +7,9 @@ import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Card from "@mui/material/Card";
 import Popper from "@mui/material/Popper";
-import Popover from "@mui/material/Popover";
 
 import { StyledLink } from "../CommunityPage/FollowerContainer/Follower";
 import EditNote from "../../Components/StyledComponents/EditNote";
-import { useFetcher } from "react-router-dom";
 
 const SearchConWrapper = ({ it }) => {
   const [optionClicked, setOptionClicked] = useState(false);

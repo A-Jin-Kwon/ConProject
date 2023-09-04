@@ -22,6 +22,8 @@ const Button = ({ children, isActive, isFollowed, ...props }) => {
 // {followed === false ? "팔로우" : "팔로잉"}
 // </StyledFollowButton>
 //
+
+const baseServerURL = `http://34.125.244.221:8080`;
 const StyledFollowButton = styled(Button)`
   width: 100%;
   height: 100%;
@@ -42,5 +44,5 @@ const StyledFollowButton = styled(Button)`
         `}
 `;
 
-export { StyledFollowButton };
+export { StyledFollowButton, baseServerURL };
 export default ProfileButton;

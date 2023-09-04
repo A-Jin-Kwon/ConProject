@@ -1,8 +1,14 @@
 import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
+
+const baseServerURL = `http://34.125.244.221:8080`;
 
 const Login = () => {
+  const navigate = useNavigate();
+
   // 이메일 값이 유효한지 아닌지 저장하는 state입니다.
   const [isEmailValid, setIsEmailValid] = useState(true);
 
@@ -16,23 +22,21 @@ const Login = () => {
   const EmailblurHandler = () => {
     setIsEmailFocused(false);
 
-    if(emailInput === ''){
+    if (emailInput === "") {
       setIsEmailValid(true);
-    }
-    else{
-      if(checkEmailValid()){
+    } else {
+      if (checkEmailValid()) {
         setIsEmailValid(true);
         console.log("형식에 맞는 이메일!");
-      }
-      else{
+      } else {
         setIsEmailValid(false);
         console.log("형식에 맞지 않는 이메일!");
       }
     }
-  }
+  };
 
   // 이메일 입력값을 저장합니다.
-  const [emailInput, setEmailInput] = useState('');
+  const [emailInput, setEmailInput] = useState("");
   const changeHandler = (e) => {
     setEmailInput(e.target.value);
     console.log(emailInput);
@@ -46,7 +50,13 @@ const Login = () => {
 
   // 이메일 x버튼을 누를 때 발생하는 함수
   const cancelHandler = () => {
-    setEmailInput('');
+    setEmailInput("");
+  };
+
+  // 비밀번호 입력 관리
+  const [pwdInput, setPwdInput] = useState("");
+  const handlePwdInput = (e) => {
+    setPwdInput(e.target.value);
   };
 
   // 비밀번호 보이기는 true, 숨기기는 false입니다.
@@ -56,8 +66,17 @@ const Login = () => {
   };
 
   // 폼 submit 시, 발생하는 함수입니다.
-  const submitHandler = (e) => {
+  const submitHandler = async (e) => {
     e.preventDefault();
+    try {
+      const res = await axios.post(baseServerURL + "/login", { email: emailInput, password: pwdInput });
+      console.log(res);
+      localStorage.setItem("auth", res.headers.authorization);
+      localStorage.setItem("auth-refresh", res.headers.authorization_refresh);
+      if (res.status === 200) navigate("/");
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
@@ -72,32 +91,24 @@ const Login = () => {
           <Label>
             <LabelSpan>이메일</LabelSpan>
             <EmailWrapper>
-                <EmailInput
-                  placeholder="youremail@email.com"
-                  onFocus={EmailfocusHandler}
-                  onBlur={EmailblurHandler}
-                  onChange={changeHandler}
-                  value={emailInput}
-                  isEmailValid={isEmailValid}
-                />
+              <EmailInput placeholder="youremail@email.com" onFocus={EmailfocusHandler} onBlur={EmailblurHandler} onChange={changeHandler} value={emailInput} isEmailValid={isEmailValid} />
               {/* focus 상태라면 이미지를 보여주고, blur 되었다면 이미지를 숨깁니다. */}
-              {isEmailFocused ?
-                <IconEmail src="imgs/cancel.svg" 
+              {isEmailFocused ? (
+                <IconEmail
+                  src="imgs/cancel.svg"
                   // onMouseDown으로, onClick 보다 blur 이벤트가 먼저 실행되는 것을 방지할 수 있습니다.
                   onMouseDown={(e) => {
                     e.preventDefault();
                   }}
                   onClick={cancelHandler}
                 />
-              : isEmailValid ? null : <IconError src="imgs/error.svg"/>}
+              ) : isEmailValid ? null : (
+                <IconError src="imgs/error.svg" />
+              )}
             </EmailWrapper>
 
             {/* 이메일 형식이 바르지 않다면 에러 메세지를 띄웁니다. */}
-            {isEmailValid ? null 
-              : <ErrorMessage>
-                  올바른 이메일 형태로 입력해주세요.
-                </ErrorMessage>
-            }
+            {isEmailValid ? null : <ErrorMessage>올바른 이메일 형태로 입력해주세요.</ErrorMessage>}
           </Label>
         </div>
         {/* 비밀번호 */}
@@ -105,14 +116,8 @@ const Login = () => {
           <Label>
             <LabelSpan>비밀번호</LabelSpan>
             <PasswordWrapper>
-              <PasswordInput
-                placeholder="비밀번호 입력"
-                type={showPassword ? "password" : "text"}
-              />
-              <IconPassword
-                src={showPassword ? "imgs/visibility_off.svg" : "imgs/visibility.svg"}
-                onClick={visibilityHandler}
-              />
+              <PasswordInput placeholder="비밀번호 입력" type={showPassword ? "password" : "text"} onChange={handlePwdInput} />
+              <IconPassword src={showPassword ? "imgs/visibility_off.svg" : "imgs/visibility.svg"} onClick={visibilityHandler} />
             </PasswordWrapper>
           </Label>
         </div>
@@ -125,7 +130,7 @@ const Login = () => {
       <BottomWrapper>
         <div>
           <span>계정이 없으세요?</span>
-          <BottomJoin to='/join'>회원가입</BottomJoin>
+          <BottomJoin to="/join">회원가입</BottomJoin>
         </div>
         <BottomFindPassword to="/password-find">비밀번호 찾기</BottomFindPassword>
       </BottomWrapper>
@@ -221,9 +226,7 @@ const EmailInput = styled.input`
   padding: 16px 18px;
   width: 380px;
 
-  border: ${({isEmailValid}) => (
-    isEmailValid ? '1px solid #d5d5d5' : '1px solid #E61A1A'
-  )};
+  border: ${({ isEmailValid }) => (isEmailValid ? "1px solid #d5d5d5" : "1px solid #E61A1A")};
 
   &:focus {
     outline: none;
