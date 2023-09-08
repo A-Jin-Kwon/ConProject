@@ -1,9 +1,10 @@
 import { combineReducers, createStore } from "redux";
 
 const headerInitialState = {};
-const communityInitialState = { currentMenu: "total", isModalClicked: false, content: {}, input: "", selectedConTitle: "" };
+const communityInitialState = { currentMenu: "total", isModalClicked: false, content: {}, input: "", selectedConTitle: "", isLoggedin: false };
 const TVShowInitialState = {};
 const SearchInputInitialState = { input: "" };
+const MemberInfomation = { name: "", introduction: "" };
 
 const headerReducer = (state = headerInitialState, action) => {
   return {};
@@ -11,6 +12,12 @@ const headerReducer = (state = headerInitialState, action) => {
 
 const communityReducer = (state = communityInitialState, action) => {
   switch (action.type) {
+    case "login": {
+      return {
+        ...state,
+        isLoggedin: true,
+      };
+    }
     case "changeMenu": {
       return {
         ...state,
@@ -78,11 +85,38 @@ const SearchInputReducer = (state = SearchInputInitialState, action) => {
   } else return SearchInputInitialState;
 };
 
+const SettingReducer = (state = MemberInfomation, action) => {
+  switch (action.type) {
+    case "setName": {
+      return {
+        ...state,
+        ...action.name,
+      };
+    }
+    case "setIntroduction": {
+      return {
+        ...state,
+        ...action.introduction,
+      };
+    }
+    case "Multiple_setInfo": {
+      return {
+        ...state,
+        name: action.info.name,
+        introduction: action.info.introduction,
+      };
+    }
+    default:
+      return MemberInfomation;
+  }
+};
+
 const rootReducer = combineReducers({
   headerReducer,
   communityReducer,
   TVShowSearchReducer,
   SearchInputReducer,
+  SettingReducer,
 });
 
 const store = createStore(rootReducer);

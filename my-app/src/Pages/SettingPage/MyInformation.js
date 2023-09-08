@@ -12,17 +12,17 @@ const MyInformation = () => {
     setSettingPage(e.target.id);
   };
 
-  useEffect(() => {
-    const auth = localStorage.getItem("auth");
-    console.log(auth);
-    async function getUserInfo() {
-      const userInfo = await axios.get(baseServerURL + "/members/profile", {
-        headers: { Authorization: auth },
-      });
-      console.log(userInfo);
-    }
-    getUserInfo();
-  });
+  // useEffect(() => {
+  //   const auth = localStorage.getItem("auth");
+  //   console.log(auth);
+  //   async function getUserInfo() {
+  //     const userInfo = await axios.get(baseServerURL + "/members/profile", {
+  //       headers: { Authorization: auth },
+  //     });
+  //     console.log(userInfo);
+  //   }
+  //   getUserInfo();
+  // });
 
   return (
     <div>
