@@ -2,12 +2,14 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
 import axios from "axios";
 
 const baseServerURL = `http://34.125.244.221:8080`;
 
 const Login = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   // 이메일 값이 유효한지 아닌지 저장하는 state입니다.
   const [isEmailValid, setIsEmailValid] = useState(true);
@@ -72,8 +74,13 @@ const Login = () => {
       const res = await axios.post(baseServerURL + "/login", { email: emailInput, password: pwdInput });
       console.log(res);
       localStorage.setItem("auth", res.headers.authorization);
-      localStorage.setItem("auth-refresh", res.headers.authorization_refresh);
-      if (res.status === 200) navigate("/");
+      //이건 안 됨
+      // localStorage.setItem("auth-refresh", res.headers.authorization_refresh);
+      //
+      if (res.status === 200) {
+        dispatch({ type: "login" });
+        navigate("/");
+      }
     } catch (err) {
       console.log(err);
     }

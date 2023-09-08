@@ -132,7 +132,7 @@ const HomeModal = () => {
                         color: "#F1b600", //label 색상변경
                       },
                     }}
-                    value={date}
+                    value={dayjs(today)}
                     onChange={(newValue) => setDate(newValue)}
                   />
                 </DemoItem>
@@ -161,7 +161,7 @@ const HomeModal = () => {
                     },
                   }}
                   color="yellow.main"
-                  value={time}
+                  value={dayjs(today)}
                   onChange={(newValue) => setTime(newValue)}
                 />
               </DemoContainer>
