@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import axios from "axios";
+import { useCookies } from "react-cookie";
 
 const baseServerURL = `http://34.125.244.221:8080`;
 
@@ -67,6 +68,7 @@ const Login = () => {
     setShowPassword(!showPassword);
   };
 
+  const [cookies, setCookie] = useCookies([]);
   // 폼 submit 시, 발생하는 함수입니다.
   const submitHandler = async (e) => {
     e.preventDefault();
@@ -74,6 +76,8 @@ const Login = () => {
       const res = await axios.post(baseServerURL + "/login", { email: emailInput, password: pwdInput });
       console.log(res);
       localStorage.setItem("auth", res.headers.authorization);
+      // 쿠키 사용은 잘 모르겠다 이게 좋은건지..
+      // setCookie("auth", res.headers.authorization, { maxAge: 3600, httpOnly: true });
       //이건 안 됨
       // localStorage.setItem("auth-refresh", res.headers.authorization_refresh);
       //

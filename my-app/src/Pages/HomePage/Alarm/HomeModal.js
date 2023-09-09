@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import styled from "styled-components";
+import axios from "axios";
 import CloseIcon from "@mui/icons-material/Close";
 import Button from "@mui/material/Button";
 import Dialog from "@mui/material/Dialog";
@@ -22,8 +23,10 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { StyledEngineProvider } from "@mui/styled-engine"; // 본문을 감싸줘야함
 import AlarmSearch from "./AlarmSearch";
 
-// mui를 사용해서 만들어본 모달
+import { baseServerURL } from "../../../Components/StyledComponents/StyledComponents";
+import { ContactSupportOutlined } from "@mui/icons-material";
 
+// mui를 사용해서 만들어본 모달
 const theme = createTheme({
   palette: {
     yellow: {
@@ -51,24 +54,16 @@ const HomeModal = () => {
   const dispatch = useDispatch();
   const isModalClicked = useSelector((state) => state.communityReducer.isModalClicked);
   const selectedConTitle = useSelector((state) => state.communityReducer.selectedConTitle);
+  const selectedConId = useSelector((state) => state.communityReducer.selectedConId);
   // 검색 입력 값
   const [inputValue, setInputValue] = useState("");
   const today = new Date();
-  console.log(today.getDate());
   const [open, setOpen] = useState(false);
-  const [date, setDate] = useState(dayjs(makeToday()));
-  const [time, setTime] = useState(dayjs(makeTodayTime()));
+  const [date, setDate] = useState(dayjs(today));
+  const [time, setTime] = useState(dayjs(today));
   const [anchorEl, setAnchorEl] = useState(null);
   const [emailAddress, setEmailAddress] = useState("");
 
-  function makeToday() {
-    const today = new Date();
-    return today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate();
-  }
-  function makeTodayTime() {
-    const today = new Date();
-    return today.getFullYear() + "-" + today.getMonth() + "-" + today.getDate() + "T" + today.getHours() + ":" + today.getMinutes();
-  }
   // 알림 누르면 나오는 모달 관리
   useEffect(() => {
     setOpen(isModalClicked);
@@ -82,7 +77,7 @@ const HomeModal = () => {
     if (selectedConTitle !== "") setInputValue(selectedConTitle);
   }, [selectedConTitle]);
 
-  const handleCloseBtnClicked = () => {
+  const ClosePopper = () => {
     setOpen(false);
     dispatch({ type: "modalFlip" });
   };
@@ -93,12 +88,65 @@ const HomeModal = () => {
     setInputValue(e.target.value);
   };
 
+  const datePickerStyle = {
+    "& .MuiOutlinedInput-root": {
+      "&:hover fieldset": {
+        borderColor: "yellow.main",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "yellow.main",
+      },
+      "& .MuiInputLabel-root": {
+        color: "#F1b600", //label 색상변경
+      },
+    },
+    "& .MuiInputLabel-root": {
+      color: "#F1b600", //label 색상변경
+    },
+  };
+
+  const handleSubmit = async () => {
+    const uuid = localStorage.getItem("com.naver.nid.oauth.state_token");
+    const auth = localStorage.getItem("auth");
+
+    const formatDate = (inputDate) => {
+      // 입력 날짜 문자열을 Date 객체로 변환
+      const date = new Date(inputDate);
+
+      // 날짜 및 시간 구성 요소 추출
+      const year = date.getFullYear();
+      const month = String(date.getMonth() + 1).padStart(2, "0"); // 월은 0부터 시작하므로 1을 더하고 2자리로 포맷팅
+      const day = String(date.getDate()).padStart(2, "0"); // 날짜를 2자리로 포맷팅
+      const hours = String(date.getHours()).padStart(2, "0"); // 시간을 2자리로 포맷팅
+      const minutes = String(date.getMinutes()).padStart(2, "0"); // 분을 2자리로 포맷팅
+      const seconds = String(date.getSeconds()).padStart(2, "0"); // 초를 2자리로 포맷팅
+
+      // 포맷된 문자열 반환
+      return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
+    };
+
+    const data = {
+      contentId: String(selectedConId),
+      email: emailAddress,
+      time: formatDate(time),
+      uuid: uuid,
+    };
+    console.log(JSON.stringify(data));
+    const setAlarm = async () => {
+      const res = await axios.post(baseServerURL + "/notifications", data, {
+        headers: { Authorization: auth },
+      });
+      console.log(res);
+    };
+    setAlarm();
+    ClosePopper();
+  };
   return (
     <StyledEngineProvider>
       <ThemeProvider theme={theme}>
         <Dialog open={open}>
           <DialogTitle sx={{ p: 3 }}>
-            <ModalCloseIcon onClick={handleCloseBtnClicked}></ModalCloseIcon>
+            <ModalCloseIcon onClick={ClosePopper}></ModalCloseIcon>
           </DialogTitle>
           {/* 콘텐츠 제목 검색 */}
           <ModalDialogContent dividers>
@@ -113,28 +161,7 @@ const HomeModal = () => {
             <LocalizationProvider dateAdapter={AdapterDayjs}>
               <DemoContainer components={["DatePicker"]}>
                 <DemoItem>
-                  <ModalDatePicker
-                    format="YYYY-MM-DD"
-                    label="날짜 선택"
-                    sx={{
-                      "& .MuiOutlinedInput-root": {
-                        "&:hover fieldset": {
-                          borderColor: "yellow.main",
-                        },
-                        "&.Mui-focused fieldset": {
-                          borderColor: "yellow.main",
-                        },
-                        "& .MuiInputLabel-root": {
-                          color: "#F1b600", //label 색상변경
-                        },
-                      },
-                      "& .MuiInputLabel-root": {
-                        color: "#F1b600", //label 색상변경
-                      },
-                    }}
-                    value={dayjs(today)}
-                    onChange={(newValue) => setDate(newValue)}
-                  />
+                  <ModalDatePicker format="YYYY-MM-DD" label="날짜 선택" sx={datePickerStyle} value={date} onChange={(newValue) => setDate(newValue)} />
                 </DemoItem>
               </DemoContainer>
             </LocalizationProvider>
@@ -144,24 +171,9 @@ const HomeModal = () => {
                 <ModalTimePicker
                   // label 색상 변경 어케하는겨?
                   label="시간 선택"
-                  sx={{
-                    "& .MuiOutlinedInput-root": {
-                      "&:hover fieldset": {
-                        borderColor: "yellow.main",
-                      },
-                      "&.Mui-focused fieldset": {
-                        borderColor: "yellow.main",
-                      },
-                      "& .MuiInputLabel-root": {
-                        color: "#F1b600", //label 색상변경
-                      },
-                    },
-                    "& .MuiInputLabel-root": {
-                      color: "#F1b600", //label 색상변경
-                    },
-                  }}
+                  sx={datePickerStyle}
                   color="yellow.main"
-                  value={dayjs(today)}
+                  value={time}
                   onChange={(newValue) => setTime(newValue)}
                 />
               </DemoContainer>
@@ -182,7 +194,7 @@ const HomeModal = () => {
             />
           </ModalDialogContent>
           <DialogActions>
-            <Button autoFocus color="black">
+            <Button autoFocus onClick={handleSubmit} color="black">
               저장
             </Button>
           </DialogActions>

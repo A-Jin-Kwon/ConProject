@@ -10,14 +10,16 @@ import HomeCalendar from "./HomeCalendar";
 
 const MyHome = () => {
   const isModalClicked = useSelector((state) => state.communityReducer.isModalClicked);
-  const isLoggedIn = useSelector((state) => state.communityReducer.isLoggedIn);
-  console.log("isloggedin?", isLoggedIn);
+  // const isLoggedIn = useSelector((state) => state.LoginReducer.isLoggedIn);
+  const isLoggedIn = localStorage.getItem("auth") !== undefined ? true : false;
+  // console.log("isloggedin?", isLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   !isLoggedIn ? navigate("/login") : navigate("/");
-  // });
+  useEffect(() => {
+    !isLoggedIn ? navigate("/login") : navigate("/");
+  });
+
   return (
     <>
       {isModalClicked && <HomeModal></HomeModal>}
@@ -35,4 +37,5 @@ const StyledMuiContainer = styled(Container)`
   position: relative;
 `;
 
+export { StyledMuiContainer };
 export default MyHome;

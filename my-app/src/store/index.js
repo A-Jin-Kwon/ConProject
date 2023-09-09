@@ -1,7 +1,7 @@
 import { combineReducers, createStore } from "redux";
 
 const headerInitialState = {};
-const communityInitialState = { currentMenu: "total", isModalClicked: false, content: {}, input: "", selectedConTitle: "", isLoggedIn: false };
+const communityInitialState = { currentMenu: "total", isModalClicked: false, content: {}, input: "", selectedConTitle: "", selectedConId: 0 };
 const TVShowInitialState = {};
 const SearchInputInitialState = { input: "" };
 const LoginState = { isLoggedIn: false };
@@ -13,12 +13,6 @@ const headerReducer = (state = headerInitialState, action) => {
 
 const communityReducer = (state = communityInitialState, action) => {
   switch (action.type) {
-    case "login": {
-      return {
-        ...state,
-        isLoggedIn: true,
-      };
-    }
     case "changeMenu": {
       return {
         ...state,
@@ -36,6 +30,7 @@ const communityReducer = (state = communityInitialState, action) => {
       return {
         ...state,
         selectedConTitle: action.selectedConTitle,
+        selectedConId: action.selectedConId,
       };
     }
     case "Multiple_Modal&ClickedContent": {
@@ -65,22 +60,22 @@ const communityReducer = (state = communityInitialState, action) => {
       };
     }
     default:
-      return communityInitialState;
+      return state;
   }
 };
 
-// const LoginReducer = (state = LoginState, action) => {
-//   switch (action.type) {
-//     case "login": {
-//       return {
-//         ...state,
-//         isLoggedIn: true,
-//       };
-//     }
-//     default:
-//       return LoginState;
-//   }
-// };
+const LoginReducer = (state = LoginState, action) => {
+  switch (action.type) {
+    case "login": {
+      return {
+        ...state,
+        isLoggedIn: true,
+      };
+    }
+    default:
+      return state;
+  }
+};
 
 const TVShowSearchReducer = (state = TVShowInitialState, action) => {
   if (action.type === "loadTVShow") {
@@ -88,7 +83,7 @@ const TVShowSearchReducer = (state = TVShowInitialState, action) => {
       ...state,
       ...action.tvShow,
     };
-  } else return TVShowInitialState;
+  } else return state;
 };
 
 const SearchInputReducer = (state = SearchInputInitialState, action) => {
@@ -96,7 +91,7 @@ const SearchInputReducer = (state = SearchInputInitialState, action) => {
     return {
       input: action.input,
     };
-  } else return SearchInputInitialState;
+  } else return state;
 };
 
 const SettingReducer = (state = MemberInfomation, action) => {
@@ -121,7 +116,7 @@ const SettingReducer = (state = MemberInfomation, action) => {
       };
     }
     default:
-      return MemberInfomation;
+      return state;
   }
 };
 
@@ -131,7 +126,7 @@ const rootReducer = combineReducers({
   TVShowSearchReducer,
   SearchInputReducer,
   SettingReducer,
-  // LoginReducer,
+  LoginReducer,
 });
 
 const store = createStore(rootReducer);
