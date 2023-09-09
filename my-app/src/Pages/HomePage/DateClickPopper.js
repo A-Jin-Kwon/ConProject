@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
+
 import Popper from "@mui/material/Popper";
 import Box from "@mui/material/Box";
 import CloseIcon from "@mui/icons-material/Close";
 import EditNoteIcon from "@mui/icons-material/EditNote";
 import { YellowCircle } from "./HomeCalendar";
+
+import { baseServerURL } from "../../Components/StyledComponents/StyledComponents";
 
 const DateClickPopper = ({ clickPos, anchorEl, date }) => {
   const [day, setDay] = useState("");
@@ -18,7 +22,15 @@ const DateClickPopper = ({ clickPos, anchorEl, date }) => {
     setDay(dateParts[2]);
   };
 
+  const getAlarm = async () => {
+    const auth = localStorage.getItem("auth");
+    const res = await axios.get(baseServerURL + "/notifications", { headers: { Authorization: auth } });
+    console.log(res);
+  };
+
   useEffect(() => {
+    // getAlarm();
+    // const res = getAlarm();
     dateFormating();
     {
       clickPos ? setOpen(true) : setOpen(false);

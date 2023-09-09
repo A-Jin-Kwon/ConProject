@@ -19,6 +19,7 @@ const AlarmSearch = ({ anchorEl }) => {
   const InputValue = useSelector((state) => state.communityReducer.input);
   const [TVShow, setTVShow] = useState({});
   const [selectedCon, setSelectedCon] = useState("");
+  const [selectedConId, setSelectedConId] = useState(0);
   const [open, setOpen] = useState(true);
 
   useEffect(() => {
@@ -32,7 +33,7 @@ const AlarmSearch = ({ anchorEl }) => {
   }, [InputValue]);
 
   useEffect(() => {
-    dispatch({ type: "setSelectedConTitle", selectedConTitle: selectedCon });
+    dispatch({ type: "setSelectedConTitle", selectedConTitle: selectedCon, selectedConId: selectedConId });
     if (selectedCon !== "") setOpen(false);
     else setOpen(true);
   }, [selectedCon]);
@@ -42,6 +43,12 @@ const AlarmSearch = ({ anchorEl }) => {
     const dateParts = date.split("-");
     const year = dateParts[0];
     return year;
+  };
+
+  const handleConSelect = (it) => {
+    console.log(it);
+    setSelectedConId(it.id);
+    it.media_type === "tv" ? setSelectedCon(it.name) : setSelectedCon(it.title);
   };
 
   return (
@@ -56,7 +63,8 @@ const AlarmSearch = ({ anchorEl }) => {
                 <FlexDiv
                   key={it.id}
                   onClick={() => {
-                    it.media_type === "tv" ? setSelectedCon(it.name) : setSelectedCon(it.title);
+                    handleConSelect(it);
+                    // it.media_type === "tv" ? {setSelectedCon(it.name) setSelectedConId(it.id)} : setSelectedCon(it.title);
                   }}
                 >
                   <StyledImg src={`https://image.tmdb.org/t/p/original${it.poster_path}`}></StyledImg>

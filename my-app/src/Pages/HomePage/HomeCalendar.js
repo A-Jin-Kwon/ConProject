@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
+import axios from "axios";
+import { baseServerURL } from "../../Components/StyledComponents/StyledComponents";
 
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
@@ -13,6 +15,15 @@ const HomeCalendar = () => {
   const [popperOpen, setPopperOpen] = useState(false);
   const [popperDate, setPopperDate] = useState("");
   const [clientX, setClientX] = useState(0);
+
+  useEffect(() => {
+    const getAlarm = async () => {
+      const auth = localStorage.getItem("auth");
+      const res = await axios.get(baseServerURL + "/notifications", { headers: { Authorization: auth } });
+      console.log(res);
+    };
+    // getAlarm();
+  });
 
   // popper 위치 설정
   const handleAnchorPos = (e) => {

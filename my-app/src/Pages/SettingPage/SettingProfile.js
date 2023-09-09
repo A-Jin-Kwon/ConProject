@@ -2,7 +2,6 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import ProfileImg from "../../Components/StyledComponents/ProfileImg";
-import Setting from "./Setting";
 import NavigateHeader from "../../Components/Header/NavigateHeader";
 import { styled } from "styled-components";
 import axios from "axios";
@@ -13,17 +12,9 @@ const SettingProfile = () => {
   const userInfo = useSelector((state) => state.SettingReducer);
 
   const navigate = useNavigate();
-  const [settingpage, setSettingPage] = useState("myInformation");
-  const clickHandler = (e) => {
-    console.log(e.target.id);
-    setSettingPage(e.target.id);
-  };
-
-  /*저장 버튼 누르면 새로운 객체에 저장, 콘솔 창에 내용 확인*/
 
   const [username, setUsername] = useState("");
   const [introduction, setIntrodction] = useState("");
-  const [newObject, setNewObject] = useState(null);
   const [showWarning, setShowWarning] = useState(false);
 
   useEffect(() => {
@@ -44,11 +35,6 @@ const SettingProfile = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const newObj = {
-      username: username,
-      introduction: introduction,
-    };
-    setNewObject(newObj);
 
     const auth = localStorage.getItem("auth");
     const formData = new FormData();
@@ -56,19 +42,19 @@ const SettingProfile = () => {
     formData.append("introduction", introduction);
     // 프로필 사진은 나중에...
     // formData.append("imageFile", null);
-    console.log(auth);
     async function postProfileChanged() {
       const res = await axios.post(baseServerURL + "/members/profile", formData, { headers: { Authorization: auth } });
       return res;
     }
+
     try {
-      const res = await axios.post(baseServerURL + "/members/profile", formData, { headers: { Authorization: auth } });
+      const res = await postProfileChanged();
       console.log(res);
+
       if (res.data.code === 200) navigate(-1);
     } catch (err) {
       console.log(err);
     }
-    // alert(`<변경 내용>\n이름: ${username}\n자기소개: ${introduction}\n저장되었습니다!`);
   };
 
   return (
@@ -100,13 +86,10 @@ const SettingProfile = () => {
             </div>
           </div>
           <div className="PS_Wrap_4">
-            <button className="PS_Wrap_4_Btn" style={{ fontFamily: "NanumSquareNeo" }}>
-              변경사항 저장
-            </button>
+            <button className="PS_Wrap_4_Btn">변경사항 저장</button>
           </div>
         </div>
       </form>
-      {/* <Setting username={username} introduction={introduction} /> */}
     </div>
   );
 };
