@@ -1,9 +1,10 @@
 import { combineReducers, createStore } from "redux";
 
 const headerInitialState = {};
-const communityInitialState = { currentMenu: "total", isModalClicked: false, content: {}, input: "", selectedConTitle: "", isLoggedin: false };
+const communityInitialState = { currentMenu: "total", isModalClicked: false, content: {}, input: "", selectedConTitle: "", isLoggedIn: false };
 const TVShowInitialState = {};
 const SearchInputInitialState = { input: "" };
+const LoginState = { isLoggedIn: false };
 const MemberInfomation = { name: "", introduction: "" };
 
 const headerReducer = (state = headerInitialState, action) => {
@@ -15,7 +16,7 @@ const communityReducer = (state = communityInitialState, action) => {
     case "login": {
       return {
         ...state,
-        isLoggedin: true,
+        isLoggedIn: true,
       };
     }
     case "changeMenu": {
@@ -68,6 +69,19 @@ const communityReducer = (state = communityInitialState, action) => {
   }
 };
 
+// const LoginReducer = (state = LoginState, action) => {
+//   switch (action.type) {
+//     case "login": {
+//       return {
+//         ...state,
+//         isLoggedIn: true,
+//       };
+//     }
+//     default:
+//       return LoginState;
+//   }
+// };
+
 const TVShowSearchReducer = (state = TVShowInitialState, action) => {
   if (action.type === "loadTVShow") {
     return {
@@ -117,6 +131,7 @@ const rootReducer = combineReducers({
   TVShowSearchReducer,
   SearchInputReducer,
   SettingReducer,
+  // LoginReducer,
 });
 
 const store = createStore(rootReducer);

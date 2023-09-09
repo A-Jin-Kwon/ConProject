@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -11,12 +11,15 @@ import HomeCalendar from "./HomeCalendar";
 const MyHome = () => {
   const isModalClicked = useSelector((state) => state.communityReducer.isModalClicked);
   const isLoggedIn = useSelector((state) => state.communityReducer.isLoggedIn);
+  console.log("isloggedin?", isLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  // useEffect(() => {
+  //   !isLoggedIn ? navigate("/login") : navigate("/");
+  // });
   return (
     <>
-      {!isLoggedIn ? navigate("/login") : navigate("/")}
       {isModalClicked && <HomeModal></HomeModal>}
       {/* {true && <HomeModal></HomeModal>} */}
       <StyledMuiContainer fixed>

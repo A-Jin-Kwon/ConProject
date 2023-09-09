@@ -98,7 +98,7 @@ const Login = () => {
           <Label>
             <LabelSpan>이메일</LabelSpan>
             <EmailWrapper>
-              <EmailInput placeholder="youremail@email.com" onFocus={EmailfocusHandler} onBlur={EmailblurHandler} onChange={changeHandler} value={emailInput} isEmailValid={isEmailValid} />
+              <EmailInput placeholder="youremail@email.com" onFocus={EmailfocusHandler} onBlur={EmailblurHandler} onChange={changeHandler} value={emailInput} $isEmailValid={isEmailValid} />
               {/* focus 상태라면 이미지를 보여주고, blur 되었다면 이미지를 숨깁니다. */}
               {isEmailFocused ? (
                 <IconEmail
@@ -233,7 +233,7 @@ const EmailInput = styled.input`
   padding: 16px 18px;
   width: 380px;
 
-  border: ${({ isEmailValid }) => (isEmailValid ? "1px solid #d5d5d5" : "1px solid #E61A1A")};
+  border: ${({ $isEmailValid }) => ($isEmailValid ? "1px solid #d5d5d5" : "1px solid #E61A1A")};
 
   &:focus {
     outline: none;

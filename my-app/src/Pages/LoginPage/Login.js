@@ -3,39 +3,39 @@ import { Link } from "react-router-dom";
 import JoinRule from "../JoinPage/JoinRule";
 import LoginNaver from "./LoginNaver";
 
-
-
 const Login = () => {
-    return (
-        <Form>
-            <ConLogo alt="CON" src="./imgs/ConLoginImg.svg"/>
-            <Header>
-                <Title>CON</Title>
-                <HeaderTitle>으로 문화를 기록해보세요!</HeaderTitle>
-            </Header>
+  return (
+    <Form>
+      <ConLogo alt="CON" src="./imgs/ConLoginImg.svg" />
+      <Header>
+        <Title>CON</Title>
+        <HeaderTitle>으로 문화를 기록해보세요!</HeaderTitle>
+      </Header>
 
-            {/* 이메일로 로그인하기 버튼 */}
-            <LoginBtnWrapper>
-              <Link to="/login-email" style={{ textDecoration: "none", color:"black" }}><EmailLoginBtn to="/login-email">이메일로 로그인</EmailLoginBtn></Link>
-            </LoginBtnWrapper>
+      {/* 이메일로 로그인하기 버튼 */}
+      <LoginBtnWrapper>
+        <Link to="/login-email" style={{ textDecoration: "none", color: "black" }}>
+          <EmailLoginBtn to="/login-email">이메일로 로그인</EmailLoginBtn>
+        </Link>
+      </LoginBtnWrapper>
 
-            {/* 네이버로 로그인하기 버튼 */}
-            <LoginBtnWrapper>
-              <LoginNaver/>
-            </LoginBtnWrapper>
+      {/* 네이버로 로그인하기 버튼 */}
+      <LoginBtnWrapper>
+        <LoginNaver />
+      </LoginBtnWrapper>
 
-            {/* 로그인 밑 요소 */}
-            <BottomWrapper>
-                <div>
-                    <span>계정이 없으세요?</span>
-                    <BottomJoin to='/join'>회원가입</BottomJoin>
-                </div>
-                <BottomFindPassword to='/password-find'>비밀번호 찾기</BottomFindPassword>
-            </BottomWrapper>
-            <JoinRule/>
-        </Form>
-    );
-}
+      {/* 로그인 밑 요소 */}
+      <BottomWrapper>
+        <div>
+          <span>계정이 없으세요?</span>
+          <BottomJoin to="/join">회원가입</BottomJoin>
+        </div>
+        <BottomFindPassword to="/password-find">비밀번호 찾기</BottomFindPassword>
+      </BottomWrapper>
+      <JoinRule />
+    </Form>
+  );
+};
 
 export default Login;
 
@@ -43,7 +43,7 @@ const ConLogo = styled.img`
   width: 419px;
   height: 399px;
   padding-left: 90px;
-`
+`;
 const Form = styled.form`
   height: 100vh;
   display: flex;
@@ -68,7 +68,6 @@ const Title = styled.p`
   line-height: 34.13px;
   color: rgba(255, 192, 0, 1);
   margin-right: 10px;
-
 `;
 const HeaderTitle = styled.p`
   display: flex;
@@ -117,6 +116,3 @@ const BottomFindPassword = styled(Link)`
   text-decoration: none;
   color: #464646;
 `;
-
-
-
