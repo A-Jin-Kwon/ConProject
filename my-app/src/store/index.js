@@ -13,7 +13,7 @@ const headerReducer = (state = headerInitialState, action) => {
 
 const communityReducer = (state = communityInitialState, action) => {
   switch (action.type) {
-    case "changeMenu": {
+    case "setMenu": {
       return {
         ...state,
         currentMenu: action.menu,
@@ -87,11 +87,16 @@ const TVShowSearchReducer = (state = TVShowInitialState, action) => {
 };
 
 const SearchInputReducer = (state = SearchInputInitialState, action) => {
-  if (action.type === "newInput") {
-    return {
-      input: action.input,
-    };
-  } else return state;
+  switch (action.type) {
+    case "newInput": {
+      return {
+        ...state,
+        input: action.input,
+      };
+    }
+    default:
+      return state;
+  }
 };
 
 const SettingReducer = (state = MemberInfomation, action) => {

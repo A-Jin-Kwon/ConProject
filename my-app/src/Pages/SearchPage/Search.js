@@ -8,9 +8,11 @@ import PageLayout from "../CommunityPage/PageLayout";
 import SearchConWrapper from "./SearchConWrapper";
 import Menu from "./Menu";
 import Modal from "../CommunityPage/Modal/CommunityModal";
+import { baseServerURL } from "../../Components/StyledComponents/StyledComponents";
 
 // use mui
 import Grid from "@mui/material/Grid";
+import SearchUser from "./SearchUser";
 
 //TMDB 사용
 const baseURL = "https://api.themoviedb.org/3/search/";
@@ -21,18 +23,33 @@ const Search = () => {
   const location = useLocation();
   const dispatch = useDispatch();
 
-  const InputValue = useSelector((state) => state.SearchInputReducer);
+  const InputValue = useSelector((state) => state.SearchInputReducer.input);
   const isModalClicked = useSelector((state) => state.communityReducer.isModalClicked);
+  const currentMenu = useSelector((state) => state.communityReducer.currentMenu);
   const [TVShow, setTVShow] = useState({});
+  const [MemberResponse, setMemberResponse] = useState([]);
 
   useEffect(() => {
     const getCon = async (queryString) => {
-      const res = await axios(`${baseURL}multi?query=${queryString}&api_key=${privateKey}&language=${baseLanguage}`);
+      const res = await axios(`${baseURL}multi?query${queryString}&api_key=${privateKey}&language=${baseLanguage}`);
       setTVShow(res.data.results);
       // console.log(res.data.results);
     };
-    getCon(InputValue.input);
-    console.log(TVShow);
+    const searchUser = async (queryString) => {
+      // console.log(decodeURI(queryString));
+      const auth = localStorage.getItem("auth");
+      const res = await axios(baseServerURL + `/members?name${queryString}&page=0&size=10`, { headers: { Authorization: auth } });
+      const resCode = res.data.code;
+      const isSuccess = res.data.isSuccess;
+
+      if (isSuccess) {
+        if (resCode === 200) setMemberResponse(res.data.result.memberResponses);
+      }
+      console.log(res);
+    };
+    getCon(InputValue);
+    searchUser(InputValue);
+    console.log(MemberResponse);
   }, [InputValue]);
 
   // 콘을 추가하시겠습니까에서 취소 했을 때 검색 결과 다시 로딩하는 위한 과정
