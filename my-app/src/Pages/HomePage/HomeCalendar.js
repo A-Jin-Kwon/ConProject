@@ -22,7 +22,11 @@ const HomeCalendar = () => {
       const res = await axios.get(baseServerURL + "/notifications", { headers: { Authorization: auth } });
       console.log(res);
     };
-    // getAlarm();
+    // try {
+    //   getAlarm();
+    // } catch (err) {
+    //   console.log(err);
+    // }
   });
 
   // popper 위치 설정

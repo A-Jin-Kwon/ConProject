@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import styled from "styled-components";
 import Container from "@mui/material/Container";
 import Box from "@mui/material/Box";
 
 // 뷰포트 크기 감지와 이에 따른 요소 재배치 구현 안 되어 있음
 const Menu = ({ menu1, menu2 }) => {
+  const dispatch = useDispatch();
   const [currentMenu, setCurrentMenu] = useState(`${menu1.eng}`);
   const [xpos, setXpos] = useState();
   const [ypos, setYpos] = useState();
@@ -33,6 +35,7 @@ const Menu = ({ menu1, menu2 }) => {
 
   useEffect(() => {
     locateUnderLine();
+    dispatch({ type: "setMenu", menu: currentMenu });
   }, [currentMenu]);
 
   return (
