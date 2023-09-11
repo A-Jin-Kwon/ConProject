@@ -13,7 +13,7 @@ import Grid from "@mui/material/Grid";
 
 const Setting = () => {
   const dispatch = useDispatch();
-  const [loading, setLoading] = useState(true);
+
   const [settingpage, setSettingPage] = useState("setting");
   const [username, setUserName] = useState("닉네임");
   const [introduction, setIntroduction] = useState("한 줄 소개");
@@ -26,6 +26,7 @@ const Setting = () => {
   }, [isLoggedIn]);
 
   // 멤버 프로필 가져오기
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     const auth = localStorage.getItem("auth");
 
