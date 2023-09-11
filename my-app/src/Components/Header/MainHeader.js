@@ -1,7 +1,8 @@
 import { Link as ReactRouterDomLink, useLocation } from "react-router-dom";
 import HeaderStyled, { css } from "styled-components";
-import { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import SearchBar from "../StyledComponents/SearchBar";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
   const curLocation = useLocation();
@@ -28,6 +29,13 @@ const Header = () => {
   //   console.log(e.target.id);
   //   setCurrentPage(e.target.id);
   // };
+
+  const dispatch = useDispatch();
+  const handleLogout = () => {
+    localStorage.removeItem("authObj");
+    localStorage.removeItem("auth");
+    dispatch({ type: "logOut" });
+  };
 
   return (
     <HeaderWrapper>
@@ -64,7 +72,8 @@ const Header = () => {
           </HeaderRightDiv>
           <HeaderRightDiv>
             {/* 임시 로그인,로그아웃 버튼입니다 */}
-            <img src="imgs/Frame36.png" />
+            {/* <img src="imgs/Frame36.png" /> */}
+            <LogoutBtn onClick={handleLogout}>로그아웃</LogoutBtn>
           </HeaderRightDiv>
         </ProfileWrapper>
       </MenuBar>
@@ -154,4 +163,16 @@ const HeaderRightDiv = HeaderStyled.div`
 const LineImg = HeaderStyled.img`
     width: 1px;
     color: #E8E8E8;
+`;
+
+const LogoutBtn = HeaderStyled.button`
+  border:0;
+  width: 80px;
+  height: 34px;
+  border-radius:4px;
+  background-color: #ffc000;
+  color:#2e2e2e;
+  font-size:14px;
+  font-weight:bold;
+  cursor:pointer;
 `;

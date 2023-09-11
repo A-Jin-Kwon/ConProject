@@ -10,15 +10,35 @@ import HomeCalendar from "./HomeCalendar";
 
 const MyHome = () => {
   const isModalClicked = useSelector((state) => state.communityReducer.isModalClicked);
-  // const isLoggedIn = useSelector((state) => state.LoginReducer.isLoggedIn);
-  const isLoggedIn = localStorage.getItem("auth") !== undefined ? true : false;
+  const isLoggedIn = useSelector((state) => state.LoginReducer.isLoggedIn);
+  // const isLoggedIn = localStorage.getItem("auth") !== undefined ? true : false;
   // console.log("isloggedin?", isLoggedIn);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const checkLogin = () => {
+    const authObjStr = localStorage.getItem("authObj");
+
+    if (!authObjStr) {
+      dispatch({ type: "logOut" });
+    } else {
+      const authObj = JSON.parse(authObjStr);
+      // access token이 만료상태면 삭제
+      if (Date.now() > authObj.expire) {
+        localStorage.removeItem("authObj");
+        localStorage.removeItem("auth");
+        dispatch({ type: "logOut" });
+      } else {
+        dispatch({ type: "login" });
+        localStorage.setItem("auth", authObj.auth);
+      }
+    }
+  };
+
   useEffect(() => {
+    checkLogin();
     !isLoggedIn ? navigate("/login") : navigate("/");
-  });
+  }, [isLoggedIn]);
 
   return (
     <>

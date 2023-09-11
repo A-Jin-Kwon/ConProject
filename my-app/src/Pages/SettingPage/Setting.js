@@ -1,13 +1,15 @@
 import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { styled } from "styled-components";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 import { baseServerURL } from "../../Components/StyledComponents/StyledComponents";
 
 import Loading from "../../Components/StyledComponents/Loading";
 // 아래 컨테이너는 나중에 다시 쓸거임..
 import { StyledMuiContainer } from "../HomePage/MyHome";
+import Grid from "@mui/material/Grid";
 
 const Setting = () => {
   const dispatch = useDispatch();
@@ -15,6 +17,13 @@ const Setting = () => {
   const [settingpage, setSettingPage] = useState("setting");
   const [username, setUserName] = useState("닉네임");
   const [introduction, setIntroduction] = useState("한 줄 소개");
+
+  // 로그인 상태 확인
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state) => state.LoginReducer.isLoggedIn);
+  useEffect(() => {
+    !isLoggedIn ? navigate("/login") : navigate("/setting");
+  }, [isLoggedIn]);
 
   // 멤버 프로필 가져오기
   useEffect(() => {
@@ -47,30 +56,26 @@ const Setting = () => {
       {loading ? (
         <Loading></Loading>
       ) : (
-        // <StyledMuiContainer>
-        <div className="BigWrap">
-          <div className="Profile">
-            <div className="Pf_1"></div>
-            <div className="Pf_2">
-              <div className="Pf_2_1">{username}</div>
-              <div className="Pf_2_2"></div>
-              <div className="Pf_2_3">{introduction}</div>
-            </div>
-            <Pf_3>
-              <Pf_3_1>
-                <Pf_3_1_1 style={{ paddingLeft: "30px", height: "20px", marginTop: "20px" }}>10</Pf_3_1_1>
-                <Link to="/setting/following" style={{ textDecoration: "none", cursor: "pointer", color: "black" }}>
-                  <Pf_3_1_1 style={{ height: "20px", paddingLeft: "20px", cursor: "pointer" }}>팔로잉</Pf_3_1_1>
-                </Link>
-              </Pf_3_1>
-              <Pf_3_2>
-                <Pf_3_1_2 style={{ paddingLeft: "30px", height: "20px", marginTop: "20px" }}>5</Pf_3_1_2>
-                <Link to="/setting/follower" style={{ textDecoration: "none", cursor: "pointer", color: "black" }}>
-                  <Pf_3_1_2 style={{ height: "20px", paddingLeft: "16px", cursor: "pointer" }}>팔로워</Pf_3_1_2>
-                </Link>
-              </Pf_3_2>
-            </Pf_3>
-          </div>
+        <StyledMuiContainer>
+          <FlexBox>
+            <ProfileImg />
+            <AboutUser container>
+              <AboutFollowWrapper item container xs={12}>
+                <GridItem item xs={3}>
+                  <AboutFollow>팔로워</AboutFollow>
+                </GridItem>
+                <GridItem item xs={3}>
+                  <AboutFollow>팔로우</AboutFollow>
+                </GridItem>
+              </AboutFollowWrapper>
+              <GridItem item xs={12} sx={{ mt: 4 }}>
+                <UserName>{username}</UserName>
+              </GridItem>
+              <GridItem item xs={12} sx={{ mt: 6 }}>
+                <Introduction>{introduction}</Introduction>
+              </GridItem>
+            </AboutUser>
+          </FlexBox>
           <div className="SelectMenu">
             <div className="SM_1">
               <div className="SM_1_1">
@@ -123,8 +128,7 @@ const Setting = () => {
               </div>
             </div>
           </div>
-        </div>
-        // </StyledMuiContainer>
+        </StyledMuiContainer>
       )}
     </>
   );
@@ -134,7 +138,7 @@ export default Setting;
 const Pf_3 = styled.div`
   display: flex;
   flex-direction: row;
-  width: 172px;
+  /* width: 172px; */
   height: 76px;
   /* width: 16%;
     height: 80%; */
@@ -148,6 +152,7 @@ const Pf_3_1 = styled.div`
   flex-direction: column;
   width: 50%;
   height: 100%;
+  margin: auto 10 auto auto;
 `;
 const Pf_3_2 = styled.div`
   width: 50%;
@@ -161,3 +166,51 @@ const Pf_3_1_2 = styled.div`
   width: 100%;
   height: 50%;
 `;
+
+const FlexBox = styled.div`
+  display: flex;
+  justify-content: center;
+  /* width: 100%; */
+`;
+
+const Div = styled.div``;
+
+const ProfileImg = styled.img`
+  width: 200px;
+  height: 200px;
+  margin-right: 2rem;
+  background-color: black;
+  border-radius: 1px solid red;
+  border-radius: 14px;
+`;
+
+const UserName = styled.div`
+  font-size: 16px;
+  font-weight: bold;
+  line-height: 25.6px;
+`;
+
+const Introduction = styled.div`
+  font-size: 14px;
+  color: #464646;
+  margin-top: 6px;
+  /* width: 200px; */
+`;
+
+const AboutUser = styled(Grid)`
+  /* margin: 0 0 0 auto; */
+  /* max-width: 400px; */
+  max-width: 70%;
+  height: 76px;
+  border-radius: 12px;
+  /* background-color: #f2f2f2; */
+`;
+
+const AboutFollowWrapper = styled(Grid)`
+  margin-bottom: 10rem;
+`;
+const AboutFollow = styled.div`
+  margin-right: 40px;
+`;
+
+const GridItem = styled(Grid)``;

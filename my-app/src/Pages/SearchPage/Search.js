@@ -26,6 +26,7 @@ const Search = () => {
   const InputValue = useSelector((state) => state.SearchInputReducer.input);
   const isModalClicked = useSelector((state) => state.communityReducer.isModalClicked);
   const currentMenu = useSelector((state) => state.communityReducer.currentMenu);
+
   const [TVShow, setTVShow] = useState({});
   const [MemberResponse, setMemberResponse] = useState([]);
 
@@ -52,6 +53,10 @@ const Search = () => {
     console.log(MemberResponse);
   }, [InputValue]);
 
+  // tvshow or drama 검색 결과가 있는지 확인
+  let isSearchConResult = JSON.stringify(TVShow) !== "[]";
+  let isSearchMemberResult = MemberResponse !== [];
+
   // 콘을 추가하시겠습니까에서 취소 했을 때 검색 결과 다시 로딩하는 위한 과정
   // 현재 주소의 queryString과 store에 있는 input을 비교해서 다르다면 store에 input을 업데이트 해준다.
   if (!isModalClicked && InputValue.input !== location.search.substring(location.search.indexOf("="))) dispatch({ type: "newInput", input: location.search.substring(location.search.indexOf("=")) });
@@ -62,21 +67,30 @@ const Search = () => {
       {/* <SearchUI placeholder="콘텐츠를 검색해보세요!"></SearchUI> */}
       <Menu menu1={{ eng: "contents", kor: "콘텐츠" }} menu2={{ eng: "user", kor: "유저" }}></Menu>
       <PageLayout>
-        {JSON.stringify(TVShow) !== "[]" ? (
-          <Grid container>
-            {Object.values(TVShow)
-              .filter((it) => it.poster_path)
-              .map((it) => (
-                <SearchConWrapper key={it.id} it={it}></SearchConWrapper>
-              ))}
-          </Grid>
+        {currentMenu === "contents" ? (
+          <>
+            {" "}
+            {isSearchConResult ? (
+              <Grid container>
+                {Object.values(TVShow)
+                  .filter((it) => it.poster_path)
+                  .map((it) => (
+                    <SearchConWrapper key={it.id} it={it}></SearchConWrapper>
+                  ))}
+              </Grid>
+            ) : (
+              // </Div>
+              <NoResult>
+                <img src="/imgs/error.svg"></img>
+                <span>검색결과가 없습니다.</span>
+                <span>다른 검색어를 입력하시거나 철자와 띄어쓰기를 확인해보세요.</span>
+              </NoResult>
+            )}
+          </>
         ) : (
-          // </Div>
-          <NoResult>
-            <img src="/imgs/error.svg"></img>
-            <span>검색결과가 없습니다.</span>
-            <span>다른 검색어를 입력하시거나 철자와 띄어쓰기를 확인해보세요.</span>
-          </NoResult>
+          <Grid container spacing={2} sx={{ pt: 3 }}>
+            {isSearchMemberResult ? MemberResponse.map((it) => <SearchUser it={it}></SearchUser>) : <></>}
+          </Grid>
         )}
       </PageLayout>
     </>

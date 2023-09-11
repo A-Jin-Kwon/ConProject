@@ -69,14 +69,28 @@ const Login = () => {
   };
 
   const [cookies, setCookie] = useCookies([]);
-  console.log("changed");
   // 폼 submit 시, 발생하는 함수입니다.
+
+  // 로그인 인증키 저장(현재는 access token과 expire 시간만)
+  const setAuthObj = (res) => {
+    const time = new Date();
+    time.setMinutes(time.getMinutes() + 60);
+    const authObj = {
+      auth: res.headers.authorization,
+      expire: time,
+    };
+
+    localStorage.setItem("authObj", JSON.stringify(authObj));
+  };
+
   const submitHandler = async (e) => {
     e.preventDefault();
     try {
       const res = await axios.post(baseServerURL + "/login", { email: emailInput, password: pwdInput });
       console.log(res);
-      localStorage.setItem("auth", res.headers.authorization);
+
+      setAuthObj(res);
+
       // 쿠키 사용은 잘 모르겠다 이게 좋은건지..
       // setCookie("auth", res.headers.authorization, { maxAge: 3600, httpOnly: true });
       //이건 안 됨

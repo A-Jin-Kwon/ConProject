@@ -1,7 +1,7 @@
 import { combineReducers, createStore } from "redux";
 
 const headerInitialState = {};
-const communityInitialState = { currentMenu: "total", isModalClicked: false, content: {}, input: "", selectedConTitle: "", selectedConId: 0 };
+const communityInitialState = { currentMenu: "contents", isModalClicked: false, content: {}, input: "", selectedConTitle: "", selectedConId: 0 };
 const TVShowInitialState = {};
 const SearchInputInitialState = { input: "" };
 const LoginState = { isLoggedIn: false };
@@ -70,6 +70,12 @@ const LoginReducer = (state = LoginState, action) => {
       return {
         ...state,
         isLoggedIn: true,
+      };
+    }
+    case "logOut": {
+      return {
+        ...state,
+        isLoggedIn: false,
       };
     }
     default:

@@ -30,7 +30,7 @@ const Follower = ({ src }) => {
         <Card>
           <StyledLink to={"profile"}>
             <FollowTop>
-              <FollowImg src={src}></FollowImg>
+              <ProfileImg src={src}></ProfileImg>
               <FollowNickname>닉네임</FollowNickname>
               <FollowBtnWrapper>
                 <StyledFollowButton
@@ -92,7 +92,7 @@ const FollowTop = styled.div`
   border-bottom: 1px solid #e6e6e6;
 `;
 
-const FollowImg = styled.img`
+const ProfileImg = styled.img`
   width: 52px;
   height: 52px;
   margin: auto 10px auto 10px;
@@ -145,5 +145,5 @@ const ContentRecommend = styled.div`
   color: #464646;
 `;
 
-export { FollowWrapper, FollowBottom, ContentTitle, ContentRecommend, StyledLink };
+export { FollowWrapper, FollowBottom, ContentTitle, ContentRecommend, StyledLink, ProfileImg, FollowBtnWrapper };
 export default Follower;

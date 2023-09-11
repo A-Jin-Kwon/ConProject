@@ -79,6 +79,7 @@ const StyledBtn = styled.button`
   font-size: 16px;
   width: 100px;
   text-align: center;
+  cursor: pointer;
 `;
 
 const UnderLine = styled.div`
