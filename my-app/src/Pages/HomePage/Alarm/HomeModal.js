@@ -106,7 +106,6 @@ const HomeModal = () => {
   };
 
   const handleSubmit = async () => {
-    const uuid = localStorage.getItem("com.naver.nid.oauth.state_token");
     const auth = localStorage.getItem("auth");
 
     const formatDate = (inputDate) => {
@@ -125,20 +124,26 @@ const HomeModal = () => {
       return `${year}-${month}-${day}T${hours}:${minutes}:${seconds}`;
     };
 
+    console.log(formatDate(time));
+    const atime = formatDate(time);
+
     const data = {
-      contentId: String(selectedConId),
+      id: inputValue,
+      time: atime,
       email: emailAddress,
-      time: formatDate(time),
-      uuid: uuid,
     };
-    console.log(JSON.stringify(data));
     const setAlarm = async () => {
       const res = await axios.post(baseServerURL + "/notifications", data, {
         headers: { Authorization: auth },
       });
       console.log(res);
     };
-    setAlarm();
+    try {
+      const res = await setAlarm();
+      console.log(res);
+    } catch (e) {
+      console.log(e);
+    }
     ClosePopper();
   };
   return (
