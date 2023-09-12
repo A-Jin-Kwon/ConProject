@@ -1,12 +1,33 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import Grid from "@mui/material/Grid";
+import axios from "axios";
+import { baseServerURL } from "../../Components/StyledComponents/StyledComponents";
 
 import { StyledFollowButton } from "../../Components/StyledComponents/StyledComponents";
 import { FollowBtnWrapper } from "../CommunityPage/FollowerContainer/Follower";
 
 const SearchUser = ({ it }) => {
   console.log(it);
+
+  const handleFollowBtnClicked = () => {
+    const auth = localStorage.getItem("auth");
+    console.log(auth);
+    async function regiFollow() {
+      const res = await axios.post(baseServerURL + `/app/follow/${it.id}`, { headers: { Authorization: auth } });
+      console.log(res);
+    }
+    // const regiFollow = async () => {
+    //   const res = await axios.post(baseServerURL + `/app/follow/1`, { headers: { Authorization: auth } });
+    //   console.log(res);
+    // };
+    try {
+      regiFollow();
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   const [followed, setFollowed] = useState(false);
   return (
     <Grid item sx={{ borderBottom: "1px solid #e6e6e6", p: 2 }} xs={6}>
@@ -23,6 +44,7 @@ const SearchUser = ({ it }) => {
               e.preventDefault();
               console.log("clicked");
               setFollowed((state) => !state);
+              handleFollowBtnClicked();
             }}
             isFollowed={followed === false}
           >

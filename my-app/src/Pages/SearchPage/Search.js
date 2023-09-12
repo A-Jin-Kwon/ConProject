@@ -30,6 +30,8 @@ const Search = () => {
   const [TVShow, setTVShow] = useState({});
   const [MemberResponse, setMemberResponse] = useState([]);
 
+  const isLoggedIn = useSelector((state) => state.LoginReducer.isLoggedIn);
+
   useEffect(() => {
     const getCon = async (queryString) => {
       const res = await axios(`${baseURL}multi?query${queryString}&api_key=${privateKey}&language=${baseLanguage}`);
@@ -89,7 +91,7 @@ const Search = () => {
           </>
         ) : (
           <Grid container spacing={2} sx={{ pt: 3 }}>
-            {isSearchMemberResult ? MemberResponse.map((it) => <SearchUser it={it}></SearchUser>) : <></>}
+            {isSearchMemberResult ? MemberResponse.map((it) => <SearchUser key={it.id} it={it}></SearchUser>) : <></>}
           </Grid>
         )}
       </PageLayout>
