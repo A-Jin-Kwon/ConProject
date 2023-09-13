@@ -44,5 +44,10 @@ const StyledFollowButton = styled(Button)`
         `}
 `;
 
-export { StyledFollowButton, baseServerURL };
+const FlexBox = styled.div`
+  display: flex;
+  justify-content: center;
+`;
+
+export { StyledFollowButton, baseServerURL, FlexBox };
 export default ProfileButton;

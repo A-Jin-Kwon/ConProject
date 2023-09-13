@@ -88,23 +88,6 @@ const HomeModal = () => {
     setInputValue(e.target.value);
   };
 
-  const datePickerStyle = {
-    "& .MuiOutlinedInput-root": {
-      "&:hover fieldset": {
-        borderColor: "yellow.main",
-      },
-      "&.Mui-focused fieldset": {
-        borderColor: "yellow.main",
-      },
-      "& .MuiInputLabel-root": {
-        color: "#F1b600", //label 색상변경
-      },
-    },
-    "& .MuiInputLabel-root": {
-      color: "#F1b600", //label 색상변경
-    },
-  };
-
   const handleSubmit = async () => {
     const auth = localStorage.getItem("auth");
 
@@ -128,15 +111,15 @@ const HomeModal = () => {
     const atime = formatDate(time);
 
     const data = {
-      id: inputValue,
+      id: selectedConId,
       time: atime,
       email: emailAddress,
     };
+    console.log("selected data", JSON.stringify(data));
     const setAlarm = async () => {
       const res = await axios.post(baseServerURL + "/notifications", data, {
-        headers: { Authorization: auth },
+        headers: { Authorization: auth, "Content-Type": "application/json" },
       });
-      console.log(res);
     };
     try {
       const res = await setAlarm();
@@ -145,6 +128,23 @@ const HomeModal = () => {
       console.log(e);
     }
     ClosePopper();
+  };
+
+  const datePickerStyle = {
+    "& .MuiOutlinedInput-root": {
+      "&:hover fieldset": {
+        borderColor: "yellow.main",
+      },
+      "&.Mui-focused fieldset": {
+        borderColor: "yellow.main",
+      },
+      "& .MuiInputLabel-root": {
+        color: "#F1b600", //label 색상변경
+      },
+    },
+    "& .MuiInputLabel-root": {
+      color: "#F1b600", //label 색상변경
+    },
   };
   return (
     <StyledEngineProvider>

@@ -12,7 +12,7 @@ const SearchUser = ({ it }) => {
 
   const handleFollowBtnClicked = () => {
     const auth = localStorage.getItem("auth");
-    console.log(auth);
+    // console.log(auth);
     async function regiFollow() {
       const res = await axios.post(baseServerURL + `/app/follow/${it.id}`, { headers: { Authorization: auth } });
       console.log(res);

@@ -8,6 +8,15 @@ import axios from "axios";
 import { baseServerURL } from "../../Components/StyledComponents/StyledComponents";
 import { useNavigate } from "react-router-dom";
 
+//material-ui
+import { StyledMuiContainer } from "../HomePage/MyHome";
+import Box from "@mui/material/Box";
+import Typography from "@mui/material/Typography";
+import TextField from "@mui/material/TextField";
+import Input from "@mui/material/Input";
+
+import { FlexBox } from "../../Components/StyledComponents/StyledComponents";
+
 const SettingProfile = () => {
   const userInfo = useSelector((state) => state.SettingReducer);
 
@@ -23,6 +32,7 @@ const SettingProfile = () => {
   }, [userInfo]);
 
   const handleInputChange = (event) => {
+    console.log(event.target.value);
     setUsername(event.target.value);
   };
 
@@ -43,55 +53,61 @@ const SettingProfile = () => {
     // 프로필 사진은 나중에...
     // formData.append("imageFile", null);
     async function postProfileChanged() {
-      const res = await axios.post(baseServerURL + "/members/profile", formData, { headers: { Authorization: auth } });
-      return res;
+      try {
+        const res = await axios.post(baseServerURL + "/members/profile", formData, { headers: { Authorization: auth } });
+        console.log(res);
+        const resCode = res.data.code;
+        if (resCode === 200) {
+          // save successed
+        } else if (resCode === 409) {
+          // 이름이 중복
+        }
+      } catch (e) {
+        console.log(e);
+      }
     }
-
-    try {
-      const res = await postProfileChanged();
-      console.log(res);
-
-      if (res.data.code === 200) navigate(-1);
-    } catch (err) {
-      console.log(err);
-    }
+    postProfileChanged();
   };
 
   return (
-    <div>
+    <>
       <NavigateHeader headerTitlte={"프로필 설정"} />
-      <form onSubmit={handleSubmit}>
-        <div className="PS_Wrap">
+      <StyledMuiContainer>
+        <form onSubmit={handleSubmit}>
           {/* <div className="PS_Wrap_1"><ProfileButton></ProfileButton></div>  건희님 기존 코드 */}
           {/* 프로필 이미지 변경 */}
           <div className="PS_Wrap_1">
             <ProfileImg />
           </div>
 
-          <div className="PS_Wrap_2">
-            <div className="PS_Wrap_2_1">
-              <h4>이름</h4>
-            </div>
-            <div className="PS_Wrap_2_2">
-              <input className="PS_Wrap_2_2_Btn" type="text" name="username" placeholder="이름을 입력하세요" required value={username} onChange={handleInputChange}></input>
-            </div>
-          </div>
-          <div className="PS_Wrap_3">
-            <div className="PS_Wrap_3_1">
-              <h4>자기소개</h4>
-            </div>
-            <div className="PS_Wrap_3_2">
-              <input className="PS_Wrap_3_2_Btn" type="text" name="introduction" placeholder="최대50자" required value={introduction} onChange={handleInputChange2}></input>
-              {showWarning && <h4 style={{ color: "red" }}>글자 수가 50자를 초과했습니다!</h4>}
-            </div>
-          </div>
+          <FlexBox>
+            <StyledTypograhpy mr={5}>이름</StyledTypograhpy>
+            <Input style={{ width: "90%" }} placeholder="이름" onChange={handleInputChange} required value={username}></Input>
+          </FlexBox>
+          <FlexBox>
+            <StyledTypograhpy mr={5}>자기소개</StyledTypograhpy>
+            <Input style={{ width: "90%" }} placeholder="자기소개를 입력하세요(최대 50자)" onChange={handleInputChange2} required value={introduction}></Input>
+          </FlexBox>
+
           <div className="PS_Wrap_4">
             <button className="PS_Wrap_4_Btn">변경사항 저장</button>
           </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </StyledMuiContainer>
+    </>
   );
 };
+
+const ErrorMessage = styled.div`
+  color: red;
+  margin-top: 1rem;
+`;
+
+const StyledTypograhpy = styled(Typography)`
+  display: "flex";
+  text-align: "center";
+  align-items: "center";
+  justify-content: "center";
+`;
 
 export default SettingProfile;
