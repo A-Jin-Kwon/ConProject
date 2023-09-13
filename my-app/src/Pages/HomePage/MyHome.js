@@ -25,6 +25,7 @@ const MyHome = () => {
       const authObj = JSON.parse(authObjStr);
       // access token이 만료상태면 삭제
       if (Date.now() > authObj.expire) {
+        console.log("expired auth");
         localStorage.removeItem("authObj");
         localStorage.removeItem("auth");
         dispatch({ type: "logOut" });
