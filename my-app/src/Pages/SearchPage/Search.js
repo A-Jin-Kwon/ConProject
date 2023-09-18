@@ -2,12 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import { useSelector, useDispatch } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 import PageLayout from "../CommunityPage/PageLayout";
 import SearchConWrapper from "./SearchConWrapper";
 import Menu from "./Menu";
 import Modal from "../CommunityPage/Modal/CommunityModal";
+import Loading from "../../Components/StyledComponents/Loading";
 import { baseServerURL } from "../../Components/StyledComponents/StyledComponents";
 
 // use mui
@@ -30,8 +31,15 @@ const Search = () => {
   const [TVShow, setTVShow] = useState({});
   const [MemberResponse, setMemberResponse] = useState([]);
 
-  const isLoggedIn = useSelector((state) => state.LoginReducer.isLoggedIn);
+  // 로그인 확인
+  // const isLoggedIn = useSelector((state) => state.LoginReducer.isLoggedIn);
+  // const navigate = useNavigate();
+  // useEffect(() => {
+  //   !isLoggedIn ? console.log("") : navigate("/");
+  // }, [isLoggedIn]);
 
+  const [loading, setLoading] = useState(true);
+  // tvShow, 유저 검색 기능
   useEffect(() => {
     const getCon = async (queryString) => {
       const res = await axios(`${baseURL}multi?query${queryString}&api_key=${privateKey}&language=${baseLanguage}`);
@@ -50,9 +58,15 @@ const Search = () => {
       }
       console.log(res);
     };
-    getCon(InputValue);
-    searchUser(InputValue);
-    console.log(MemberResponse);
+    let searchTimerIdentifier = setTimeout(() => {
+      getCon(InputValue);
+      searchUser(InputValue);
+      setLoading(false);
+    }, [700]);
+
+    return () => {
+      clearTimeout(searchTimerIdentifier);
+    };
   }, [InputValue]);
 
   // tvshow or drama 검색 결과가 있는지 확인
@@ -68,33 +82,37 @@ const Search = () => {
       {isModalClicked && <Modal></Modal>}
       {/* <SearchUI placeholder="콘텐츠를 검색해보세요!"></SearchUI> */}
       <Menu menu1={{ eng: "contents", kor: "콘텐츠" }} menu2={{ eng: "user", kor: "유저" }}></Menu>
-      <PageLayout>
-        {currentMenu === "contents" ? (
-          <>
-            {" "}
-            {isSearchConResult ? (
-              <Grid container>
-                {Object.values(TVShow)
-                  .filter((it) => it.poster_path)
-                  .map((it) => (
-                    <SearchConWrapper key={it.id} it={it}></SearchConWrapper>
-                  ))}
-              </Grid>
-            ) : (
-              // </Div>
-              <NoResult>
-                <img src="/imgs/error.svg"></img>
-                <span>검색결과가 없습니다.</span>
-                <span>다른 검색어를 입력하시거나 철자와 띄어쓰기를 확인해보세요.</span>
-              </NoResult>
-            )}
-          </>
-        ) : (
-          <Grid container spacing={2} sx={{ pt: 3 }}>
-            {isSearchMemberResult ? MemberResponse.map((it) => <SearchUser key={it.id} it={it}></SearchUser>) : <></>}
-          </Grid>
-        )}
-      </PageLayout>
+      {loading ? (
+        <Loading></Loading>
+      ) : (
+        <PageLayout>
+          {currentMenu === "contents" ? (
+            <>
+              {" "}
+              {isSearchConResult ? (
+                <Grid container>
+                  {Object.values(TVShow)
+                    .filter((it) => it.poster_path)
+                    .map((it) => (
+                      <SearchConWrapper key={it.id} it={it}></SearchConWrapper>
+                    ))}
+                </Grid>
+              ) : (
+                // </Div>
+                <NoResult>
+                  <img src="/imgs/error.svg"></img>
+                  <span>검색결과가 없습니다.</span>
+                  <span>다른 검색어를 입력하시거나 철자와 띄어쓰기를 확인해보세요.</span>
+                </NoResult>
+              )}
+            </>
+          ) : (
+            <Grid container spacing={2} sx={{ pt: 3 }}>
+              {isSearchMemberResult ? MemberResponse.map((it) => <SearchUser key={it.id} it={it}></SearchUser>) : <></>}
+            </Grid>
+          )}
+        </PageLayout>
+      )}
     </>
   );
 };

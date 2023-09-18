@@ -7,7 +7,6 @@ import Box from "@mui/material/Box";
 import Popper from "@mui/material/Popper";
 
 import { ConTitle } from "../../SearchPage/SearchConWrapper";
-import { SettingsPowerRounded } from "@mui/icons-material";
 
 //TMDB 사용
 const baseURL = "https://api.themoviedb.org/3/search/";
@@ -28,8 +27,13 @@ const AlarmSearch = ({ anchorEl }) => {
       setTVShow(res.data.results);
       console.log("home input : ", InputValue);
     };
-    getCon(InputValue);
-    console.log(TVShow);
+    let searchTimerIndentifier = setTimeout(() => {
+      getCon(InputValue);
+    }, [700]);
+
+    return () => {
+      clearTimeout(searchTimerIndentifier);
+    };
   }, [InputValue]);
 
   useEffect(() => {

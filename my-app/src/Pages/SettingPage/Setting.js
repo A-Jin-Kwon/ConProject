@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { styled } from "styled-components";
@@ -31,7 +31,6 @@ const theme = createTheme({
 
 const Setting = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
 
   const [username, setUserName] = useState("닉네임");
   const [introduction, setIntroduction] = useState("한 줄 소개");
@@ -39,12 +38,12 @@ const Setting = () => {
   const [followingCnt, setFollowingCnt] = useState(0);
 
   // 로그인 상태 확인
-  // const navigate = useNavigate();
-  // const isLoggedIn = useSelector((state) => state.LoginReducer.isLoggedIn);
-  // 이 코드 수정 필요
-  // useEffect(() => {
-  //   !isLoggedIn ? navigate("/login") : navigate("/setting");
-  // }, [isLoggedIn]);
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state) => state.LoginReducer.isLoggedIn);
+
+  useEffect(() => {
+    !isLoggedIn ? navigate("/login") : navigate("/setting");
+  }, [isLoggedIn]);
 
   // 멤버 프로필 가져오기
   const [loading, setLoading] = useState(true);
@@ -94,9 +93,10 @@ const Setting = () => {
         console.log(e);
       }
     }
-    getUserInfo();
+
     getFollowerList();
     getFollowingList();
+    getUserInfo();
   });
 
   // 이거 재사용하고 싶은데...
