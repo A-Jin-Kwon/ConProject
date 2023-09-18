@@ -1,7 +1,8 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { BrowserRouter, Routes, Route, useNavigate } from "react-router-dom";
 import { createGlobalStyle } from "styled-components";
+import { useDispatch, useSelector } from "react-redux";
 
-// import Home from "./Pages/HomePage/Home";
 import MyHome from "./Pages/HomePage/MyHome";
 import RecordMain from "./Pages/ConRecordPage/RecordMain";
 import Community from "./Pages/CommunityPage/Community";
@@ -33,6 +34,32 @@ import ConDetailPage from "./Pages/ConRecordPage/ConDetailPage/ConDetailPage";
 // import ConRecordPage from "./Pages/ConRecordPage/ConMenu/ConRecordPage";
 
 function App() {
+  const dispatch = useDispatch();
+  const isLoggedIn = useSelector((state) => state.LoginReducer.isLoggedIn);
+  const checkLogin = () => {
+    const authObjStr = localStorage.getItem("authObj");
+
+    if (!authObjStr) {
+      dispatch({ type: "logOut" });
+    } else {
+      const authObj = JSON.parse(authObjStr);
+      // access token이 만료상태면 삭제
+      if (Date.now() > authObj.expire) {
+        console.log("expired auth");
+        localStorage.removeItem("authObj");
+        localStorage.removeItem("auth");
+        dispatch({ type: "logOut" });
+      } else {
+        dispatch({ type: "login" });
+        localStorage.setItem("auth", authObj.auth);
+      }
+    }
+  };
+
+  useEffect(() => {
+    checkLogin();
+  }, []);
+
   return (
     <BrowserRouter>
       <GlobalStyle></GlobalStyle>
