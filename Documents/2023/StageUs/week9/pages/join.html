@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles/joinStyle.css">
+    <title>회원가입</title>
+</head>
+<body>
+    <img id="mainLogo" src="../imgs/stageus_logo_white.png">
+    <form id="joinValueContainer">
+        <div class="inputContainer">
+            <div class="inputLabel">아이디</div>
+            <input class="inputBox" type="text">
+            <button id="duplicateIDCheckBtn">중복확인</button>
+
+            <div class="inputLabel">비밀번호</div>
+            <input id="pwInputBox" class="inputBox" type="password">
+            <img id="visiblePW" src="../imgs/visibility.svg">
+            <img id="nonVisiblePW" class="active" src="../imgs/visibility_off.svg">
+
+            <div class="inputLabel">비밀번호 재입력</div>
+            <input id="pwInputBox" class="inputBox" type="password">
+            <img id="visiblePW" src="../imgs/visibility.svg">
+            <img id="nonVisiblePW" class="active" src="../imgs/visibility_off.svg">
+
+            <div id="rowInputContainer">
+                <div class="rowInput">
+                    <div class="inputLabel">이름</div>
+                    <input class="inputBox" type="text">
+                </div>
+                <div class="rowInput">
+                    <div class="inputLabel">부서</div>
+                    <select class="selectBox"> 
+                        <option>서비스 팀</option>
+                        <option>디자인 팀</option>
+                    </select>
+                </div>
+                <div class="rowInput"> 
+                    <div class="inputLabel">직책</div>
+                    <select class="selectBox">
+                        <option>팀장</option>
+                        <option>팀원</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 회원가입 버튼 -->
+            <input id="enterBtn" value="회원가입" type="submit">
+
+            <div id="extraFunctions">
+                <a href="../pages/index.html">로그인하러 가기</a>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
