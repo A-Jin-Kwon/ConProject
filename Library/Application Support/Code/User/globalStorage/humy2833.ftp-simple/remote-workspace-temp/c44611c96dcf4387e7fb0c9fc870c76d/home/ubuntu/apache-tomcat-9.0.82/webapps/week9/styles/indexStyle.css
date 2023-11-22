@@ -1,0 +1,139 @@
+body {
+  background-color: #727272;
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  justify-content: space-between;
+  padding: 100px;
+  margin: 0;
+  position: relative;
+}
+a {
+  text-decoration: none;
+  color: black;
+  cursor: pointer;
+}
+button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+#mainLogo {
+  width: 496px;
+  height: 192px;
+  left: 30px;
+}
+#valueContainer {
+  background-color: white;
+  width: 579px;
+  height: fit-content;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 29px;
+  padding: 60px 0 60px 0;
+  margin: 0;
+}
+.inputContainer {
+  width: 450px;
+}
+.inputLabel {
+  font-size: 20px;
+}
+.inputBox {
+  box-sizing: border-box;
+  width: 100%;
+  height: 45px;
+  margin: 10px 0 10px 0;
+  position: relative;
+}
+.visibility {
+  position: absolute;
+  margin: -40px 0 0 410px;
+  cursor: pointer;
+}
+.visibilityProfilePW {
+  position: absolute;
+  margin: 25px 0 0 -40px;
+  cursor: pointer;
+}
+#enterBtn {
+  color: white;
+  background-color: #3e84e1;
+  font-size: 30px;
+  font-weight: 800;
+  width: 100%;
+  height: 60px;
+  border: none;
+  border-radius: 10px;
+  margin: 20px 0 20px 0;
+  cursor: pointer;
+}
+#rowInputContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.rowInput {
+  display: flex;
+  flex-direction: column;
+}
+.selectBox {
+  width: 139px;
+  height: 45px;
+  box-sizing: border-box;
+  margin: 10px 0 10px 0;
+}
+#extraFunctions {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px 0 10px 0;
+}
+.hidden {
+  display: none;
+}
+#deleteAccountModal {
+  position: absolute;
+  background-color: black;
+  width: 506px;
+  height: 212px;
+  border: none;
+  border-radius: 8px;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+}
+#deleteAccountLabel {
+  width: 100%;
+  height: 65%;
+  color: white;
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: 1px solid #727272;
+}
+#decideBtnContainer {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 45%;
+  margin: 0;
+}
+.decideBtn {
+  width: 50%;
+  color: white;
+  font-size: 30px;
+}
+.decideBtn:hover {
+  background-color: #82b1f0;
+}
+#yesDeleteAccountBtn {
+  border-right: 1px solid #727272;
+}
